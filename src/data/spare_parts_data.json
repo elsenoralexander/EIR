@@ -1,0 +1,2545 @@
+[
+  {
+    "name": "Caud. Ultraflow II 0-15l Selector C/ Grapa Pomo C/DIN (Mangera 70 cm.)",
+    "providerRef": "Cod.OT",
+    "contact": "larequfm@airproducts.com",
+    "provider": "CARBUROS METALICOS",
+    "machine": "SIN MAQUINA",
+    "services": [
+      "QUIROFANO, UCI"
+    ],
+    "price": "137,00 €",
+    "category": "COMPRAS",
+    "internalCode": "DEFINIR",
+    "commonName": "SELECTOR CAUDALIMETRO DE OXIGENO CON MANGUERA TOMA DRAGER",
+    "imageFile": "1.JPG",
+    "id": "part_1769802283848_0"
+  },
+  {
+    "name": "Caud.Ultraflow II O2 15 l/min Selector C/conentor DIN",
+    "providerRef": "Cod.75437",
+    "contact": "Solicitud Axional",
+    "provider": "CARBUROS METALICOS",
+    "machine": "SIN MAQUINA",
+    "services": [
+      "QUIROFANO, UCI, URGENCIAS",
+      "RESO/TAC"
+    ],
+    "price": "85,00 €",
+    "category": "COMPRAS",
+    "internalCode": "01-002870",
+    "commonName": "SELECTOR CAUDALIMETRO DE OXIGENO TOMA DRAGER",
+    "imageFile": "2.jpeg",
+    "id": "part_1769802283848_1"
+  },
+  {
+    "name": "Reg.Vacío Reguvac II AV c/conector Grapa DIN(Mangera 50 cm.)",
+    "providerRef": "Cod.OT",
+    "contact": "larequfm@airproducts.com",
+    "provider": "CARBUROS METALICOS",
+    "machine": "SIN MAQUINA",
+    "services": [
+      "URGENCIAS"
+    ],
+    "price": "145,00 €",
+    "category": "COMPRAS",
+    "internalCode": "DEFINIR",
+    "commonName": "REGULADOR DE VACIO ASPIRACIÓN CON MANGUERA TOMA DRAGER",
+    "imageFile": "3.jpeg",
+    "id": "part_1769802283848_2"
+  },
+  {
+    "name": "Caud. Ultraflow II 0-15l Selector C/ Grapa Pomo C/DIN (Mangera 50 cm.)",
+    "providerRef": "Cod. OT",
+    "contact": "larequfm@airproducts.com",
+    "provider": "CARBUROS METALICOS",
+    "machine": "SIN MAQUINA",
+    "services": [
+      "URGENCIAS"
+    ],
+    "price": "137,00 €",
+    "category": "COMPRAS",
+    "internalCode": "DEFINIR",
+    "commonName": "SELECTOR CAUDALIMTRO DE OXIGENO CON MANGUERA TOMA DRAGER",
+    "imageFile": "4.jpeg",
+    "id": "part_1769802283848_3"
+  },
+  {
+    "name": "Reg.Vacio Reguvac II AV c/conector CM",
+    "providerRef": "Cod.74942",
+    "contact": "Solicitud Axional",
+    "provider": "CARBUROS METALICOS",
+    "machine": "SIN MAQUINA",
+    "services": [
+      "HOSPITALIZACION"
+    ],
+    "price": "105,00 €",
+    "category": "COMPRAS",
+    "internalCode": "01-032167",
+    "commonName": "REGULADOR DE VACIO ASPIRACIÓN TOMA CARBUROS",
+    "imageFile": "5.jpeg",
+    "id": "part_1769802283848_4"
+  },
+  {
+    "name": "Caudalimetro Ultraflow 0-15 Sel (Alarg 15cm) C/ CM",
+    "providerRef": "Cod.OT",
+    "contact": "larequfm@airproducts.com",
+    "provider": "CARBUROS METALICOS",
+    "machine": "SIN MAQUINA",
+    "services": [
+      "HOSPITALIZACION"
+    ],
+    "price": "86,00 €",
+    "category": "COMPRAS",
+    "internalCode": "DEFINIR",
+    "commonName": "SELECTOR CAUDALIMETRO DE OXIGENO CON ALARGADOR 15CM TOMA CARBUROS",
+    "imageFile": "6.jpeg",
+    "id": "part_1769802283848_5"
+  },
+  {
+    "name": "Reg. Vacio OHIO AV C/I Alarg C/CM",
+    "providerRef": "Cod.478950",
+    "contact": "Mail a compras para petición",
+    "provider": "CARBUROS METALICOS",
+    "machine": "SIN MAQUINA",
+    "services": [
+      "HOSPITALIZACON"
+    ],
+    "price": "535,00 €",
+    "category": "COMPRAS",
+    "internalCode": "Mail a compras para petición",
+    "commonName": "REGULADOR DE VACIO ASPIRACIÓN CONTINUO-INTERMITENTE TOMA CARBUROS",
+    "imageFile": "7.jpeg",
+    "id": "part_1769802283848_6"
+  },
+  {
+    "name": "Reg.Vacio Reguvac II AV c/conector DIN",
+    "providerRef": "Cod.74941",
+    "contact": "Solicitud Axional",
+    "provider": "CARBUROS METALICOS",
+    "machine": "SIN MAQUINA",
+    "services": [
+      "QUIROFANO, UCI, URGENCIAS"
+    ],
+    "price": "105,00 €",
+    "category": "COMPRAS",
+    "internalCode": "01-002849",
+    "commonName": "REGULADOR DE VACIO ASPIRACIÓN TOMA DRAGER",
+    "imageFile": "8.jpeg",
+    "id": "part_1769802283848_7"
+  },
+  {
+    "name": "Reg Reguvac II AV Grapa Pomo DIN (Manguera de 70cm.)",
+    "providerRef": "Cod.74965",
+    "contact": "Mail a compras 01-207589 pero con manguera de 70 cm.",
+    "provider": "CARBUROS METALICOS",
+    "machine": "SIN MAQUINA",
+    "services": [
+      "QUIROFANO, UCI"
+    ],
+    "price": "145,00 €",
+    "category": "COMPRAS",
+    "internalCode": "01-207589 pero con manguera de 70 cm.",
+    "commonName": "REGULADOR DE VACIO ASPIRACIÓN CON MANGUERA TOMA DRAGER",
+    "imageFile": "9.jpeg",
+    "id": "part_1769802283848_8"
+  },
+  {
+    "name": "Conector Aire 800 S/G DIN",
+    "providerRef": "Cod.OT",
+    "contact": "No axional",
+    "provider": "CARBUROS METALICOS",
+    "machine": "SIN MAQUINA",
+    "services": [
+      "ENDOSCOPIAS (MANGUERA DE AIRE)"
+    ],
+    "price": "90,00 €",
+    "category": "COMPRAS",
+    "internalCode": "DEFINIR",
+    "commonName": "TOMA AIRE COMPRIMIDO",
+    "imageFile": null,
+    "id": "part_1769802283848_9"
+  },
+  {
+    "name": "FLUID COOLING 9% METHANOL 91%WATER",
+    "providerRef": "1812-0002",
+    "contact": "beatriz.aznar@cynosure.com",
+    "provider": "CYNOSURE",
+    "machine": "LASER",
+    "services": [
+      "LASER ICON"
+    ],
+    "price": "2.733,00 €",
+    "category": "COMPRAS",
+    "internalCode": "DEFINIR",
+    "commonName": "AGUA DESTILADA REFRIGERANTE PARA LASER DE PALOMAR ICON",
+    "imageFile": "11.jpeg",
+    "id": "part_1769802283848_10"
+  },
+  {
+    "name": "Masimo SpO2-Sensor LNCS DC-I",
+    "providerRef": "MP00796",
+    "contact": "leticia.abasolo@draeger.com",
+    "provider": "DRAGER",
+    "machine": "MONITOR RESPIRADOR (Q2,Q11)",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "1,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": null,
+    "imageFile": "https://cdn.shopify.com/s/files/1/2591/8832/products/SRP-MAN-3A_800x.jpg",
+    "id": "part_1769802283848_11"
+  },
+  {
+    "name": "FUENTE DE ALIMENTACION INFINITY G/GXL/V",
+    "providerRef": "MS18508",
+    "contact": "leticia.abasolo@draeger.com",
+    "provider": "DRAGER",
+    "machine": "MONITORES DE CONSTANTES INFINITY",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "330,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "CARGADOR MONITOR INFINITY",
+    "imageFile": "13.jpeg",
+    "id": "part_1769802283848_12"
+  },
+  {
+    "name": "BATERIA DE ION LITIO 5,9Ah NARANJA",
+    "providerRef": "MS31385",
+    "contact": "leticia.abasolo@drager.com",
+    "provider": "DRAGER",
+    "machine": "MONITORES DE CONSTANTES INFINITY",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "166,71 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "BATERIA MONITOR INFINITY",
+    "imageFile": "14.jpeg",
+    "id": "part_1769802283848_13"
+  },
+  {
+    "name": "CIRC. INT. LM335",
+    "providerRef": "LM335",
+    "contact": "tienda@electrosonsansebastian.com",
+    "provider": "ELECTROSON",
+    "machine": "MANTAS CALIENTES BAIR HUGGER",
+    "services": [
+      "QUIROFANO , UCI"
+    ],
+    "price": "4,06 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "SENSOR DE TEMPERATURA PARA ,MANGUERA DE MANTAS CALIENTES",
+    "imageFile": "15.jpeg",
+    "id": "part_1769802283848_14"
+  },
+  {
+    "name": "CONEX SMA M / SMA H",
+    "providerRef": "EQ101510",
+    "contact": "tienda@electrosonsansebastian.com",
+    "provider": "ELECTROSON",
+    "machine": "SONDAS DE TEMPERATURA AKO",
+    "services": [
+      "TODOS"
+    ],
+    "price": "18,20 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "CABLE EXTENSION ALARGADOR SEÑAL ANTENA SONDAS TEMPERATURA AKO",
+    "imageFile": "16.jpeg",
+    "id": "part_1769802283848_15"
+  },
+  {
+    "name": "SENSOR DEDIL PULSIOXIMETRIA MASIMO SPO2",
+    "providerRef": "P9115F-D",
+    "contact": "pedidos@faromedic.com",
+    "provider": "FAROMEDIC",
+    "machine": "MONITORES M540 (Q2 Y Q11)",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "103,60 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "DEDIL PULSI MASIMO",
+    "imageFile": "17.png",
+    "id": "part_1769802283848_16"
+  },
+  {
+    "name": "EXTENSION CABLE SPO2 COMPAT MASIMO LNCS",
+    "providerRef": "P0215G",
+    "contact": "pedidos@faromedic.com",
+    "provider": "FAROMEDIC",
+    "machine": "MONITORES ANESTESIA PRIMUS MASIMO",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "101,60 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "CABLE INTERMEDIO DEDIL PULSI",
+    "imageFile": "18.jpeg",
+    "id": "part_1769802283848_17"
+  },
+  {
+    "name": "SPO2 SENSOR ADULTO CLIP, COMPAT NELLCOR OXIMAX 1m.",
+    "providerRef": "P9119A-MK",
+    "contact": "pedidos@faromedic.com",
+    "provider": "FAROMEDIC",
+    "machine": "MONITORES PRIMUS NELLCOR OXIMAX",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "96,20 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "PARA CONECTAR CON P0209B",
+    "imageFile": "19.jpeg",
+    "id": "part_1769802283848_18"
+  },
+  {
+    "name": "EKG ADAPTADOR A CLIP",
+    "providerRef": "VV05",
+    "contact": "pedidos@faromedic.com",
+    "provider": "FAROMEDIC",
+    "machine": "ELECTROCARDIOFRAFO TC20",
+    "services": [
+      "URGENCIAS, PLANTA, ELECTROS"
+    ],
+    "price": "59,20 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "CONECTOR ECG CLIP PAQUETE 10 UNIDADES",
+    "imageFile": "20.jpeg",
+    "id": "part_1769802283848_19"
+  },
+  {
+    "name": "EKG MONOBLOCK CABLE 10 VIAS BANAN COMPAT TC20 PHILIPS",
+    "providerRef": "K1213B",
+    "contact": "pedidos@faromedic.com",
+    "provider": "FAROMEDIC",
+    "machine": "ELECTROCARDIOFRAFO TC20,TC10",
+    "services": [
+      "URGENCIAS, PLANTA, ELECTROS"
+    ],
+    "price": "115,80 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "CABLE TRONCAL ECG",
+    "imageFile": "21.jpeg",
+    "id": "part_1769802283848_20"
+  },
+  {
+    "name": "VALVULA AIRE/AGUA SERIE 500 (2UDS)",
+    "providerRef": "AW-500/2",
+    "contact": "itziar.garcia@fujifilm.com",
+    "provider": "FUJIFILM",
+    "machine": "ENDOSCOPIOS DE LA SERIE 500",
+    "services": [
+      "ENDOSCOPIAS"
+    ],
+    "price": "126,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": null,
+    "imageFile": "22.jpeg",
+    "id": "part_1769802283848_21"
+  },
+  {
+    "name": "VALVULA SUCCION SERIE 500 (2UDS)",
+    "providerRef": "SB-500/2",
+    "contact": "itziar.garcia@fujifilm.com",
+    "provider": "FUJIFILM",
+    "machine": "ENDOSCOPIOS DE LA SERIE 500",
+    "services": [
+      "ENDOSCOPIAS"
+    ],
+    "price": "124,79 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": null,
+    "imageFile": "23.jpeg",
+    "id": "part_1769802283848_22"
+  },
+  {
+    "name": "VALVULA AIRE/AGUA SERIE 700 (2UDS)",
+    "providerRef": "AW-603",
+    "contact": "borja.vera@fujifilm.com",
+    "provider": "FUJIFILM",
+    "machine": "ENDOSCOPIOS DE LA SERIE 700",
+    "services": [
+      "ENDOSCOPIAS"
+    ],
+    "price": "114,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": null,
+    "imageFile": "24.jpeg",
+    "id": "part_1769802283848_23"
+  },
+  {
+    "name": "VALVULA SUCCION SERIE 700 (2UDS)",
+    "providerRef": "SB-605",
+    "contact": "itziar.garcia@fujifilm.com",
+    "provider": "FUJIFILM",
+    "machine": "ENDOSCOPIOS DE LA SERIE 700",
+    "services": [
+      "ENDOSCOPIAS"
+    ],
+    "price": "114,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": null,
+    "imageFile": "25.jpeg",
+    "id": "part_1769802283848_24"
+  },
+  {
+    "name": "VALVULA AIRE/AGUA P/ECO 580UT/UR (1UD)",
+    "providerRef": "AW-602",
+    "contact": "itziar.garcia@fujifilm.com",
+    "provider": "FUJIFILM",
+    "machine": "ECOENDOSCOPIOS DE LA SERIE 580",
+    "services": [
+      "ENDOSCOPIAS"
+    ],
+    "price": "456,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": null,
+    "imageFile": "26.jpeg",
+    "id": "part_1769802283848_25"
+  },
+  {
+    "name": "VALVULA SUCCION P/ECO 580UT/UR (1UD)",
+    "providerRef": "SB-604",
+    "contact": "itziar.garcia@fujifilm.com",
+    "provider": "FUJIFILM",
+    "machine": "ECOENDOSCOPIOS DE LA SERIE 580",
+    "services": [
+      "ENDOSCOPIAS"
+    ],
+    "price": "215,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": null,
+    "imageFile": "27.jpeg",
+    "id": "part_1769802283848_26"
+  },
+  {
+    "name": "TANQUE DE AGUA SERIE 500 CON GAS",
+    "providerRef": "WT-04G",
+    "contact": "itziar.garcia@fujifilm.com",
+    "provider": "FUJIFILM",
+    "machine": "PROCESADOR SERIE 500",
+    "services": [
+      "ENDOSCOPIAS"
+    ],
+    "price": "542,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": null,
+    "imageFile": "28.jpeg",
+    "id": "part_1769802283848_27"
+  },
+  {
+    "name": "TANQUE DE AGUA SERIE 700 CON GAS",
+    "providerRef": "WT-604G",
+    "contact": "Borja.vera@fujifilm.com",
+    "provider": "FUJIFILM",
+    "machine": "PROCESADOR SERIE 700",
+    "services": [
+      "ENDOSCOPIAS"
+    ],
+    "price": "522,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": null,
+    "imageFile": "29.jpeg",
+    "id": "part_1769802283848_28"
+  },
+  {
+    "name": "TUBO DE GAS PARA GW-100",
+    "providerRef": "CT-11G",
+    "contact": "itziar.garcia@fujifilm.com",
+    "provider": "FUJIFILM",
+    "machine": "INSUFLADOR DE CO2 TORRE FUJI",
+    "services": [
+      "ENDOSCOPIAS"
+    ],
+    "price": "330,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": null,
+    "imageFile": null,
+    "id": "part_1769802283848_29"
+  },
+  {
+    "name": "REUSABLE CANAL AUXILIAR TUBE (2UDS)",
+    "providerRef": "JT-3RW",
+    "contact": "itziar.garcia@fujifilm.com",
+    "provider": "FUJIFILM",
+    "machine": "INSUFLADOR DE CO2 TORRE FUJI",
+    "services": [
+      "ENDOSCOPIAS"
+    ],
+    "price": "234,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": null,
+    "imageFile": "31.jpeg",
+    "id": "part_1769802283848_30"
+  },
+  {
+    "name": "REUSSABLE CANAL DE TRABAJO TUBE",
+    "providerRef": "JT-3RC",
+    "contact": "itziar.garcia@fujifilm.com",
+    "provider": "FUJIFILM",
+    "machine": "INSUFLADOR DE CO2 TORRE FUJI",
+    "services": [
+      "ENDOSCOPIAS"
+    ],
+    "price": "110,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": null,
+    "imageFile": null,
+    "id": "part_1769802283848_31"
+  },
+  {
+    "name": "MANDO CON CABLE 1133 PARA MESA ALPHAMAXX",
+    "providerRef": "113390AE",
+    "contact": "spain@getinge.com",
+    "provider": "GETINGE",
+    "machine": "MESA QUIRURGICA ALPHAMAXX",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "849,95 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": null,
+    "imageFile": "32.png",
+    "id": "part_1769802283848_32"
+  },
+  {
+    "name": "MCP00151005#CLS 20-535 Capac-itive Level",
+    "providerRef": "701010855",
+    "contact": "marcos.gil@getinge.com",
+    "provider": "GETINGE",
+    "machine": "BOMBA EXTRACORPOREA HL20",
+    "services": [
+      "QUIROFANO (CARDIACA)"
+    ],
+    "price": "2.146,62 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "(SENSOR NIVEL HL20)",
+    "imageFile": "33.jpeg",
+    "id": "part_1769802283848_33"
+  },
+  {
+    "name": "Pieza de fijación p. soportes del cuerpo para soportes del cuerpo 1002.11A0-D0, con ajustes de altura y orientable",
+    "providerRef": "100219C0",
+    "contact": "francisco.aracil@getinge.com",
+    "provider": "GETINGE",
+    "machine": "MESAS QUIRURGICAS",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "449,77 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": null,
+    "imageFile": "34.jpeg",
+    "id": "part_1769802283848_34"
+  },
+  {
+    "name": "Soporte pubiano-sacro-esternal para 1002.19C0, giratorio y orientable ajustable en altura, acolchado PUR",
+    "providerRef": "100211B0",
+    "contact": "francisco.aracil@getinge.com",
+    "provider": "GETINGE",
+    "machine": "MESAS QUIRURGICAS",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "154,93 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": null,
+    "imageFile": "35.jpeg",
+    "id": "part_1769802283848_35"
+  },
+  {
+    "name": "Carenado superior 4º nivel (medio lado)",
+    "providerRef": "31155781",
+    "contact": "francisco.aracil@getinge.com",
+    "provider": "GETINGE",
+    "machine": "MESA QUIRURGICA ALPHAMAXX",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "675,30 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": null,
+    "imageFile": "36.jpeg",
+    "id": "part_1769802283848_36"
+  },
+  {
+    "name": "Carenado superior 3er nivel (medio lado)",
+    "providerRef": "31155771",
+    "contact": "francisco.aracil@getinge.com",
+    "provider": "GETINGE",
+    "machine": "MESA QUIRURGICA ALPHAMAXX",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "664,10 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": null,
+    "imageFile": "37.jpeg",
+    "id": "part_1769802283848_37"
+  },
+  {
+    "name": "Carenado central 2º nivel (medio lado)",
+    "providerRef": "31155761",
+    "contact": "francisco.aracil@getinge.com",
+    "provider": "GETINGE",
+    "machine": "MESA QUIRURGICA ALPHAMAXX",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "660,67 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": null,
+    "imageFile": "38.jpeg",
+    "id": "part_1769802283848_38"
+  },
+  {
+    "name": "Carenado inferior 1er nivel (medio lado)",
+    "providerRef": "31155791",
+    "contact": "francisco.aracil@getinge.com",
+    "provider": "GETINGE",
+    "machine": "MESA QUIRURGICA ALPHAMAXX",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "615,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": null,
+    "imageFile": "39.jpeg",
+    "id": "part_1769802283848_39"
+  },
+  {
+    "name": "FIJADOR",
+    "providerRef": "31014854",
+    "contact": "francisco.aracil@getinge.com",
+    "provider": "GETINGE",
+    "machine": "MESAS QUIRURGICAS",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "440,82 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "SOPORTE FIJADOR CUADRADO MESAS QUIRURGICAS",
+    "imageFile": "40.jpeg",
+    "id": "part_1769802283848_40"
+  },
+  {
+    "name": "PLACAS DE PIERNA DE DOS SECCIONES (PAR)",
+    "providerRef": "1118.50B0",
+    "contact": "francisco.aracil@getinge.com",
+    "provider": "GETINGE",
+    "machine": "MESA QUIRURGICA ALPHAMAXX",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "3.260,25 €",
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "PERNERAS PARA MESAS MAQUET",
+    "imageFile": "41.jpeg",
+    "id": "part_1769802283848_41"
+  },
+  {
+    "name": "REGISTRADOR TEMPERATURA",
+    "providerRef": "AKO-59851-H",
+    "contact": "laura@hemenklima.es",
+    "provider": "HEMEN KLIMA, S.L.",
+    "machine": "FRIGORIFICOS",
+    "services": [
+      "TODOS"
+    ],
+    "price": "380,00 €",
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "REGISTRADOR TEMPERATURA AKO DATA",
+    "imageFile": "434b1249-0955-4403-9871-d0e7834eee21.jpeg",
+    "id": "part_1769802283848_42"
+  },
+  {
+    "name": "PILA PARA SONDA Ta AKO",
+    "providerRef": "AKO-59830",
+    "contact": "laura@hemenklima.es",
+    "provider": "HEMEN KLIMA, S.L.",
+    "machine": "FRIGOS MEDICACION",
+    "services": [
+      "TODOS"
+    ],
+    "price": "60,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": null,
+    "imageFile": "42.jpeg",
+    "id": "part_1769802283848_43"
+  },
+  {
+    "name": "TUBO CAPILAR DLCO PARA VYNTUS ONE",
+    "providerRef": "V-707722",
+    "contact": "isantamaria@hospital-hispania.com",
+    "provider": "HOSPITAL HISPANIA",
+    "machine": "ESPIROMETRO DE DIFUSION",
+    "services": [
+      "CONSULTAS 3P"
+    ],
+    "price": "295,26 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "VYAIRE LINEA DE MUESTREO ESPIROMETRO DE DIFUSION",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][32]_[554ab06dc9244c2cada37d47a43b34bf][1]_[7].jpeg",
+    "id": "part_1769802283848_44"
+  },
+  {
+    "name": "TICKET PARKING",
+    "providerRef": "Modelo TPZPP185-00259",
+    "contact": "Gonzalo Coto <gcoto@ifb.es> - INDUSTRIAS BOTELLA",
+    "provider": "INDUSTRIAS BOTELLA, S.L.",
+    "machine": "PARKING",
+    "services": [
+      "OTROS"
+    ],
+    "price": "8,15 €",
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "TICKET PARKING CON PUBLICIDAD",
+    "imageFile": null,
+    "id": "part_1769802283848_45"
+  },
+  {
+    "name": "CARGADOR INALAMBRICO 3 POSICIONES IPHONE",
+    "providerRef": "Gen",
+    "contact": "jesus@infoamara.com",
+    "provider": "INFORMATICA AMARA",
+    "machine": "iPhones DE SISTEMA SMARTROOM",
+    "services": [
+      "HOSPITALIZACION"
+    ],
+    "price": "48,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "CARGADOR INALAMBRICO INDUCCION IPHONE",
+    "imageFile": "44.jpeg",
+    "id": "part_1769802283848_46"
+  },
+  {
+    "name": "PINZA CISTOSCOPIA 125MM x 1,4MM",
+    "providerRef": "1 ICE-DZ 084120K",
+    "contact": "gerencia@ivalmed.com",
+    "provider": "IVALMED",
+    "machine": "URETERORENOSCOPIO FELXIBLE",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "485,70 €",
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "PINZA DE BIOPSIA GANCHO CISTOSCOPIO URETERO",
+    "imageFile": "65.jpeg",
+    "id": "part_1769802283848_47"
+  },
+  {
+    "name": "ELECTRODO DE COAGULACION Y DESECCION",
+    "providerRef": "26775UF",
+    "contact": "magdalena.demiguel@karlstorz.com",
+    "provider": "KARL STORZ",
+    "machine": null,
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "HOOK",
+    "imageFile": "45.png",
+    "id": "part_1769802283848_48"
+  },
+  {
+    "name": "VAINA PARA ARTROSCOPIO",
+    "providerRef": "28136CR",
+    "contact": "de Miguel, Magdalena <Magdalena.deMiguel@karlstorz.com>",
+    "provider": "KARL STORZ ENDOSCOPIA IBERIA, S.A.",
+    "machine": "ARTROSCOPIO",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "350,00 €",
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "VAINA ARTROSCOPIO",
+    "imageFile": "53ac9d2c-fcf9-4983-a361-1ca4e6ac5906.png",
+    "id": "part_1769802283848_49"
+  },
+  {
+    "name": "OPTICA UROLOGIA HOLEP HOPKINS 6º CAMBIO ESTANDAR",
+    "providerRef": "27292AMA",
+    "contact": "de Miguel, Magdalena <Magdalena.deMiguel@karlstorz.com>",
+    "provider": "KARL STORZ ENDOSCOPIA IBERICA, S.A.",
+    "machine": "OPTICA",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "1.685,09 €",
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "OPTICA HOLEP CAMBIO ESTANDAR",
+    "imageFile": "de2a8576-a1c5-4368-b865-69387363434c.png",
+    "id": "part_1769802283848_50"
+  },
+  {
+    "name": "OPTICA ARTROSCOPIA TRAUMATOLOGIA CAMBIO ESTANDAR",
+    "providerRef": "28731BWA",
+    "contact": "de Miguel, Magdalena <Magdalena.deMiguel@karlstorz.com>",
+    "provider": "KARL STORZ ENDOSCOPIA IBERICA, S.A.",
+    "machine": "OPTICA",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "730,00 €",
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "CAMBIO ESTANDAR OPTICA ARTROSCOPIA TRAUMATOLOGIA",
+    "imageFile": "65f05b07-ea40-447c-af69-7eaea9e4e81c.png",
+    "id": "part_1769802283848_51"
+  },
+  {
+    "name": "OPTICA UROLOGIA HOPKINS 6º CAMBIO ESTANDAR",
+    "providerRef": "27005BA",
+    "contact": "de Miguel, Magdalena <Magdalena.deMiguel@karlstorz.com>",
+    "provider": "KARL STORZ ENDOSCOPIA IBERICA, S.A.",
+    "machine": "OPTICA",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "750,00 €",
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "OPTICA UROLOGIA 30º",
+    "imageFile": "5fb648c2-a128-4226-8702-1010d68e441a.png",
+    "id": "part_1769802283848_52"
+  },
+  {
+    "name": "OPTICA LAPAROSCOPIA HOPKINS 30º CAMBIO ESTANDAR",
+    "providerRef": "26046BA",
+    "contact": "de Miguel, Magdalena <Magdalena.deMiguel@karlstorz.com>",
+    "provider": "KARL STORZ ENDOSCOPIA IBERICA, S.A.",
+    "machine": "OPTICA LAPAROSCOPIA",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "750,00 €",
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "OPTICA LAPAROSCOPIA 30º",
+    "imageFile": "af2af7e7-7d0d-483b-8c64-49538bb8ef43.png",
+    "id": "part_1769802283848_53"
+  },
+  {
+    "name": "HISTEROSCOPIO CAMBIO ESTANDAR",
+    "providerRef": "26008BAC",
+    "contact": "de Miguel, Magdalena <Magdalena.deMiguel@karlstorz.com>",
+    "provider": "KARL STORZ ENDOSCOPIA IBERICA, S.A.",
+    "machine": "HISTEROSCOPIO",
+    "services": [
+      "QUIROFANO , CONSULTAS"
+    ],
+    "price": "1.500,00 €",
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "HISTEROSCOPIO DIAGNOSTICO",
+    "imageFile": "dd13852b-f130-412c-930f-ae8be3830aaf.png",
+    "id": "part_1769802283848_54"
+  },
+  {
+    "name": "OBTURADOR PARA VAINA DE ARTROSCOPIO",
+    "providerRef": "28126BC",
+    "contact": "de Miguel, Magdalena <Magdalena.deMiguel@karlstorz.com>",
+    "provider": "KARL STORZ ENDOSCOPIA IBERICA, S.A.",
+    "machine": "VAINA DE ARTROSCOPIO",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "39,15 €",
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "OBTURADOR VAINA ARTROSCOPIA",
+    "imageFile": "b3fb4891-9303-470b-98fa-350e3dca3d8e.png",
+    "id": "part_1769802283848_55"
+  },
+  {
+    "name": "ADAPTADOR MONOPOLAR UNIVERSAL",
+    "providerRef": "E0017",
+    "contact": "rs.madpedidosspain@medtronic.com",
+    "provider": "MEDTRONIC",
+    "machine": "ELECTROBISTURIS MEDTRONIC",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "88,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "ADAPTADOR BISTURI",
+    "imageFile": "66.jpeg",
+    "id": "part_1769802283848_56"
+  },
+  {
+    "name": "VS 8/9 Rolling Stand (Standard) + commen Quick lock (compact with allexisting models under 12\\\" inch screen and VS)",
+    "providerRef": "045-004267-00",
+    "contact": "elena.compains@mindray.com",
+    "provider": "MINDRAY",
+    "machine": "MONITOR MINDRAY IPM12",
+    "services": [
+      "URGENCIAS"
+    ],
+    "price": "210,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "CARRO TRANSPORTE MONITOR MINDRAY",
+    "imageFile": "46.jpeg",
+    "id": "part_1769802283848_57"
+  },
+  {
+    "name": "Teléfono inalámbrico dect Alcatel 8244",
+    "providerRef": "ALM8244",
+    "contact": "n.hill@onedirect.es",
+    "provider": "Onedirect comunicaciones, S.L.",
+    "machine": "Telefonía",
+    "services": [
+      "TODOS"
+    ],
+    "price": "154,51 €",
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "Dect alta gama",
+    "imageFile": "47.png",
+    "id": "part_1769802283848_58"
+  },
+  {
+    "name": "Teléfono inalámbrico gigaset comfort 550E",
+    "providerRef": "SICOM550E",
+    "contact": "n.hill@onedirect.es",
+    "provider": "Onedirect comunicaciones, S.L.",
+    "machine": "Telefonía",
+    "services": [
+      "TODOS"
+    ],
+    "price": "47,50 €",
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "DECT",
+    "imageFile": "48.jpeg",
+    "id": "part_1769802283848_59"
+  },
+  {
+    "name": "CABLE PRE-AMP ALGO 3i",
+    "providerRef": "040656R",
+    "contact": "i.marcelino@palex.es",
+    "provider": "PALEX",
+    "machine": "APARATO DE SCREANING ALGO 3i",
+    "services": [
+      "HOSPITALIZACION NIDO"
+    ],
+    "price": "875,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "CABLE ELECTRODOS EQUIPOTENIALES RECIEN NACIDOS",
+    "imageFile": "49.jpeg",
+    "id": "part_1769802283848_60"
+  },
+  {
+    "name": "Olympic Vac-Pac system size 30",
+    "providerRef": "51630",
+    "contact": "j@j.com",
+    "provider": "PALEX",
+    "machine": null,
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "865,00 €",
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "COLCHONETA VACIO HOMBRO",
+    "imageFile": "50.jpeg",
+    "id": "part_1769802283848_61"
+  },
+  {
+    "name": "OPTICA ALTO FLUJO PARA ARTROSCOPIA CAMBIO ESTANDAR",
+    "providerRef": "72205154",
+    "contact": "Moja, Inaki <Inaki.Moja@smith-nephew.com>",
+    "provider": "SMITH & NEPHEW, S.A.U",
+    "machine": "TORRE DE ARTROSCOPIA",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "950,00 €",
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "OPTICA ARTROSCOPIA - 5 cambios sin cargo al año - 2024:0 hechos",
+    "imageFile": "1b8e53be-aaac-490c-b905-42034e4ecb1b.jpeg",
+    "id": "part_1769802283848_62"
+  },
+  {
+    "name": "BATERIA ESTERILIZABLE LI-ION SYSTEM 8",
+    "providerRef": "8215-000-000",
+    "contact": "marc.antoli@stryker.com",
+    "provider": "STRYKER",
+    "machine": "MOTORES TRAUMA SYSTEM 7-8",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "845,00 €",
+    "category": "COMPRAS",
+    "internalCode": "01-159968  (HACER PEDIDO DIRECTAMENTE EN AXIONAL)",
+    "commonName": "BATERIA PARA MOTORES SYSTEM",
+    "imageFile": "51.jpeg",
+    "id": "part_1769802283848_63"
+  },
+  {
+    "name": "PINCHO ASPIRADOR SYSTEM INE EXPRES",
+    "providerRef": "A1600INT",
+    "contact": "arrate.aramburu@sumisan.con",
+    "provider": "SUMISAN",
+    "machine": "STERIS SYSTEM INE",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "139,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": null,
+    "imageFile": "52.jpeg",
+    "id": "part_1769802283848_64"
+  },
+  {
+    "name": "CONTENEDOR DE FLUJO DIRIGIDO",
+    "providerRef": "C1221INT",
+    "contact": "arrate.aramburu@sumisan.com",
+    "provider": "SUMISAN",
+    "machine": "ESTERILIZADOR DE ACIDO PARACETICO STERIS",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "620,23 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "CAJA ESTERILIZACION CONTENEDOR MATERIAL STERIS",
+    "imageFile": "53.jpeg",
+    "id": "part_1769802283848_65"
+  },
+  {
+    "name": "X SERIES ADAPTADOR TALADRO ZIMMER/HUDSON",
+    "providerRef": "89-8522-150-80",
+    "contact": "lorena.Cortazar@zimmerbiomet.com",
+    "provider": "ZIMMER",
+    "machine": "MOTORES TRAUMA",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "691,00 €",
+    "category": "COMPRAS",
+    "internalCode": "DEFINIR",
+    "commonName": null,
+    "imageFile": "54.jpeg",
+    "id": "part_1769802283848_66"
+  },
+  {
+    "name": "X SERIES ADAPTADOR TALADRO AO PEQUEÑO",
+    "providerRef": "89-8522-150-20",
+    "contact": "lorena.Cortazar@zimmerbiomet.com",
+    "provider": "ZIMMER",
+    "machine": "MOTORES TRAUMA",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "681,00 €",
+    "category": "COMPRAS",
+    "internalCode": "DEFINIR",
+    "commonName": null,
+    "imageFile": "55.png",
+    "id": "part_1769802283848_67"
+  },
+  {
+    "name": "X SERIES ADAPTADOR TALADRO 1/4\" PORTABROCAS CON LLAVE",
+    "providerRef": "89-8522-150-90",
+    "contact": "lorena.Cortazar@zimmerbiomet.com",
+    "provider": "ZIMMER",
+    "machine": "MOTORES TRAUMA",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "978,06 €",
+    "category": "COMPRAS",
+    "internalCode": "DEFINIR",
+    "commonName": null,
+    "imageFile": "56.jpeg",
+    "id": "part_1769802283848_68"
+  },
+  {
+    "name": "X SERIES ADAPTADOR SERRADO SIERRA OSCILANTE",
+    "providerRef": "89-8522-450-60",
+    "contact": "lorena.Cortazar@zimmerbiomet.com",
+    "provider": "ZIMMER",
+    "machine": "MOTORES TRAUMA",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "1.380,54 €",
+    "category": "COMPRAS",
+    "internalCode": "DEFINIR",
+    "commonName": null,
+    "imageFile": "57.png",
+    "id": "part_1769802283848_69"
+  },
+  {
+    "name": "X SERIES ADAPTADOR FRESADO ZIMMER/HUDSON HIGH TORQUE",
+    "providerRef": "89-8522-270-80",
+    "contact": "lorena.Cortazar@zimmerbiomet.com",
+    "provider": "ZIMMER",
+    "machine": "MOTORES TRAUMA",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "756,64 €",
+    "category": "COMPRAS",
+    "internalCode": "DEFINIR",
+    "commonName": null,
+    "imageFile": "58.jpeg",
+    "id": "part_1769802283848_70"
+  },
+  {
+    "name": "X SERIES BATERIA",
+    "providerRef": "89-8521-470-30",
+    "contact": "lorena.Cortazar@zimmerbiomet.com",
+    "provider": "ZIMMER",
+    "machine": "MOTORES TRAUMA",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "185,53 €",
+    "category": "COMPRAS",
+    "internalCode": "DEFINIR",
+    "commonName": null,
+    "imageFile": "59.jpeg",
+    "id": "part_1769802283848_71"
+  },
+  {
+    "name": "X SERIES CARCASA DE LA BATERIA",
+    "providerRef": "89-8521-470-40",
+    "contact": "lorena.Cortazar@zimmerbiomet.com",
+    "provider": "ZIMMER",
+    "machine": "MOTORES TRAUMA",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "798,39 €",
+    "category": "COMPRAS",
+    "internalCode": "DEFINIR",
+    "commonName": null,
+    "imageFile": "60.jpeg",
+    "id": "part_1769802283848_72"
+  },
+  {
+    "name": "X SERIES CARGADOR DE BATERIAS ASEPTICAS",
+    "providerRef": "89-8521-470-00",
+    "contact": "lorena.Cortazar@zimmerbiomet.com",
+    "provider": "ZIMMER",
+    "machine": "MOTORES TRAUMA",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "1.739,39 €",
+    "category": "COMPRAS",
+    "internalCode": "DEFINIR",
+    "commonName": null,
+    "imageFile": "61.jpeg",
+    "id": "part_1769802283848_73"
+  },
+  {
+    "name": "X SERIES EMBUDO-TRANSFER DE LA BATERIA",
+    "providerRef": "89-8521-470-50",
+    "contact": "lorena.Cortazar@zimmerbiomet.com",
+    "provider": "ZIMMER",
+    "machine": "MOTORES TRAUMA",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "23,98 €",
+    "category": "COMPRAS",
+    "internalCode": "DEFINIR",
+    "commonName": null,
+    "imageFile": "62.jpeg",
+    "id": "part_1769802283848_74"
+  },
+  {
+    "name": "X SERIES CESTA 2 PIEZAS DE MANO CON CARCASAS",
+    "providerRef": "89-8520-400-40",
+    "contact": "lorena.Cortazar@zimmerbiomet.com",
+    "provider": "ZIMMER",
+    "machine": "MOTORES TRAUMA",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "1.216,33 €",
+    "category": "COMPRAS",
+    "internalCode": "DEFINIR",
+    "commonName": null,
+    "imageFile": "63.png",
+    "id": "part_1769802283848_75"
+  },
+  {
+    "name": "X SERIES PIEZA DE MANO 2 GATILLOS",
+    "providerRef": "89-8520-400-00",
+    "contact": "lorena.Cortazar@zimmerbiomet.com",
+    "provider": "ZIMMER",
+    "machine": "MOTORES TRAUMA",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "4.050,09 €",
+    "category": "COMPRAS",
+    "internalCode": "DEFINIR",
+    "commonName": null,
+    "imageFile": "64.png",
+    "id": "part_1769802283848_76"
+  },
+  {
+    "name": "Finnippette F2 Pipetter",
+    "providerRef": "4642090",
+    "contact": null,
+    "provider": "Calibre Scientific, S.L",
+    "machine": "Finnippette F2 Pipetter",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "464,00 €",
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "PIPETAS PARA FACTORES",
+    "imageFile": "9b458418-5cb0-40bd-be35-72ccb3170d8d.png",
+    "id": "part_1769802283848_77"
+  },
+  {
+    "name": "MANUAL CONTROL SWITCH *SMART",
+    "providerRef": "5066811",
+    "contact": "almacen.SAT@fmc-ag.com",
+    "provider": "FRESENIUS",
+    "machine": "SILLON HEMODIALISIS",
+    "services": [
+      "DIALISIS"
+    ],
+    "price": "326,07 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "MANDO DE DOS MOVIMIENTOS PARA DIALISIS",
+    "imageFile": "df72bea6-2da8-4171-b14c-7165639df19f.jpeg",
+    "id": "part_1769802283848_78"
+  },
+  {
+    "name": "PAPEL TERMICO PARA DESFIBRILADOR DFM 100",
+    "providerRef": "A30-000001",
+    "contact": null,
+    "provider": "PHILIPS",
+    "machine": "DESFIBRILADOR DFM 100",
+    "services": [
+      "HOSPITALIZACION",
+      "QUIROFANO",
+      "URGENCIAS",
+      "HEMODINAMICA"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "PAPEL TERMICO PARA DESFIBRILADOR DFM 100",
+    "imageFile": "554c3e42-9d18-47a5-8e47-3b79ed6cd1ff.jpeg",
+    "id": "part_1769802283848_79"
+  },
+  {
+    "name": "PAPEL TERMICO PARA ELECTROCARDIOGRAFOS TC10 Y TC20",
+    "providerRef": "989803185271",
+    "contact": null,
+    "provider": "PHILIPS",
+    "machine": "TC10 // TC20",
+    "services": [
+      "UCI",
+      "URGENCIAS",
+      "HOSPITALIZACION",
+      "CONSULTAS"
+    ],
+    "price": null,
+    "category": null,
+    "internalCode": null,
+    "commonName": "PAPEL TERMICO PARA ELECTROCARDIOGRAFOS TC10 Y TC20",
+    "imageFile": "d1cbea1a-3404-43c3-9ebb-fabff8cd62c6.jpeg",
+    "id": "part_1769802283848_80"
+  },
+  {
+    "name": "SET LUER-LOCK  CONNECTOR",
+    "providerRef": "6002000",
+    "contact": "Magdalena.deMiguel@karlstorz.com",
+    "provider": "STORZ",
+    "machine": "URETERORRENO/CAMISA ARTROSCOPIA",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": null,
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "GRIFOS STORZ. SET= REF 27500 + REF 27502",
+    "imageFile": "96119e94-dc06-447d-9a3f-c86491601624.png",
+    "id": "part_1769802283848_81"
+  },
+  {
+    "name": "ROLLBORD HIGHTEC STANDARD",
+    "providerRef": "440.0100",
+    "contact": null,
+    "provider": "MEDICAL SOREVAN",
+    "machine": null,
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "874,00 €",
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "TRANSFER DE QUIROFANO PARA PACIENTES A MESAS CAMILLAS",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[2c382a5e-d992-4f96-ad4b-eefcc1f089db][2]_[11].jpeg",
+    "id": "part_1769802283848_82"
+  },
+  {
+    "name": "CABLE HDMI 4K 15M",
+    "providerRef": null,
+    "contact": "jesus@infoamara.com",
+    "provider": "INFORMATICA AMARA",
+    "machine": null,
+    "services": [
+      "OTROS"
+    ],
+    "price": "39,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "CABLE HDMI",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[abf8d369-460b-44b9-a7ba-b54f58c504fd][2]_[58].jpeg",
+    "id": "part_1769802283848_83"
+  },
+  {
+    "name": "Conector Cable de Luz",
+    "providerRef": "IM220-020",
+    "contact": "ventas@easosl.com",
+    "provider": "EASO (RUDOLF)",
+    "machine": "Cable de luz",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "36,81 €",
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "CONECTOR CABLE LUZ ADAPTADOR",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[e89f9d1b-8e16-4440-a8f3-7757f617c47d][2]_[37].jpeg",
+    "id": "part_1769802283848_84"
+  },
+  {
+    "name": "LLC-750 Pera de Llamada",
+    "providerRef": "LLC-750",
+    "contact": "aalonso@redytel.es",
+    "provider": "REDYTEL",
+    "machine": "CABEZALES URGENCIAS",
+    "services": [
+      "URGENCIAS"
+    ],
+    "price": "42,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "MANDO DE LLAMADA ENFERMERA SIN LUZ URGENCIAS ALCAD",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[6c8e24b1-3f7c-413a-9447-8742358d3bd6][1]_[2].jpeg",
+    "id": "part_1769802283848_85"
+  },
+  {
+    "name": "LLC-751 Pera de Llamada",
+    "providerRef": "LLC-751",
+    "contact": "aalonso@redytel.es",
+    "provider": "REDYTEL",
+    "machine": "CABEZAL DE URGENCIAS",
+    "services": [
+      "URGENCIAS"
+    ],
+    "price": "45,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "MANDO LLAMAD ENFERMERA CON OPCION DE LUZ",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[fd552eb1-fe66-4c8b-9128-d8b80c55a248][1]_[2].jpeg",
+    "id": "part_1769802283848_86"
+  },
+  {
+    "name": "Válvula de Espiración reutilizable",
+    "providerRef": "8417050",
+    "contact": "leticia.abasolo@draeger.com",
+    "provider": "DRAGER",
+    "machine": "RESPIRADOR V600",
+    "services": [
+      "UCI"
+    ],
+    "price": "315,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "VALVULA ESPIRATORIA EXPIRATORIA DESDE PACIENTE",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[62581f8e-b60f-407e-849f-c1ef952ad9e0][2]_[10].jpeg",
+    "id": "part_1769802283848_87"
+  },
+  {
+    "name": "ORIGINAL 23V 100W X-514SP MAQUET ALM ECL0001",
+    "providerRef": "ECL0001:ALM",
+    "contact": "leo@specmedica.com",
+    "provider": "SPEC MEDICA/ MEDICAL LIGHTING",
+    "machine": "LAMPARAS PRISMALIX (VIENEN EN CAJAS DE 10)",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "49,50 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "BOMBILLA PARA LAMPARA \"NUEVA\" QUIROFANO",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[39d101d0-8aff-4de5-aed5-fbb032a02048][1]_[2].jpeg",
+    "id": "part_1769802283848_88"
+  },
+  {
+    "name": "Mando con cable  118090A0",
+    "providerRef": " 118090A0",
+    "contact": "francisco.aracil@getinge.com",
+    "provider": "GETINGE",
+    "machine": "MESA QUIRURGICA MAGNUSS",
+    "services": [],
+    "price": "1.004,56 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "MANDO CON CABLE PARA MESA QUIRURGICA MAGNUSS",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[13f98ee2-0773-4d80-ab6e-53afe7889d30][1]_[2].jpeg",
+    "id": "part_1769802283848_89"
+  },
+  {
+    "name": "ECG Leadwire set, 5-leads",
+    "providerRef": "2106389-003",
+    "contact": "Carlos.aranda@med.ge.com",
+    "provider": "General Electric",
+    "machine": "Monitor Carescape B650",
+    "services": [
+      "UCI"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": "01-178717",
+    "commonName": "Latiguillos EKG de 5 cables",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[ef223f28-0552-46a8-b408-8d5c65bc00a6][2]_[45].jpeg",
+    "id": "part_1769802283848_90"
+  },
+  {
+    "name": "Cincha de sujeción con Velcro",
+    "providerRef": "100156B0",
+    "contact": "francisco.aracil@getinge.com",
+    "provider": "GETINGE",
+    "machine": "MESAS QUIRURGICAS",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "362,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "CINTXA PARA DA VINCI",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[bbcff975-e4d6-4093-83a1-2b246f813a33][2]_[13].jpeg",
+    "id": "part_1769802283848_91"
+  },
+  {
+    "name": "ECG trunk cable ",
+    "providerRef": "2106308-003",
+    "contact": "Carlos.aranda@med.ge.com",
+    "provider": "General Electric",
+    "machine": "Monitor Carescape B650",
+    "services": [
+      "UCI"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": "01-187420",
+    "commonName": "Cable interconexión EKG",
+    "imageFile": "https://www.pray-med.com/uploads/202312725/ge-marquette-ecg-ekg-trunk-cable-2106308-0031626abe1-d530-4128-8765-eb28e564f7e5.jpg",
+    "id": "part_1769802283848_92"
+  },
+  {
+    "name": "Single temperature cable ",
+    "providerRef": "2104179-001",
+    "contact": "Carlos.aranda@med.ge.com",
+    "provider": "General Electric",
+    "machine": "Monitor Carescape B650",
+    "services": [
+      "UCI"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": "01-182030",
+    "commonName": "Cable temperatura",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[9c383f2e-39e4-44c3-8377-80d967f0dab4][1]_[8].jpeg",
+    "id": "part_1769802283848_93"
+  },
+  {
+    "name": "Invasive blood pressure adapter cable",
+    "providerRef": "2103966-001",
+    "contact": "Carlos.aranda@med.ge.com",
+    "provider": "General Electric",
+    "machine": "Monitor Carescape B650",
+    "services": [
+      "UCI"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": "01-193112",
+    "commonName": "Cable presión doble puerto",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[1926ce1b-fe02-4084-b8b6-5c1ee6e6165a][1]_[4].jpeg",
+    "id": "part_1769802283848_94"
+  },
+  {
+    "name": "Invasive blood pressure cable ",
+    "providerRef": "2104162-001",
+    "contact": "Carlos.aranda@med.ge.com",
+    "provider": "General Electric",
+    "machine": "Monitor Carescape B650",
+    "services": [
+      "UCI"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": "01-193113",
+    "commonName": "Cable PA invasiva",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[17892906-0328-4f33-a684-b5b68dc4d4bd][1]_[5].jpeg",
+    "id": "part_1769802283848_95"
+  },
+  {
+    "name": "DINACLICK connector",
+    "providerRef": "2058203-002",
+    "contact": "Carlos.aranda@med.ge.com",
+    "provider": "General Electric",
+    "machine": "Monitor Carescape B650",
+    "services": [
+      "UCI"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": "01-182029",
+    "commonName": null,
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[eb14aec8-6af3-47d4-862a-a1b7fc428a4a][1]_[4].jpeg",
+    "id": "part_1769802283848_96"
+  },
+  {
+    "name": "Manguito DURA-CUF adulto pequeño (conexion DINACLICK)",
+    "providerRef": "DUR-A1-2A-5S",
+    "contact": "Carlos.aranda@med.ge.com",
+    "provider": "General Electric",
+    "machine": "Monitor Carescape B650 + Monitor B125M",
+    "services": [
+      "UCI",
+      "URGENCIAS"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": "01-193468",
+    "commonName": "Manguito PNI Royal Blue (adulto pequeño, 17-25 cm)",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[182b7fba-3c27-484a-b107-bbf846228627][2]_[20].jpeg",
+    "id": "part_1769802283848_97"
+  },
+  {
+    "name": "Manguito DURA-CUF adulto (conexion DINACLICK)",
+    "providerRef": "DUR-A2-2A-5S",
+    "contact": "Carlos.aranda@med.ge.com",
+    "provider": "General Electric",
+    "machine": "Monitor Carescape B650 + Monitor B125M",
+    "services": [
+      "UCI",
+      "URGENCIAS"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": "01-002676",
+    "commonName": "Manguito PNI azul marino (adulto, 23-33 cm)",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[7429ecb1-557e-415c-9a35-8e4fac6692a7][1]_[7].jpeg",
+    "id": "part_1769802283848_98"
+  },
+  {
+    "name": "Cable de interconexión TruSignal con conector GE",
+    "providerRef": "TS-G3",
+    "contact": "Carlos.aranda@med.ge.com",
+    "provider": "General Electric",
+    "machine": "Monitor Carescape B650 + Monitor B125M",
+    "services": [
+      "UCI",
+      "URGENCIAS"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": "01-076511",
+    "commonName": "Cable de Interconexión SpO2",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[a21abacc-96ad-4523-a106-1338d6f196fb][1]_[4].png",
+    "id": "part_1769802283848_99"
+  },
+  {
+    "name": "Sensor de dedo TruSignal Reutilizable",
+    "providerRef": "TS-F-D",
+    "contact": "Carlos.aranda@med.ge.com",
+    "provider": "General Electric",
+    "machine": "Monitor Carescape B650 + Monitor B125M",
+    "services": [
+      "UCI",
+      "URGENCIAS"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": "01-137719",
+    "commonName": "Sensor dedo adulto Sao2 (>20 kg)",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[222974a6-c1c5-4d17-bf38-8265c813262e][1]_[4].jpeg",
+    "id": "part_1769802283848_100"
+  },
+  {
+    "name": "TruSignal Ear sensor",
+    "providerRef": "Poner Ref",
+    "contact": "Carlos.aranda@med.ge.com",
+    "provider": "General Electric",
+    "machine": "Monitor Carescape B650",
+    "services": [
+      "UCI"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": "01-193116",
+    "commonName": "Sensor oreja Sao2",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[cc791253-2b92-4fff-92d5-1e5ad058d11a][1]_[5].jpeg",
+    "id": "part_1769802283848_101"
+  },
+  {
+    "name": "Modulo de CO2 e-minic",
+    "providerRef": "e-minic-00",
+    "contact": "Carlos.aranda@gehealthcare.com",
+    "provider": "General Electric",
+    "machine": "Monitor Carescape B155M",
+    "services": [
+      "UCI"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "Módulo capnografia",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[7997110f-15f2-4aa0-94af-223f17da2f22][1]_[1].jpeg",
+    "id": "part_1769802283848_102"
+  },
+  {
+    "name": "Caud. Ultraflow II 0-15l AM C/ Grapa Pomo C/DIN (Mangera 50 cm.)",
+    "providerRef": "COD. 75472",
+    "contact": "Mail a compras 01-207558 pero con manguera de 50 cm.",
+    "provider": "CARBUROS METALICOS",
+    "machine": null,
+    "services": [
+      "URGENCIAS"
+    ],
+    "price": "137,00 €",
+    "category": "COMPRAS",
+    "internalCode": "01-207558 pero con manguera de 50 cm",
+    "commonName": "Caudalimetro para aire medicinal toma Drager",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[db3101a9-93e5-4818-a30e-22a8373b2b30][1]_[8].jpeg",
+    "id": "part_1769802283848_103"
+  },
+  {
+    "name": "Manguito DURA-CUF infantil (conexion DINACLICK)",
+    "providerRef": "DUR-P1-2A-5S",
+    "contact": "Carlos.aranda@med.ge.com",
+    "provider": "General Electric",
+    "machine": "Monitor B125M",
+    "services": [
+      "URGENCIAS"
+    ],
+    "price": null,
+    "category": null,
+    "internalCode": "01-193575",
+    "commonName": "Manguito PNI pediatrico naranja ( bebe, 8-13 cm) ",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[1c4d1d89-43fa-442d-8562-aa87f9382940][1]_[2].jpeg",
+    "id": "part_1769802283848_104"
+  },
+  {
+    "name": "Manguito DURA-CUF niño (conexion DINACLICK)",
+    "providerRef": "DUR-P2-2A-5S",
+    "contact": "Carlos.aranda@med.ge.com",
+    "provider": "General Electric",
+    "machine": "Monitor",
+    "services": [
+      "URGENCIAS"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": "01-182028",
+    "commonName": "Manguito PNI pediatrico verde ( niño, 12-19 cm) ",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[cad5355f-3e2f-485f-bacc-3b518ffc5130][1]_[1].jpeg",
+    "id": "part_1769802283848_105"
+  },
+  {
+    "name": "Sensor TruSignal Adhesivo envolvente",
+    "providerRef": "TS-PAW-10",
+    "contact": "Carlos.aranda@med.ge.com",
+    "provider": "General Electric",
+    "machine": "Monitor B125M",
+    "services": [
+      "URGENCIAS"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": "01-017857 ",
+    "commonName": "Sensor SpO2 pediatrico desechable (3-20 kg)",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[d8ec75e9-3a76-4068-8027-3ff3b5422a3c][1]_[2].jpeg",
+    "id": "part_1769802283848_106"
+  },
+  {
+    "name": "MAJ-1025 CAP REPAIR F.MAJ-902",
+    "providerRef": "N6174850",
+    "contact": "lander.roda@olympus.com",
+    "provider": "OLYMPUS",
+    "machine": "TORRE OLYMPUS ENDOSCOPIAS",
+    "services": [
+      "OTROS"
+    ],
+    "price": "443,96 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "BOTELLA DE AGUA PARA USAR CON CO2 ",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[850de0f0-3b56-4ea3-97cc-34534f014a6d][1]_[2].jpeg",
+    "id": "part_1769802283848_107"
+  },
+  {
+    "name": "Elemento de trabajo HOLEP",
+    "providerRef": "27056LA",
+    "contact": "magdalena.demiguel@karlstorz.com",
+    "provider": "STORZ",
+    "machine": "HOLEP",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "Elemento de trabajo HOLEP",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[7735fbbd-5bbd-4430-8dfa-93cfc3fc99bd][1]_[5].jpeg",
+    "id": "part_1769802283848_108"
+  },
+  {
+    "name": "EXTENSION CABLE SPO2",
+    "providerRef": "P0209B (sustituye a 3368433 Drager)",
+    "contact": "pedidos@faromedic.com",
+    "provider": "FAROMEDIC",
+    "machine": "DRAGER GAMMA XXL",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "97,80 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "PARA CONECTAR CON P9119. CABLE EXTENSION PULSIOXIMETRO ",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[e6386622-e4e8-44c5-a707-557d5ca08927][1]_[5].jpeg",
+    "id": "part_1769802283848_109"
+  },
+  {
+    "name": "LARINGOSCOPIO RI-MODUL MAC INTOSH F.O. XL 2.5V",
+    "providerRef": "8080",
+    "contact": null,
+    "provider": "RIESTER",
+    "machine": null,
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "KIT LARINGOSCOPIO COMPLETO",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[2f3f6b47-f125-43bd-9f8c-66756c8cb52c][1]_[1].jpeg",
+    "id": "part_1769802283848_110"
+  },
+  {
+    "name": "CABLE FIBRA OPTICA (GORDO) 4.8MMX300CM",
+    "providerRef": "495NE",
+    "contact": null,
+    "provider": "STORZ",
+    "machine": null,
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": "01-076094",
+    "commonName": "CABLE DE LUZ ",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[a2555abe-d947-4de0-b13a-230001d34846][1]_[1].jpeg",
+    "id": "part_1769802283848_111"
+  },
+  {
+    "name": "MANO ALUMINIO PARA ADULTOS",
+    "providerRef": "FO918A",
+    "contact": null,
+    "provider": "B BRAUN SURGICAL SA",
+    "machine": null,
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": "01-041430",
+    "commonName": "MANO DE PLOMO",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[a7198c96-72dc-4484-b8f6-97c101e78204][1]_[5].jpeg",
+    "id": "part_1769802283848_112"
+  },
+  {
+    "name": "Kit Filtro Desechable Trampa de Agua Reguvac II (bolsa 10 uds)",
+    "providerRef": "Cod.437753",
+    "contact": "No axional",
+    "provider": "CARBUROS METALICOS",
+    "machine": "REGUVAC",
+    "services": [
+      "UCI",
+      "QUIROFANO",
+      "URGENCIAS",
+      "HOSPITALIZACION"
+    ],
+    "price": "38,00 €",
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "FILTRO DESECHABLE VACIO",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[34ba548f-1afe-40ab-af38-6701cabb1358][1]_[1].jpeg",
+    "id": "part_1769802283848_113"
+  },
+  {
+    "name": "Manguito completo mediano para ergometro",
+    "providerRef": "24-20-111-GR",
+    "contact": "OSCAR ALADREN",
+    "provider": "PRIM, S.A.",
+    "machine": "BICICLETA ERGOMETRO",
+    "services": [],
+    "price": "169,17 €",
+    "category": "COMPRAS",
+    "internalCode": "NO ",
+    "commonName": "MANGUITO COMPLETO MEDIANO PARA ERGOMETRO",
+    "imageFile": null,
+    "id": "part_1769802283848_114"
+  },
+  {
+    "name": "Manguito completo grande para ergometro",
+    "providerRef": "24-20-131-GR",
+    "contact": "OSCAR ALADREN",
+    "provider": "PRIM, S.A.",
+    "machine": "ERGOMETRO BICICLETA",
+    "services": [],
+    "price": "169,17 €",
+    "category": "COMPRAS",
+    "internalCode": "NO",
+    "commonName": "MANGUITO COMPLETO GRANDE ERGOMETRO",
+    "imageFile": null,
+    "id": "part_1769802283848_115"
+  },
+  {
+    "name": "Pedales ergómetro",
+    "providerRef": "59-01-011",
+    "contact": "OSCAR ALADREN",
+    "provider": "PRIM, S.A.",
+    "machine": "ERGOMETRO-BICICLETA",
+    "services": [],
+    "price": "47,31 €",
+    "category": "COMPRAS",
+    "internalCode": "NO",
+    "commonName": "Pedal para bicicleta",
+    "imageFile": null,
+    "id": "part_1769802283848_116"
+  },
+  {
+    "name": "Sensor SPO2 dedo para ergómetro",
+    "providerRef": "22-30-030",
+    "contact": "OSCAR ALADREN",
+    "provider": "PRIM, S.A.",
+    "machine": "ERGOMETRO - BICICLETA",
+    "services": [],
+    "price": "1.168,02 €",
+    "category": "COMPRAS",
+    "internalCode": "NO",
+    "commonName": "Sensor dedo pulsi",
+    "imageFile": null,
+    "id": "part_1769802283848_117"
+  },
+  {
+    "name": "Ecg bluetooth con 1 cinturón",
+    "providerRef": "17-01-001",
+    "contact": "OSCAR ALADREN",
+    "provider": "PRIM, S.A.",
+    "machine": "ERGOMETRO - BICICLETA",
+    "services": [],
+    "price": "924,00 €",
+    "category": "COMPRAS",
+    "internalCode": "NO",
+    "commonName": "PETACA - ECG BLUETOOTH CON 1 CINTURON",
+    "imageFile": null,
+    "id": "part_1769802283848_118"
+  },
+  {
+    "name": "Cinturón negro para ecg bluetooth",
+    "providerRef": "90-40-001",
+    "contact": "OSCAR ALADREN",
+    "provider": "PRIM, S.A.",
+    "machine": "ERGOMETRO - BICICLETA",
+    "services": [],
+    "price": "41,80 €",
+    "category": "COMPRAS",
+    "internalCode": "NO",
+    "commonName": "Cinturón negro para ecg bluetooth",
+    "imageFile": null,
+    "id": "part_1769802283848_119"
+  },
+  {
+    "name": "Equivalent 2,7V lamp to HEINE X-001.88.059 Laryngoscope ",
+    "providerRef": "X-001.88.059",
+    "contact": "leo@specmedica.com",
+    "provider": "SPEC MEDICA",
+    "machine": "LARINGOSCOPIOS QUIROFANO (6€ LA UNIDAD)",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "6,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "BOMBILLA PARA PALAS DE LARINGO",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[4140e4de-7720-4420-8a31-4da8c9f82f86][1]_[2].jpeg",
+    "id": "part_1769802283848_120"
+  },
+  {
+    "name": "STF LOAD CHECK HOLDER ",
+    "providerRef": "2316AB",
+    "contact": null,
+    "provider": "STERIS IBERIA",
+    "machine": null,
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": "01-196202",
+    "commonName": "SOPORTE CONTROL DE ARRASTRE EFICACIA LAVADO",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[08bc01ed-f730-4d66-8e4d-3689882428d8][1]_[1].jpeg",
+    "id": "part_1769802283848_121"
+  },
+  {
+    "name": "MANDO UNIVERSAL P/MOTOR CIRUGIA PERCUTANEA  - TPS",
+    "providerRef": "6400009000E",
+    "contact": "MARC ANTOLI",
+    "provider": "STRYKER IBERIA",
+    "machine": "TPS - MOTOR CIRUGÍA PERCUTANA",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "122,05 €",
+    "category": "COMPRAS",
+    "internalCode": "NO",
+    "commonName": "MANDO UNIVERSAL P/MOTOR CIRUGIA PERCUTANEA  - TPS",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[987e3ecd-34b4-4e3e-a283-5ee896f8b8e8][1]_[2].jpeg",
+    "id": "part_1769802283848_122"
+  },
+  {
+    "name": "Camisa alto flujo (cánula+obturador)",
+    "providerRef": "72200829+4356",
+    "contact": "Iñaki Moja",
+    "provider": "Smith & Nephew",
+    "machine": "Optica alto flujo",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "475,00 €",
+    "category": "COMPRAS",
+    "internalCode": "NO",
+    "commonName": "Camisa alto flujo (cánula + obturador)",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[b0274784-7a7d-4bd5-a32a-8c0c39f90f17][1]_[5].jpeg",
+    "id": "part_1769802283848_123"
+  },
+  {
+    "name": "Taburetes clinicos con o sin respaldo, con o sin reposapies",
+    "providerRef": "Varios",
+    "contact": "Fernando Agudo <fernandoav@salvadornavarro.net>",
+    "provider": "Salvador Navarro, S.L.",
+    "machine": "Mobiliaro clínico",
+    "services": [
+      "OTROS"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "Taburete clínico",
+    "imageFile": null,
+    "id": "part_1769802283848_124"
+  },
+  {
+    "name": "Unidad control fotóforo frontal LED KS70",
+    "providerRef": "094207",
+    "contact": "magdalena.demiguel@karlstorz.com",
+    "provider": "STORZ",
+    "machine": "FOTOFORO LED",
+    "services": [
+      "QUIROFANO",
+      "URGENCIAS"
+    ],
+    "price": "612,70 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "MODULO DE CARGA DE FOTOFORO",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[05e7c667-6fc2-406a-9dcd-7f38b9b46b5e][1]_[2].jpeg",
+    "id": "part_1769802283848_125"
+  },
+  {
+    "name": "STERNUM BLADE GUARD",
+    "providerRef": "7207-003-000",
+    "contact": "marc.antoli@stryker.com",
+    "provider": "STRYKER",
+    "machine": "MOTORES DE ESTERNOTOMIA (CARDIO)",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "PROTECTOR PARA SIERRA DE ESTERNOTOMIA",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[9ff6f78a-e062-49b7-9711-710aeb8e0cf3][1]_[2].jpeg",
+    "id": "part_1769802283848_126"
+  },
+  {
+    "name": "Ribbon Impresora Personal ",
+    "providerRef": "525100-0004 - RIBBON ",
+    "contact": "logistica@byaccess.com",
+    "provider": "Sistemas Byaccess, S.L. ",
+    "machine": "Impresora RRHH",
+    "services": [
+      "OTROS"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "Ribbon - Ana Arizaga ",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[0918dd60-ee05-4aa2-b3f1-b7d8779c0c5d][1]_[3].jpeg",
+    "id": "part_1769802283848_127"
+  },
+  {
+    "name": null,
+    "providerRef": "EV805",
+    "contact": "msanguesa@rehabmedic.com",
+    "provider": "REHABMEDIC",
+    "machine": "EMS",
+    "services": [],
+    "price": "55,25 €",
+    "category": "COMPRAS",
+    "internalCode": "PEDIDO VARIOS",
+    "commonName": "EMS",
+    "imageFile": null,
+    "id": "part_1769802283848_128"
+  },
+  {
+    "name": null,
+    "providerRef": "C1711-500",
+    "contact": null,
+    "provider": "Faromedic",
+    "machine": "Monitores y torres de constantes phillips y mindray",
+    "services": [
+      "URGENCIAS",
+      "HOSPITALIZACION",
+      "UCI"
+    ],
+    "price": null,
+    "category": null,
+    "internalCode": null,
+    "commonName": "Maguito PNI adulto (25-35cm)",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[e881fb68-49d9-4a2f-a262-309cbce60056][1]_[1].png",
+    "id": "part_1769802283848_129"
+  },
+  {
+    "name": null,
+    "providerRef": "C1711-500",
+    "contact": null,
+    "provider": "Faromedic",
+    "machine": "Monitores y Torres de constantes Phillips y Mindray",
+    "services": [
+      "UCI",
+      "URGENCIAS",
+      "HOSPITALIZACION"
+    ],
+    "price": null,
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "Manguito PNI adulto (25-35 cm)",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[189e1fb6-6d47-4990-a4b8-52b9b46dcc3f][1]_[1].jpeg",
+    "id": "part_1769802283848_130"
+  },
+  {
+    "name": "HOJAS DE CORTE ESTÉRILES ZDAN DERMATOMO (CAJA DE 10uds)",
+    "providerRef": "88700010",
+    "contact": "montserrat.isern@zimmerbiomet.com",
+    "provider": "ZIMMER",
+    "machine": "DERMATOMO NEUMATICO",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "210,88 €",
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "CUCHILLAS",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[f136381c-2804-41bd-a5d8-12413abc0a4f][1]_[2].jpeg",
+    "id": "part_1769802283848_131"
+  },
+  {
+    "name": "PORTA SUEROS",
+    "providerRef": "4PV17744500L ganchos ABS",
+    "contact": "ana.martin@linet.com",
+    "provider": "LINET",
+    "machine": null,
+    "services": [
+      "HOSPITALIZACION"
+    ],
+    "price": "73,40 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "PALO GOTERO",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[9898e189-8ade-43e8-88ae-44280dfaf0c1][1]_[2].png",
+    "id": "part_1769802283848_132"
+  },
+  {
+    "name": "POLY BATTERY CS540",
+    "providerRef": "PLCS540BAT",
+    "contact": "n.hill@onedirect.es",
+    "provider": "ONE DIRECT",
+    "machine": null,
+    "services": [],
+    "price": "32,95 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "BATERIA CASCOS (AURICULARES) TELEFONOS",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[6e18d7f9-0ef4-4b73-84c8-9572254a22ad][1]_[9].jpeg",
+    "id": "part_1769802283848_133"
+  },
+  {
+    "name": "MANDO MESA QUIRURGICA STERIS SURGIMAX I22",
+    "providerRef": "54275902",
+    "contact": "paco_parra@steris.com",
+    "provider": "STERIS",
+    "machine": "MESA QUIRURGICA STERIS SURGIMAX I22",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "94.622,00 €",
+    "category": null,
+    "internalCode": null,
+    "commonName": "MANDO MESA STERIS",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[214e2f0a-bcd3-479b-a9d3-1e56b1f1ef3b][1]_[4].jpeg",
+    "id": "part_1769802283848_134"
+  },
+  {
+    "name": "Mando con cable para 7200.01XY MEERA",
+    "providerRef": " 720090A0",
+    "contact": "francisco.aracil@getinge.com",
+    "provider": "Getinge",
+    "machine": "Mesa quirurgica Maquet Meera Getinge",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "1.014,92 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": "NO",
+    "commonName": "MANDO MEERA",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[daa5def5-c3fb-450c-a8b1-997dd7ac0301][1]_[5].jpeg",
+    "id": "part_1769802283848_135"
+  },
+  {
+    "name": "A1/231 EFP 100W 12V GZ6.35 3400K TYPE 6834 FO",
+    "providerRef": "6834:FO",
+    "contact": "leo@specmedica.com",
+    "provider": "SPEC MEDICA",
+    "machine": "MICROSCOPIO OPMI VISU",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "14,50 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "LAMPARA MICROSCOPIO OJOS",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[a86dde6d-452e-4507-ba66-67e0c2cccb2d][1]_[2].jpeg",
+    "id": "part_1769802283848_136"
+  },
+  {
+    "name": "Dispositivo Óptico LUMENIS ACUSPOT 712",
+    "providerRef": "26274",
+    "contact": "ivan@visualmed.es",
+    "provider": "VISUALMED",
+    "machine": "LASER SHARPLAN + MICRO ZEISS S8 OPMI VARIO",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "1.575,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "ADAPTADOR LASER SHARPLAN PARA ORL",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[bfedb38f-649c-4f54-a74e-ac890d9514c4][1]_[2].jpeg",
+    "id": "part_1769802283848_137"
+  },
+  {
+    "name": "Original Philips battery",
+    "providerRef": "989803199221",
+    "contact": "leo@specmedica.com",
+    "provider": "SPEC MEDICA",
+    "machine": "SURESIGN VS4/ELECTROCARDIOGRAFO PAGE WRITER TC20",
+    "services": [],
+    "price": "354,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "BATERIA TORRE CONSTANTES/ELECTROCARDIOGRAFO",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[a0bf387d-0d04-4528-9873-ed33f2b0fb80][1]_[5].jpeg",
+    "id": "part_1769802283848_138"
+  },
+  {
+    "name": "GAZ VAC DIN HEYER",
+    "providerRef": "SU000500169",
+    "contact": "maria.garcia@getinge.com",
+    "provider": "GETINGE",
+    "machine": null,
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "310,45 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "TOMAS DE VACIO PARA QUIROFANO ",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[792a5c95-306b-4ac8-be12-c9bd5936a84a][1]_[9].jpeg",
+    "id": "part_1769802283848_139"
+  },
+  {
+    "name": "UNIVERSAL REPROCESSING HARDWARE KIT",
+    "providerRef": "470629",
+    "contact": null,
+    "provider": "INTUITIVE",
+    "machine": "ESTERILIZACIÓN",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": null,
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "PITIKUA DA VINCI",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[e39b4b34-75ae-4500-adcf-e320ec89fb73][2]_[11].jpeg",
+    "id": "part_1769802283848_140"
+  },
+  {
+    "name": "Porta rollo papel camilla a pared",
+    "providerRef": "03020300",
+    "contact": "Iciar Fernandez  -  600 27 01 03",
+    "provider": "Netya higiene (Fer Higiene)",
+    "machine": "Camilla",
+    "services": [
+      "OTROS"
+    ],
+    "price": "38,33 €",
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "Portarollos papel camilla a pared",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[a554b77b-363b-4af1-b118-d2aaba9bc325][1]_[2].jpeg",
+    "id": "part_1769802283848_141"
+  },
+  {
+    "name": "Porta rollo papel camilla a camilla",
+    "providerRef": "03020302",
+    "contact": "Iciar Fernandez",
+    "provider": "Netya Fer Higiene",
+    "machine": "Camilla",
+    "services": [
+      "OTROS"
+    ],
+    "price": "51,48 €",
+    "category": "COMPRAS",
+    "internalCode": null,
+    "commonName": "Porta rollo papel camilla a camilla",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[d7409935-2574-476a-b57e-7ce79c2e97bd][1]_[2].png",
+    "id": "part_1769802283848_142"
+  },
+  {
+    "name": "Teléfono manos libres MOD TDS151, 12vcc, MH3038 analógico ",
+    "providerRef": null,
+    "contact": "agallego@tedisel.com",
+    "provider": "TEDISEL",
+    "machine": null,
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "521,09 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "TELEFONO PANEL QUIROFANO",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[6e389e99-3f25-479b-aefe-18e2f226f251][1]_[2].jpeg",
+    "id": "part_1769802283848_143"
+  },
+  {
+    "name": "Reloj Analógico ",
+    "providerRef": null,
+    "contact": "agallego@tedisel.com",
+    "provider": "TEDISEL",
+    "machine": null,
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "156,50 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "RELOJ PANEL QUIROFANO",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][36]_[db8ce5e5-bd40-403a-9b18-81b33b7bb8b9][1]_[2].jpeg",
+    "id": "part_1769802283848_144"
+  },
+  {
+    "name": "BATERIA VIDEOLARINGOSCOPIO",
+    "providerRef": "McGRATH 3.6V Battery REF. 340-000-000",
+    "contact": null,
+    "provider": "COVIDIEN-MEDTRONIC",
+    "machine": "Videolaringoscopio palas desechables",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "31,25 €",
+    "category": "COMPRAS",
+    "internalCode": "01-145392",
+    "commonName": "BATERIA VIDEOLARINGOSCOPIO DESECHABLE",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][32]_[5f1cf8f3a74f4633bf2e601c74861007][1]_[9].jpeg",
+    "id": "part_1769802283848_145"
+  },
+  {
+    "name": "CABLE ADAPTADOR S. TEMPERATURA C/ DRÄGER 5592154C6 ",
+    "providerRef": "5592154C6",
+    "contact": "juancarlos@teknoiberia.es",
+    "provider": "TEKNOIBERIA",
+    "machine": null,
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "185,00 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "cable doble de temperatura para monitor Drager",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][32]_[b25fe36a3bd94d2eade4d90173fea692][1]_[2].jpeg",
+    "id": "part_1769802283848_146"
+  },
+  {
+    "name": "CABLE EXTENSIÓN SpO2",
+    "providerRef": "P0319C",
+    "contact": null,
+    "provider": "FAROMEDIC",
+    "machine": "MONITORES DRAGER",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": null,
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "CABLE EXTENSION SpO2 ",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][32]_[b0922483149b440c83c5ddca5833a62f][2]_[17].jpeg",
+    "id": "part_1769802283848_147"
+  },
+  {
+    "name": "GUANTES ESTERILIZACIÓN",
+    "providerRef": "CRUSADER FLEX 42-474",
+    "contact": null,
+    "provider": null,
+    "machine": null,
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": null,
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "GUANTES ESTERILIZACION",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][32]_[38ec3f5cde2a46bca05cdb461f287a4b][1]_[9].jpeg",
+    "id": "part_1769802283848_148"
+  },
+  {
+    "name": "CABLE FIBRA OPTICA (FINO) 3.5mm X  300cm",
+    "providerRef": "495ND",
+    "contact": null,
+    "provider": "STORZ",
+    "machine": null,
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": "01-137311 ",
+    "commonName": "CABLE DE LUZ FINO",
+    "imageFile": null,
+    "id": "part_1769802283848_149"
+  },
+  {
+    "name": "CABLE MONOPOLAR ELECTROUTERIO 3M",
+    "providerRef": "360187 SUTTER",
+    "contact": null,
+    "provider": "SUTTER",
+    "machine": null,
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": "01-096878",
+    "commonName": "CABLE MONOPOLAR",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][32]_[d8c6a5462ad74003b6d8b3a57ea7c5c2][1]_[5].jpeg",
+    "id": "part_1769802283848_150"
+  },
+  {
+    "name": null,
+    "providerRef": "660039",
+    "contact": "orders-spain@steelcogroup.com",
+    "provider": "STEELCO",
+    "machine": "LAVADORAS EW1 STEELCO",
+    "services": [
+      "OTROS"
+    ],
+    "price": "35,48 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "CONECTOR PULPO LAVADORAS ENDOSCOPIAS INCLUYE 20€ DE PORTES)",
+    "imageFile": null,
+    "id": "part_1769802283848_151"
+  },
+  {
+    "name": "CUCHILLA CIRCULAR PARA DISPOSITIVO DE CORTE DE BOBINAS",
+    "providerRef": "67386.3",
+    "contact": "sarcos@matachana.com",
+    "provider": "MATACHANA",
+    "machine": "CORTADORA DE SOBRES ESTERI",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "145,80 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "DISCO DE CORTE BOLSAS ESTERI",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][32]_[f0f51d68346147918d09a7c8efdb91a1][1]_[2].jpeg",
+    "id": "part_1769802283848_152"
+  },
+  {
+    "name": "Pinzas de agarre y biopsia, 5 Charr.",
+    "providerRef": "26159UHW",
+    "contact": null,
+    "provider": "STORZ",
+    "machine": "HISTEROSCOPIO",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": "01-035442",
+    "commonName": "PINZA COCODRILO HISTEROSCOPIO",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][32]_[ef8a5508b097443594da69d7a014d5a3][1]_[5].jpeg",
+    "id": "part_1769802283848_153"
+  },
+  {
+    "name": "Tijeras, romas, 5 Charr., 34 cm",
+    "providerRef": "26159EHW",
+    "contact": null,
+    "provider": "STORZ",
+    "machine": "HISTEROSCOPIO",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": "01-098222",
+    "commonName": "TIJERA HISTEROSCOPIO",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][32]_[b769e45afa6b4771a7d64bf7b8232de7][1]_[1].jpeg",
+    "id": "part_1769802283848_154"
+  },
+  {
+    "name": "Óptica HOPKINS 30°, 2,9 mm, 30 cm",
+    "providerRef": "26120BHA",
+    "contact": null,
+    "provider": "STORZ",
+    "machine": "HISTEROSCOPIO",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": "01-006442",
+    "commonName": "OPTICA HISTEROSCOPIO",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][32]_[c66b1cf5430f43569ff407cb0492da6e][1]_[1].jpeg",
+    "id": "part_1769802283848_155"
+  },
+  {
+    "name": "Pinza Monopolar para disección y Coagulación de 23cm, recta anti-adherente",
+    "providerRef": "180-100NS",
+    "contact": null,
+    "provider": "MARINA MEDICAL",
+    "machine": null,
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": null,
+    "category": "COMPRAS",
+    "internalCode": "01-034168",
+    "commonName": "PINZA MONOPOLAR ",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][32]_[a05ff08720c3437391ea12361984b5cf][1]_[1].jpeg",
+    "id": "part_1769802283848_156"
+  },
+  {
+    "name": "CONECTOR ISQUEMIA MACHO (SET DE 10UDS)",
+    "providerRef": "TEKA11008",
+    "contact": "juancarlos@teknoiberia.es",
+    "provider": "TEKNOIBERIA",
+    "machine": "EQUIPO DE ISQUEMIA",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "6,90 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "CONECTOR MACHO ISQUEMIA",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][32]_[be35676069ca4c73b3a5f028b99c0f09][2]_[14].jpeg",
+    "id": "part_1769802283848_157"
+  },
+  {
+    "name": "CONECTOR ISQUEMIA HEMBRA (SET 55 UDS)",
+    "providerRef": "TEKA11012",
+    "contact": "juancarlos@teknoiberia.es",
+    "provider": "TENOIBERIA",
+    "machine": "EQUIPO DE ISQUEMIA",
+    "services": [
+      "QUIROFANO"
+    ],
+    "price": "15,60 €",
+    "category": "MANTENIMIENTO",
+    "internalCode": null,
+    "commonName": "CONECTOR HEMBRA ISQUEMIA",
+    "imageFile": "Reserved_ImageAttachment_[5]_[FOTON][32]_[f27edcdea7864b3bb56895886b99a50b][1]_[2].jpeg",
+    "id": "part_1769802283848_158"
+  }
+]
