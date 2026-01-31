@@ -16,6 +16,7 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
     const [deleting, setDeleting] = useState(false);
 
     const [activeImage, setActiveImage] = useState<string | null>(null);
+    const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
     useEffect(() => {
         if (part) {
@@ -39,7 +40,13 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
 
     useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {
-            if (e.key === 'Escape') onClose();
+            if (e.key === 'Escape') {
+                if (isPreviewOpen) {
+                    setIsPreviewOpen(false);
+                } else {
+                    onClose();
+                }
+            }
         };
 
         if (part) {
@@ -51,7 +58,7 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
             document.removeEventListener('keydown', handleEscape);
             document.body.style.overflow = 'unset';
         };
-    }, [part, onClose]);
+    }, [part, onClose, isPreviewOpen]);
 
     if (!part) return null;
 
@@ -120,7 +127,8 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
                                     <img
                                         src={activeImage || allImages[0]}
                                         alt={part.name}
-                                        className="w-full h-full object-contain p-6 relative z-10 transition-all duration-700 hover:scale-105"
+                                        className="w-full h-full object-contain p-6 relative z-10 transition-all duration-700 hover:scale-105 cursor-zoom-in"
+                                        onClick={() => setIsPreviewOpen(true)}
                                     />
                                 ) : (
                                     <div className="flex flex-col items-center justify-center text-emerald-500/20">
@@ -257,6 +265,30 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
                     </button>
                 </div>
             </div>
+
+            {/* Lightbox / Preview Overlay */}
+            {isPreviewOpen && (
+                <div
+                    className="fixed inset-0 z-[200] flex items-center justify-center bg-black/95 backdrop-blur-md animate-in fade-in duration-300 cursor-zoom-out"
+                    onClick={() => setIsPreviewOpen(false)}
+                >
+                    <button
+                        className="absolute top-6 right-6 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all z-[210]"
+                        onClick={(e) => { e.stopPropagation(); setIsPreviewOpen(false); }}
+                    >
+                        <X className="w-8 h-8" />
+                    </button>
+
+                    <div className="relative w-full h-full flex items-center justify-center p-4 sm:p-12">
+                        <img
+                            src={activeImage || allImages[0]}
+                            alt={part.name}
+                            className="max-w-full max-h-full object-contain shadow-2xl animate-in zoom-in-95 duration-300"
+                            onClick={(e) => e.stopPropagation()}
+                        />
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
