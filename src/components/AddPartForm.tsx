@@ -9,6 +9,7 @@ import { SparePart } from '@/types';
 import CustomSelector from './CustomSelector';
 import { partService } from '@/services/partService';
 import { useEffect } from 'react';
+import { compressImage, compressImages } from '@/utils/imageUtils';
 
 interface AddPartFormProps {
     part?: SparePart;
@@ -24,6 +25,11 @@ export default function AddPartForm({ part }: AddPartFormProps) {
         machines: string[];
         services: string[];
     }>({ providers: [], machines: [], services: [] });
+
+    // Image states
+    const [primaryFile, setPrimaryFile] = useState<File | null>(null);
+    const [extraFiles, setExtraFiles] = useState<File[]>([]);
+    const [compressing, setCompressing] = useState(false);
 
     useEffect(() => {
         const loadOptions = async () => {
@@ -49,6 +55,17 @@ export default function AddPartForm({ part }: AddPartFormProps) {
         setError('');
 
         const formData = new FormData(event.currentTarget);
+
+        // Use compressed images if available
+        if (primaryFile) {
+            formData.set('imageFile', primaryFile);
+        }
+
+        if (extraFiles.length > 0) {
+            formData.delete('additionalImages');
+            extraFiles.forEach(file => formData.append('additionalImages', file));
+        }
+
         const result = isEditing ? await updatePart(formData) : await createPart(formData);
 
         if (result.success) {
@@ -253,10 +270,17 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                                         type="file"
                                         accept="image/*"
                                         className="hidden"
-                                        onChange={(e) => {
-                                            const fileName = e.target.files?.[0]?.name;
+                                        onChange={async (e) => {
+                                            const file = e.target.files?.[0];
+                                            if (!file) return;
+
+                                            setCompressing(true);
+                                            const compressed = await compressImage(file);
+                                            setPrimaryFile(compressed);
+                                            setCompressing(false);
+
                                             const label = document.getElementById('file-label');
-                                            if (label) label.textContent = fileName || 'Imagen seleccionada';
+                                            if (label) label.textContent = compressed.name;
                                         }}
                                     />
                                     <label
@@ -276,7 +300,7 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                                                 <Upload className="w-6 h-6" />
                                             </div>
                                             <span id="file-label" className="font-display font-bold text-[10px] uppercase tracking-widest text-emerald-500/60 group-hover/upload:text-emerald-400">
-                                                {isEditing ? 'REEMPLAZAR PRINCIPAL' : 'IMAGEN PRINCIPAL'}
+                                                {compressing ? 'COMPRIMIENDO...' : (isEditing ? 'REEMPLAZAR PRINCIPAL' : 'IMAGEN PRINCIPAL')}
                                             </span>
                                         </div>
                                     </label>
@@ -299,10 +323,17 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                                         accept="image/*"
                                         multiple
                                         className="hidden"
-                                        onChange={(e) => {
-                                            const count = e.target.files?.length || 0;
+                                        onChange={async (e) => {
+                                            const files = e.target.files;
+                                            if (!files || files.length === 0) return;
+
+                                            setCompressing(true);
+                                            const compressed = await compressImages(files);
+                                            setExtraFiles(compressed);
+                                            setCompressing(false);
+
                                             const label = document.getElementById('additional-label');
-                                            if (label) label.textContent = count > 0 ? `${count} imágenes seleccionadas` : 'Añadir más imágenes';
+                                            if (label) label.textContent = `${compressed.length} imágenes listas`;
                                         }}
                                     />
                                     <label
