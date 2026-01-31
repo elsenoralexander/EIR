@@ -1,8 +1,8 @@
 'use server';
 
-import { db, storage } from '@/lib/firebase';
+import { db } from '@/lib/firebase';
 import { collection, addDoc, updateDoc, doc, Timestamp, deleteDoc } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { uploadToImgBB } from '@/utils/imgbb';
 import { revalidatePath } from 'next/cache';
 import { SparePart } from '@/types';
 import { normalizeProvider, normalizeService, normalizeMachine } from '@/utils/normalization';
@@ -30,25 +30,13 @@ export async function createPart(formData: FormData) {
 
         // Upload primary image
         if (imageFile && imageFile.size > 0) {
-            const bytes = await imageFile.arrayBuffer();
-            const buffer = new Uint8Array(bytes);
-            const fileExt = imageFile.name.split('.').pop();
-            const fileName = `${Date.now()}-primary-${name.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.${fileExt}`;
-            const storageRef = ref(storage, `parts/${fileName}`);
-            await uploadBytes(storageRef, buffer);
-            imageURL = await getDownloadURL(storageRef);
+            imageURL = await uploadToImgBB(imageFile);
         }
 
         // Upload additional images
         for (const file of additionalImagesFiles) {
             if (file && file.size > 0) {
-                const bytes = await file.arrayBuffer();
-                const buffer = new Uint8Array(bytes);
-                const fileExt = file.name.split('.').pop();
-                const fileName = `${Date.now()}-extra-${Math.random().toString(36).substring(7)}.${fileExt}`;
-                const storageRef = ref(storage, `parts/${fileName}`);
-                await uploadBytes(storageRef, buffer);
-                const url = await getDownloadURL(storageRef);
+                const url = await uploadToImgBB(file);
                 additionalImages.push(url);
             }
         }
@@ -75,7 +63,13 @@ export async function createPart(formData: FormData) {
         return { success: true, id: docRef.id };
     } catch (error: any) {
         console.error('Error creating part in Firebase:', error);
-        return { success: false, error: error.message || 'Error al crear el repuesto' };
+
+        let errorMessage = 'Error al crear el repuesto';
+        if (error.message?.includes('ImgBB')) {
+            errorMessage = error.message;
+        }
+
+        return { success: false, error: errorMessage };
     }
 }
 
@@ -105,25 +99,13 @@ export async function updatePart(formData: FormData) {
 
         // Upload primary image if changed
         if (imageFile && imageFile.size > 0) {
-            const bytes = await imageFile.arrayBuffer();
-            const buffer = new Uint8Array(bytes);
-            const fileExt = imageFile.name.split('.').pop();
-            const fileName = `${Date.now()}-primary-${name.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.${fileExt}`;
-            const storageRef = ref(storage, `parts/${fileName}`);
-            await uploadBytes(storageRef, buffer);
-            imageURL = await getDownloadURL(storageRef);
+            imageURL = await uploadToImgBB(imageFile);
         }
 
         // Upload NEW additional images
         for (const file of additionalImagesFiles) {
             if (file && file.size > 0) {
-                const bytes = await file.arrayBuffer();
-                const buffer = new Uint8Array(bytes);
-                const fileExt = file.name.split('.').pop();
-                const fileName = `${Date.now()}-extra-${Math.random().toString(36).substring(7)}.${fileExt}`;
-                const storageRef = ref(storage, `parts/${fileName}`);
-                await uploadBytes(storageRef, buffer);
-                const url = await getDownloadURL(storageRef);
+                const url = await uploadToImgBB(file);
                 additionalImages.push(url);
             }
         }
@@ -150,7 +132,13 @@ export async function updatePart(formData: FormData) {
         return { success: true };
     } catch (error: any) {
         console.error('Error updating part in Firebase:', error);
-        return { success: false, error: error.message || 'Error al actualizar el repuesto' };
+
+        let errorMessage = 'Error al actualizar el repuesto';
+        if (error.message?.includes('ImgBB')) {
+            errorMessage = error.message;
+        }
+
+        return { success: false, error: errorMessage };
     }
 }
 

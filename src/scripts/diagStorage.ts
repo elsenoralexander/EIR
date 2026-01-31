@@ -31,8 +31,17 @@ async function testBucket(bucketName: string) {
         return true;
     } catch (error: any) {
         console.error(`❌ Failed for ${bucketName}:`);
-        console.log('Code:', error.code);
-        console.log('Message:', error.message);
+        console.log('Error Code:', error.code);
+        console.log('Error Message:', error.message);
+        if (error.serverResponse) {
+            console.log('Server Response:', error.serverResponse);
+        }
+        // Try to stringify the whole thing if possible
+        try {
+            console.log('Full Error JSON:', JSON.stringify(error, null, 2));
+        } catch (e) {
+            console.log('Full Error Object Keys:', Object.keys(error));
+        }
         return false;
     }
 }
