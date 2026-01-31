@@ -71,19 +71,29 @@ export class PartService {
         });
     }
 
+    private normalizeProvider(name: string): string {
+        const upper = name.trim().toUpperCase();
+        if (upper.includes('ONE DIRECT')) return 'ONE DIRECT COMUNICACIONES SL';
+        if (upper.includes('SURVIVAL')) return 'SURVIVAL SOLUTIONS';
+        if (upper === 'NAN' || upper === '') return 'OTROS';
+        return upper;
+    }
+
     private normalizeData(rawData: any[]): SparePart[] {
         if (!Array.isArray(rawData)) return [];
         return rawData.map(item => ({
             id: String(item.id || ''),
             name: String(item.name || ''),
-            providerRef: String(item.providerRef || ''),
+            providerRef: String(item.providerRef || '').toUpperCase(),
             contact: String(item.contact || ''),
-            provider: String(item.provider || ''),
-            machine: String(item.machine || ''),
-            services: Array.isArray(item.services) ? item.services : [],
+            provider: this.normalizeProvider(String(item.provider || '')),
+            machine: String(item.machine || '').toUpperCase(),
+            services: Array.isArray(item.services)
+                ? item.services.map((s: string) => String(s).toUpperCase())
+                : [],
             price: String(item.price || ''),
-            category: String(item.category || ''),
-            internalCode: String(item.internalCode || ''),
+            category: String(item.category || '').toUpperCase(),
+            internalCode: String(item.internalCode || '').toUpperCase(),
             commonName: String(item.commonName || ''),
             imageFile: String(item.imageFile || ''),
             additionalImages: Array.isArray(item.additionalImages) ? item.additionalImages : [],

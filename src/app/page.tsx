@@ -16,6 +16,7 @@ function HomeContent() {
   const query = searchParams.get('q') || '';
   const serviceFilter = searchParams.get('service');
   const providerFilter = searchParams.get('provider');
+  const machineFilter = searchParams.get('machine');
 
   const [parts, setParts] = useState<SparePart[]>([]);
   const [loading, setLoading] = useState(true);
@@ -34,7 +35,7 @@ function HomeContent() {
   }, []);
 
   // Memoize filters and dynamic metadata
-  const { filteredParts, services, providers } = useMemo(() => {
+  const { filteredParts, services, providers, machines } = useMemo(() => {
     let results = partService.searchParts(query);
 
     if (serviceFilter) {
@@ -45,12 +46,22 @@ function HomeContent() {
       results = results.filter(p => p.provider === providerFilter);
     }
 
+    if (machineFilter) {
+      results = results.filter(p => p.machine === machineFilter);
+    }
+
     const allParts = partService.getAllParts();
     const uniqueServices = Array.from(new Set(allParts.flatMap(p => p.services))).sort();
     const uniqueProviders = Array.from(new Set(allParts.map(p => p.provider))).filter(Boolean).sort();
+    const uniqueMachines = Array.from(new Set(allParts.map(p => p.machine))).filter(Boolean).sort();
 
-    return { filteredParts: results, services: uniqueServices, providers: uniqueProviders };
-  }, [parts, query, serviceFilter, providerFilter]);
+    return {
+      filteredParts: results,
+      services: uniqueServices,
+      providers: uniqueProviders,
+      machines: uniqueMachines
+    };
+  }, [parts, query, serviceFilter, providerFilter, machineFilter]);
 
   return (
     <div className="flex h-screen bg-[#020617] overflow-hidden">
@@ -60,7 +71,7 @@ function HomeContent() {
 
       {/* Sidebar - Desktop */}
       <div className="hidden md:block h-full shrink-0 z-20">
-        <Sidebar services={services} providers={providers} />
+        <Sidebar services={services} providers={providers} machines={machines} />
       </div>
 
       {/* Mobile Sidebar Overlay */}
@@ -69,7 +80,7 @@ function HomeContent() {
           <div className="absolute inset-0 bg-[#020617]/80 backdrop-blur-md" onClick={() => setIsMobileMenuOpen(false)} />
           <div className="absolute inset-y-0 left-0 w-72 h-full z-50 flex flex-col animate-in slide-in-from-left duration-500 ease-out">
             <div className="flex-1 overflow-y-auto">
-              <Sidebar services={services} providers={providers} />
+              <Sidebar services={services} providers={providers} machines={machines} />
             </div>
           </div>
         </div>
