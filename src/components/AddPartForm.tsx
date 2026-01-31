@@ -6,6 +6,9 @@ import { createPart, updatePart } from '@/actions/partActions';
 import { ArrowLeft, Package, Plus, Upload, Loader2, CheckCircle2, Save } from 'lucide-react';
 import Link from 'next/link';
 import { SparePart } from '@/types';
+import CustomSelector from './CustomSelector';
+import { partService } from '@/services/partService';
+import { useEffect } from 'react';
 
 interface AddPartFormProps {
     part?: SparePart;
@@ -16,6 +19,27 @@ export default function AddPartForm({ part }: AddPartFormProps) {
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState('');
+    const [options, setOptions] = useState<{
+        providers: string[];
+        machines: string[];
+        services: string[];
+    }>({ providers: [], machines: [], services: [] });
+
+    useEffect(() => {
+        const loadOptions = async () => {
+            try {
+                await partService.fetchData();
+                setOptions({
+                    providers: partService.getUniqueProviders(),
+                    machines: partService.getUniqueMachines(),
+                    services: partService.getUniqueServices()
+                });
+            } catch (err) {
+                console.error('Error loading options:', err);
+            }
+        };
+        loadOptions();
+    }, []);
 
     const isEditing = !!part;
 
@@ -177,48 +201,31 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                         </div>
 
                         <div className="space-y-8">
-                            <div className="space-y-2">
-                                <label className="text-[10px] font-bold text-emerald-500/50 uppercase tracking-[0.2em] block pl-1" htmlFor="provider">
-                                    Proveedor <span className="text-amber-500">*</span>
-                                </label>
-                                <input
-                                    required
-                                    id="provider"
-                                    name="provider"
-                                    type="text"
-                                    defaultValue={part?.provider}
-                                    placeholder="Nombre de la empresa"
-                                    className="w-full p-4 rounded-2xl bg-[#020617]/50 border border-white/5 focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 outline-none text-white transition-all placeholder:text-slate-600 font-medium"
-                                />
-                            </div>
+                            <CustomSelector
+                                label="Proveedor"
+                                name="provider"
+                                required
+                                options={options.providers}
+                                defaultValue={part?.provider}
+                                placeholder="Seleccionar o crear nuevo..."
+                            />
 
-                            <div className="space-y-2">
-                                <label className="text-[10px] font-bold text-emerald-500/50 uppercase tracking-[0.2em] block pl-1" htmlFor="machine">
-                                    Equipo de Destino
-                                </label>
-                                <input
-                                    id="machine"
-                                    name="machine"
-                                    type="text"
-                                    defaultValue={part?.machine}
-                                    placeholder="Ej: Monitor Infinity / Sin Máquina"
-                                    className="w-full p-4 rounded-2xl bg-[#020617]/50 border border-white/5 focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 outline-none text-white transition-all placeholder:text-slate-600 font-medium"
-                                />
-                            </div>
+                            <CustomSelector
+                                label="Equipo de Destino"
+                                name="machine"
+                                options={options.machines}
+                                defaultValue={part?.machine}
+                                placeholder="Ej: Monitor Infinity / Sin Máquina"
+                            />
 
-                            <div className="space-y-2">
-                                <label className="text-[10px] font-bold text-emerald-500/50 uppercase tracking-[0.2em] block pl-1" htmlFor="services">
-                                    Servicios (UCI, Quirófano...)
-                                </label>
-                                <input
-                                    id="services"
-                                    name="services"
-                                    type="text"
-                                    defaultValue={part?.services.join(', ')}
-                                    placeholder="UCI, QUIROFANO, URGENCIAS"
-                                    className="w-full p-4 rounded-2xl bg-[#020617]/50 border border-white/5 focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 outline-none text-white transition-all placeholder:text-slate-600 font-medium"
-                                />
-                            </div>
+                            <CustomSelector
+                                label="Ámbitos de Aplicación"
+                                name="services"
+                                options={options.services}
+                                defaultValue={part?.services}
+                                multiple
+                                placeholder="Añadir servicios..."
+                            />
 
                             <div className="space-y-2">
                                 <label className="text-[10px] font-bold text-emerald-500/50 uppercase tracking-[0.2em] block pl-1" htmlFor="contact">

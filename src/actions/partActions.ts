@@ -5,18 +5,20 @@ import { collection, addDoc, updateDoc, doc, Timestamp, deleteDoc } from 'fireba
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { revalidatePath } from 'next/cache';
 import { SparePart } from '@/types';
+import { normalizeProvider, normalizeService, normalizeMachine } from '@/utils/normalization';
 
 export async function createPart(formData: FormData) {
     try {
         const name = formData.get('name') as string;
         const providerRef = formData.get('providerRef') as string;
         const contact = formData.get('contact') as string;
-        const provider = formData.get('provider') as string;
-        const machine = formData.get('machine') as string;
-        const servicesStr = formData.get('services') as string;
+        const provider = normalizeProvider(formData.get('provider') as string);
+        const machine = normalizeMachine(formData.get('machine') as string);
+        const rawServices = formData.getAll('services').map(s => s.toString());
+        const services = Array.from(new Set(rawServices.flatMap(s => normalizeService(s)))).sort();
         const price = formData.get('price') as string;
-        const category = formData.get('category') as string;
-        const internalCode = formData.get('internalCode') as string;
+        const category = (formData.get('category') as string || 'COMPRAS').toUpperCase();
+        const internalCode = (formData.get('internalCode') as string || '').toUpperCase();
         const commonName = formData.get('commonName') as string;
 
         // Primary and additional images
@@ -51,11 +53,9 @@ export async function createPart(formData: FormData) {
             }
         }
 
-        const services = servicesStr.split(',').map(s => s.trim()).filter(Boolean);
-
         const newPart = {
             name,
-            providerRef,
+            providerRef: providerRef.toUpperCase(),
             contact,
             provider,
             machine,
@@ -85,12 +85,13 @@ export async function updatePart(formData: FormData) {
         const name = formData.get('name') as string;
         const providerRef = formData.get('providerRef') as string;
         const contact = formData.get('contact') as string;
-        const provider = formData.get('provider') as string;
-        const machine = formData.get('machine') as string;
-        const servicesStr = formData.get('services') as string;
+        const provider = normalizeProvider(formData.get('provider') as string);
+        const machine = normalizeMachine(formData.get('machine') as string);
+        const rawServices = formData.getAll('services').map(s => s.toString());
+        const services = Array.from(new Set(rawServices.flatMap(s => normalizeService(s)))).sort();
         const price = formData.get('price') as string;
-        const category = formData.get('category') as string;
-        const internalCode = formData.get('internalCode') as string;
+        const category = (formData.get('category') as string || 'COMPRAS').toUpperCase();
+        const internalCode = (formData.get('internalCode') as string || '').toUpperCase();
         const commonName = formData.get('commonName') as string;
         const currentImage = formData.get('currentImage') as string;
         const currentAdditionalImages = JSON.parse(formData.get('currentAdditionalImages') as string || '[]');
@@ -127,12 +128,11 @@ export async function updatePart(formData: FormData) {
             }
         }
 
-        const services = servicesStr.split(',').map(s => s.trim()).filter(Boolean);
         const partRef = doc(db, 'parts', id);
 
         await updateDoc(partRef, {
             name,
-            providerRef,
+            providerRef: providerRef.toUpperCase(),
             contact,
             provider,
             machine,

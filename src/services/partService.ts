@@ -2,6 +2,7 @@ import { db } from '../lib/firebase';
 import { collection, query, getDocs, doc, getDoc, where } from 'firebase/firestore';
 import { SparePart } from '../types';
 import Fuse from 'fuse.js';
+import { normalizeProvider, normalizeService, normalizeMachine } from '../utils/normalization';
 
 export class PartService {
     private parts: SparePart[] = [];
@@ -10,7 +11,6 @@ export class PartService {
 
     async fetchData(): Promise<SparePart[]> {
         try {
-            // First try to fetch from Firestore
             const partsCollection = collection(db, 'parts');
             const partsSnapshot = await getDocs(partsCollection);
 
@@ -20,7 +20,6 @@ export class PartService {
                     id: doc.id
                 })) as SparePart[];
             } else {
-                // Fallback or empty state
                 this.parts = [];
             }
 
@@ -29,7 +28,6 @@ export class PartService {
             return this.parts;
         } catch (error) {
             console.error('Error fetching parts from Firestore:', error);
-            // Fallback to local API if Firebase fails (useful during setup)
             try {
                 const response = await fetch('/api/parts');
                 const data = await response.json();
@@ -58,7 +56,7 @@ export class PartService {
                 { name: 'machine', weight: 0.1 },
                 { name: 'providerRef', weight: 0.2 }
             ],
-            threshold: 0.3, // More restrictive for better relevance
+            threshold: 0.3,
             distance: 100,
             ignoreLocation: true,
             minMatchCharLength: 2,
@@ -71,36 +69,12 @@ export class PartService {
         });
     }
 
-    private normalizeProvider(name: string): string {
-        const upper = name.trim().toUpperCase();
-        if (upper.includes('ONE DIRECT')) return 'ONE DIRECT COMUNICACIONES SL';
-        if (upper.includes('SURVIVAL')) return 'SURVIVAL SOLUTIONS';
-        if (upper === 'NAN' || upper === '') return 'OTROS';
-        return upper;
-    }
-
-    private normalizeService(service: any): string[] {
-        if (!service) return [];
-
-        // Split if it's a string with commas
-        const rawServices = typeof service === 'string'
-            ? service.split(',').map(s => s.trim().toUpperCase())
-            : [String(service).trim().toUpperCase()];
-
-        return rawServices.map(s => {
-            if (s === 'URG' || s === 'URGENCIAS') return 'URGENCIAS';
-            if (s === 'EXT' || s === 'EXTERNA') return 'CONSULTAS EXTERNAS';
-            if (s === 'NAN' || s === '') return '';
-            return s;
-        }).filter(Boolean);
-    }
-
     private normalizeData(rawData: any[]): SparePart[] {
         if (!Array.isArray(rawData)) return [];
         return rawData.map(item => {
             const rawServices = Array.isArray(item.services) ? item.services : [item.services];
             const processedServices = Array.from(new Set(
-                (rawServices as any[]).flatMap((s: any) => this.normalizeService(s))
+                (rawServices as any[]).flatMap((s: any) => normalizeService(s))
             )).sort() as string[];
 
             return {
@@ -108,8 +82,8 @@ export class PartService {
                 name: String(item.name || ''),
                 providerRef: String(item.providerRef || '').toUpperCase(),
                 contact: String(item.contact || ''),
-                provider: this.normalizeProvider(String(item.provider || '')),
-                machine: String(item.machine || '').toUpperCase(),
+                provider: normalizeProvider(String(item.provider || '')),
+                machine: normalizeMachine(String(item.machine || '')),
                 services: processedServices,
                 price: String(item.price || ''),
                 category: String(item.category || '').toUpperCase(),
@@ -127,6 +101,21 @@ export class PartService {
 
     getPartById(id: string): SparePart | undefined {
         return this.parts.find(p => p.id === id);
+    }
+
+    getUniqueProviders(): string[] {
+        return Array.from(new Set(this.parts.map(p => p.provider))).filter(Boolean).sort();
+    }
+
+    getUniqueMachines(): string[] {
+        const machines = this.parts.map(p => p.machine);
+        return Array.from(new Set(machines))
+            .filter(m => m !== 'BIBLIOTECA GENERAL')
+            .sort();
+    }
+
+    getUniqueServices(): string[] {
+        return Array.from(new Set(this.parts.flatMap(p => p.services))).filter(Boolean).sort();
     }
 
     searchParts(queryStr: string): SparePart[] {
