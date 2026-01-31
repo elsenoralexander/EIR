@@ -79,25 +79,46 @@ export class PartService {
         return upper;
     }
 
+    private normalizeService(service: any): string[] {
+        if (!service) return [];
+
+        // Split if it's a string with commas
+        const rawServices = typeof service === 'string'
+            ? service.split(',').map(s => s.trim().toUpperCase())
+            : [String(service).trim().toUpperCase()];
+
+        return rawServices.map(s => {
+            if (s === 'URG' || s === 'URGENCIAS') return 'URGENCIAS';
+            if (s === 'EXT' || s === 'EXTERNA') return 'CONSULTAS EXTERNAS';
+            if (s === 'NAN' || s === '') return '';
+            return s;
+        }).filter(Boolean);
+    }
+
     private normalizeData(rawData: any[]): SparePart[] {
         if (!Array.isArray(rawData)) return [];
-        return rawData.map(item => ({
-            id: String(item.id || ''),
-            name: String(item.name || ''),
-            providerRef: String(item.providerRef || '').toUpperCase(),
-            contact: String(item.contact || ''),
-            provider: this.normalizeProvider(String(item.provider || '')),
-            machine: String(item.machine || '').toUpperCase(),
-            services: Array.isArray(item.services)
-                ? item.services.map((s: string) => String(s).toUpperCase())
-                : [],
-            price: String(item.price || ''),
-            category: String(item.category || '').toUpperCase(),
-            internalCode: String(item.internalCode || '').toUpperCase(),
-            commonName: String(item.commonName || ''),
-            imageFile: String(item.imageFile || ''),
-            additionalImages: Array.isArray(item.additionalImages) ? item.additionalImages : [],
-        }));
+        return rawData.map(item => {
+            const rawServices = Array.isArray(item.services) ? item.services : [item.services];
+            const processedServices = Array.from(new Set(
+                (rawServices as any[]).flatMap((s: any) => this.normalizeService(s))
+            )).sort() as string[];
+
+            return {
+                id: String(item.id || ''),
+                name: String(item.name || ''),
+                providerRef: String(item.providerRef || '').toUpperCase(),
+                contact: String(item.contact || ''),
+                provider: this.normalizeProvider(String(item.provider || '')),
+                machine: String(item.machine || '').toUpperCase(),
+                services: processedServices,
+                price: String(item.price || ''),
+                category: String(item.category || '').toUpperCase(),
+                internalCode: String(item.internalCode || '').toUpperCase(),
+                commonName: String(item.commonName || ''),
+                imageFile: String(item.imageFile || ''),
+                additionalImages: Array.isArray(item.additionalImages) ? item.additionalImages : [],
+            };
+        });
     }
 
     getAllParts(): SparePart[] {
