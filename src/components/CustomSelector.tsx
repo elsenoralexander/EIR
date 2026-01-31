@@ -40,12 +40,12 @@ export default function CustomSelector({
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
-    const filteredOptions = options.filter(opt =>
-        opt.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredOptions = (options || []).filter(opt =>
+        opt && opt.toLowerCase().includes((searchTerm || '').toLowerCase())
     );
 
     const isCustomOption = searchTerm &&
-        !options.some(opt => opt.toLowerCase() === searchTerm.toLowerCase());
+        !(options || []).some(opt => opt && opt.toLowerCase() === searchTerm.toLowerCase());
 
     const toggleOption = (opt: string) => {
         const normalized = opt.toUpperCase();

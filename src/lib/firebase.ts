@@ -18,10 +18,18 @@ const db = getFirestore(app);
 const storage = getStorage(app);
 
 // Initialize Analytics (Client Side only)
-let analytics: any;
+let analytics: any = null;
 if (typeof window !== "undefined") {
     const { getAnalytics, isSupported } = require("firebase/analytics");
-    isSupported().then((yes: boolean) => yes ? analytics = getAnalytics(app) : null);
+    isSupported().then((yes: boolean) => {
+        if (yes) {
+            try {
+                analytics = getAnalytics(app);
+            } catch (err) {
+                console.warn("Firebase Analytics could not be initialized:", err);
+            }
+        }
+    }).catch(() => { });
 }
 
 export { app, db, storage, analytics };

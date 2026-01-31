@@ -10,10 +10,14 @@ async function getPart(id: string): Promise<SparePart | undefined> {
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
+            const data = docSnap.data();
+            // Serialize non-plain objects like Timestamps
             return {
                 id: docSnap.id,
-                ...docSnap.data()
-            } as SparePart;
+                ...data,
+                createdAt: data.createdAt?.toDate?.()?.toISOString() || null,
+                updatedAt: data.updatedAt?.toDate?.()?.toISOString() || null
+            } as any;
         }
         return undefined;
     } catch (error) {
