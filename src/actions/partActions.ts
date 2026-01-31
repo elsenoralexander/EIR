@@ -18,20 +18,37 @@ export async function createPart(formData: FormData) {
         const category = formData.get('category') as string;
         const internalCode = formData.get('internalCode') as string;
         const commonName = formData.get('commonName') as string;
+
+        // Primary and additional images
         const imageFile = formData.get('imageFile') as File;
+        const additionalImagesFiles = formData.getAll('additionalImages') as File[];
 
         let imageURL = '';
+        const additionalImages: string[] = [];
 
+        // Upload primary image
         if (imageFile && imageFile.size > 0) {
             const bytes = await imageFile.arrayBuffer();
             const buffer = new Uint8Array(bytes);
-
             const fileExt = imageFile.name.split('.').pop();
-            const fileName = `${Date.now()}-${name.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.${fileExt}`;
+            const fileName = `${Date.now()}-primary-${name.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.${fileExt}`;
             const storageRef = ref(storage, `parts/${fileName}`);
-
             await uploadBytes(storageRef, buffer);
             imageURL = await getDownloadURL(storageRef);
+        }
+
+        // Upload additional images
+        for (const file of additionalImagesFiles) {
+            if (file && file.size > 0) {
+                const bytes = await file.arrayBuffer();
+                const buffer = new Uint8Array(bytes);
+                const fileExt = file.name.split('.').pop();
+                const fileName = `${Date.now()}-extra-${Math.random().toString(36).substring(7)}.${fileExt}`;
+                const storageRef = ref(storage, `parts/${fileName}`);
+                await uploadBytes(storageRef, buffer);
+                const url = await getDownloadURL(storageRef);
+                additionalImages.push(url);
+            }
         }
 
         const services = servicesStr.split(',').map(s => s.trim()).filter(Boolean);
@@ -48,6 +65,7 @@ export async function createPart(formData: FormData) {
             internalCode,
             commonName,
             imageFile: imageURL,
+            additionalImages,
             createdAt: Timestamp.now(),
         };
 
@@ -74,21 +92,39 @@ export async function updatePart(formData: FormData) {
         const category = formData.get('category') as string;
         const internalCode = formData.get('internalCode') as string;
         const commonName = formData.get('commonName') as string;
-        const imageFile = formData.get('imageFile') as File;
         const currentImage = formData.get('currentImage') as string;
+        const currentAdditionalImages = JSON.parse(formData.get('currentAdditionalImages') as string || '[]');
+
+        // Primary and additional images from form
+        const imageFile = formData.get('imageFile') as File;
+        const additionalImagesFiles = formData.getAll('additionalImages') as File[];
 
         let imageURL = currentImage;
+        const additionalImages: string[] = [...currentAdditionalImages];
 
+        // Upload primary image if changed
         if (imageFile && imageFile.size > 0) {
             const bytes = await imageFile.arrayBuffer();
             const buffer = new Uint8Array(bytes);
-
             const fileExt = imageFile.name.split('.').pop();
-            const fileName = `${Date.now()}-${name.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.${fileExt}`;
+            const fileName = `${Date.now()}-primary-${name.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.${fileExt}`;
             const storageRef = ref(storage, `parts/${fileName}`);
-
             await uploadBytes(storageRef, buffer);
             imageURL = await getDownloadURL(storageRef);
+        }
+
+        // Upload NEW additional images
+        for (const file of additionalImagesFiles) {
+            if (file && file.size > 0) {
+                const bytes = await file.arrayBuffer();
+                const buffer = new Uint8Array(bytes);
+                const fileExt = file.name.split('.').pop();
+                const fileName = `${Date.now()}-extra-${Math.random().toString(36).substring(7)}.${fileExt}`;
+                const storageRef = ref(storage, `parts/${fileName}`);
+                await uploadBytes(storageRef, buffer);
+                const url = await getDownloadURL(storageRef);
+                additionalImages.push(url);
+            }
         }
 
         const services = servicesStr.split(',').map(s => s.trim()).filter(Boolean);
@@ -106,6 +142,7 @@ export async function updatePart(formData: FormData) {
             internalCode,
             commonName,
             imageFile: imageURL,
+            additionalImages,
             updatedAt: Timestamp.now(),
         });
 

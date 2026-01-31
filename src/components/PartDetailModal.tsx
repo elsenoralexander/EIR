@@ -15,6 +15,14 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
     const modalRef = useRef<HTMLDivElement>(null);
     const [deleting, setDeleting] = useState(false);
 
+    const [activeImage, setActiveImage] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (part) {
+            setActiveImage(part.imageFile || null);
+        }
+    }, [part]);
+
     async function handleDelete() {
         if (!part) return;
         if (confirm('¿Estás seguro de que deseas eliminar este repuesto?')) {
@@ -47,7 +55,8 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
 
     if (!part) return null;
 
-    const hasImage = part.imageFile && part.imageFile !== 'NaN' && part.imageFile !== '';
+    const allImages = [part.imageFile, ...(part.additionalImages || [])].filter(img => img && img !== 'NaN' && img !== '');
+    const hasImages = allImages.length > 0;
 
     return (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-[#020617]/90 backdrop-blur-xl">
@@ -104,18 +113,35 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
                 <div className="p-8 space-y-8 overflow-y-auto scrollbar-hide">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                         {/* Image Section */}
-                        <div className="aspect-square bg-[#020617] rounded-3xl flex items-center justify-center border border-white/5 overflow-hidden relative group">
-                            <div className="absolute inset-0 bg-gradient-to-t from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                            {hasImage ? (
-                                <img
-                                    src={part.imageFile.startsWith('http') || part.imageFile.startsWith('/') ? part.imageFile : `https://placehold.co/500x500/020617/10b981?text=${encodeURIComponent(part.name)}`}
-                                    alt={part.name}
-                                    className="w-full h-full object-contain p-6 relative z-10 transition-transform duration-700 group-hover:scale-105"
-                                />
-                            ) : (
-                                <div className="flex flex-col items-center justify-center text-emerald-500/20">
-                                    <ImageIcon className="w-20 h-20 mb-3 animate-pulse" />
-                                    <span className="text-[10px] font-display font-bold uppercase tracking-[0.3em]">Sin Representación Visual</span>
+                        <div className="space-y-4">
+                            <div className="aspect-square bg-[#020617] rounded-3xl flex items-center justify-center border border-white/5 overflow-hidden relative group">
+                                <div className="absolute inset-0 bg-gradient-to-t from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                {hasImages ? (
+                                    <img
+                                        src={activeImage || allImages[0]}
+                                        alt={part.name}
+                                        className="w-full h-full object-contain p-6 relative z-10 transition-all duration-700 hover:scale-105"
+                                    />
+                                ) : (
+                                    <div className="flex flex-col items-center justify-center text-emerald-500/20">
+                                        <ImageIcon className="w-20 h-20 mb-3 animate-pulse" />
+                                        <span className="text-[10px] font-display font-bold uppercase tracking-[0.3em]">Sin Representación Visual</span>
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Thumbnails */}
+                            {allImages.length > 1 && (
+                                <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+                                    {allImages.map((img, idx) => (
+                                        <button
+                                            key={idx}
+                                            onClick={() => setActiveImage(img)}
+                                            className={`relative w-16 h-16 rounded-xl overflow-hidden shrink-0 border-2 transition-all ${activeImage === img ? 'border-emerald-500 scale-105 shadow-lg shadow-emerald-500/20' : 'border-white/5 grayscale opacity-50 hover:grayscale-0 hover:opacity-100'}`}
+                                        >
+                                            <img src={img} alt={`thumb-${idx}`} className="w-full h-full object-cover" />
+                                        </button>
+                                    ))}
                                 </div>
                             )}
                         </div>

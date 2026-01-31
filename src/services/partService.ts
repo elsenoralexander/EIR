@@ -42,12 +42,32 @@ export class PartService {
         }
     }
 
+    private normalizeText(text: string): string {
+        return text
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '');
+    }
+
     private initFuse() {
         this.fuse = new Fuse(this.parts, {
-            keys: ['name', 'commonName', 'provider', 'machine', 'providerRef'],
-            threshold: 0.4,
+            keys: [
+                { name: 'name', weight: 0.5 },
+                { name: 'commonName', weight: 0.3 },
+                { name: 'provider', weight: 0.1 },
+                { name: 'machine', weight: 0.1 },
+                { name: 'providerRef', weight: 0.2 }
+            ],
+            threshold: 0.3, // More restrictive for better relevance
+            distance: 100,
             ignoreLocation: true,
             minMatchCharLength: 2,
+            findAllMatches: true,
+            getFn: (obj: any, path: string | string[]) => {
+                const key = Array.isArray(path) ? path[0] : path;
+                const value = obj[key];
+                return typeof value === 'string' ? this.normalizeText(value) : value;
+            }
         });
     }
 
@@ -66,6 +86,7 @@ export class PartService {
             internalCode: String(item.internalCode || ''),
             commonName: String(item.commonName || ''),
             imageFile: String(item.imageFile || ''),
+            additionalImages: Array.isArray(item.additionalImages) ? item.additionalImages : [],
         }));
     }
 
@@ -80,7 +101,9 @@ export class PartService {
     searchParts(queryStr: string): SparePart[] {
         if (!queryStr) return this.parts;
         if (!this.fuse) return this.parts;
-        return this.fuse.search(queryStr).map(result => result.item);
+
+        const normalizedQuery = this.normalizeText(queryStr);
+        return this.fuse.search(normalizedQuery).map(result => result.item);
     }
 
     getPartsByService(service: string): SparePart[] {

@@ -235,9 +235,9 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                                 />
                             </div>
 
-                            <div className="space-y-2">
+                            <div className="space-y-4">
                                 <label className="text-[10px] font-bold text-emerald-500/50 uppercase tracking-[0.2em] block pl-1">
-                                    Visualización del Producto
+                                    Imagen Principal
                                 </label>
                                 <div className="relative group/upload">
                                     <input
@@ -256,25 +256,69 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                                         htmlFor="imageFile"
                                         className="flex flex-col items-center justify-center gap-4 p-8 w-full bg-[#020617]/50 border-2 border-dashed border-white/5 rounded-[32px] cursor-pointer hover:bg-emerald-500/5 hover:border-emerald-500/40 transition-all duration-500"
                                     >
-                                        {isEditing && part.imageFile && !error && (
-                                            <div className="relative w-20 h-20 rounded-2xl overflow-hidden border border-white/10 shadow-emerald-500/10 shadow-lg">
-                                                <img src={part.imageFile} alt="preview" className="w-full h-full object-cover" />
-                                                <div className="absolute inset-0 bg-[#020617]/40 flex items-center justify-center opacity-0 group-hover/upload:opacity-100 transition-opacity">
+                                        {isEditing && part.imageFile && (
+                                            <div className="relative w-24 h-24 rounded-2xl overflow-hidden border border-white/10 shadow-emerald-500/10 shadow-lg mb-2">
+                                                <img src={part.imageFile} alt="primary" className="w-full h-full object-cover" />
+                                                <div className="absolute inset-0 bg-[#020617]/40 flex items-center justify-center opacity-0 group-hover:upload:opacity-100 transition-opacity">
                                                     <Upload className="w-5 h-5 text-white" />
                                                 </div>
                                             </div>
                                         )}
-                                        <div className="flex flex-col items-center gap-2">
+                                        <div className="flex flex-col items-center gap-2 text-center">
                                             <div className="p-3 rounded-full bg-emerald-500/10 text-emerald-400 group-hover/upload:scale-110 transition-transform duration-300">
                                                 <Upload className="w-6 h-6" />
                                             </div>
-                                            <span id="file-label" className="font-display font-bold text-xs uppercase tracking-widest text-emerald-500/60 group-hover/upload:text-emerald-400">
-                                                {isEditing ? 'REEMPLAZAR ESENCIA' : 'INVOCAR IMAGEN'}
+                                            <span id="file-label" className="font-display font-bold text-[10px] uppercase tracking-widest text-emerald-500/60 group-hover/upload:text-emerald-400">
+                                                {isEditing ? 'REEMPLAZAR PRINCIPAL' : 'IMAGEN PRINCIPAL'}
                                             </span>
-                                            <p className="text-[9px] text-slate-600 uppercase tracking-tight">Formato JPG, PNG o WebP</p>
                                         </div>
                                     </label>
                                 </div>
+                            </div>
+
+                            <div className="space-y-4">
+                                <div className="flex items-center justify-between pl-1">
+                                    <label className="text-[10px] font-bold text-amber-500/50 uppercase tracking-[0.2em] block">
+                                        Galería Adicional
+                                    </label>
+                                    <span className="text-[9px] text-slate-500 font-mono uppercase tracking-tighter">Varias vistas</span>
+                                </div>
+
+                                <div className="grid grid-cols-2 gap-4">
+                                    <input
+                                        id="additionalImages"
+                                        name="additionalImages"
+                                        type="file"
+                                        accept="image/*"
+                                        multiple
+                                        className="hidden"
+                                        onChange={(e) => {
+                                            const count = e.target.files?.length || 0;
+                                            const label = document.getElementById('additional-label');
+                                            if (label) label.textContent = count > 0 ? `${count} imágenes seleccionadas` : 'Añadir más imágenes';
+                                        }}
+                                    />
+                                    <label
+                                        htmlFor="additionalImages"
+                                        className="flex flex-col items-center justify-center gap-3 p-6 bg-white/5 border border-white/5 rounded-[24px] cursor-pointer hover:bg-amber-500/5 hover:border-amber-500/30 transition-all group/extra"
+                                    >
+                                        <Plus className="w-5 h-5 text-amber-500/40 group-hover/extra:text-amber-400 transition-colors" />
+                                        <span id="additional-label" className="text-[9px] font-bold text-slate-500 uppercase tracking-widest text-center">
+                                            Añadir Vistas
+                                        </span>
+                                    </label>
+
+                                    {isEditing && part.additionalImages && part.additionalImages.length > 0 && (
+                                        <div className="flex gap-2 overflow-x-auto py-1 scrollbar-hide">
+                                            {part.additionalImages.map((img, idx) => (
+                                                <div key={idx} className="relative w-14 h-14 rounded-xl overflow-hidden shrink-0 border border-white/5">
+                                                    <img src={img} alt={`extra-${idx}`} className="w-full h-full object-cover" />
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                                {isEditing && part.additionalImages && <input type="hidden" name="currentAdditionalImages" value={JSON.stringify(part.additionalImages)} />}
                             </div>
                         </div>
                     </div>
