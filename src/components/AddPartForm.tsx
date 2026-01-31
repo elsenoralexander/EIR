@@ -377,7 +377,7 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                         Desistir
                     </Link>
                     <button
-                        disabled={loading}
+                        disabled={loading || compressing}
                         type="submit"
                         className="relative group px-10 py-4 rounded-2xl font-display font-black text-white transition-all active:scale-95 overflow-hidden disabled:opacity-50 disabled:active:scale-100"
                     >
