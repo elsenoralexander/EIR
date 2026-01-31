@@ -87,7 +87,9 @@ function HomeContent() {
           </button>
 
           <div className="flex items-center gap-4 shrink-0 md:hidden">
-            <img src="/eir_logo.png" alt="Eir" className="w-10 h-10 object-contain drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+            <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-full p-1 shadow-[0_0_10px_rgba(16,185,129,0.3)]">
+              <img src="/eir_logo.png" alt="Eir" className="w-8 h-8 object-cover rounded-full" />
+            </div>
             <h1 className="text-xl font-display font-black tracking-tighter text-white">EIR</h1>
           </div>
 

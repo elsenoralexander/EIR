@@ -30,13 +30,15 @@ export default function Sidebar({ services, providers }: SidebarProps) {
             <div className="p-8">
                 {/* Brand Logo Section */}
                 <div className="flex flex-col items-center mb-10">
-                    <div className="relative w-20 h-20 mb-4 group">
+                    <div className="relative w-24 h-24 mb-4 group">
                         <div className="absolute inset-0 bg-emerald-500/20 blur-xl rounded-full group-hover:bg-emerald-500/40 transition-all duration-500"></div>
-                        <img
-                            src="/eir_logo.png"
-                            alt="EIR Logo"
-                            className="relative w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]"
-                        />
+                        <div className="relative w-full h-full bg-emerald-500/10 border border-emerald-500/20 rounded-full p-1 overflow-hidden shadow-[0_0_20px_rgba(16,185,129,0.2)]">
+                            <img
+                                src="/eir_logo.png"
+                                alt="EIR Logo"
+                                className="w-full h-full object-cover rounded-full"
+                            />
+                        </div>
                     </div>
                     <h1 className="text-3xl font-display font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-amber-300 to-emerald-400 bg-[length:200%_auto] animate-gradient-flow">
                         EIR
@@ -63,8 +65,8 @@ export default function Sidebar({ services, providers }: SidebarProps) {
                                 key={service}
                                 onClick={() => handleFilter('service', service)}
                                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-300 group ${selectedService === service
-                                        ? 'bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.1)]'
-                                        : 'hover:bg-white/5 border border-transparent text-slate-400 hover:text-emerald-300'
+                                    ? 'bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.1)]'
+                                    : 'hover:bg-white/5 border border-transparent text-slate-400 hover:text-emerald-300'
                                     }`}
                             >
                                 <div className={`w-2 h-2 rounded-full transition-all duration-300 ${selectedService === service ? 'bg-amber-400 shadow-[0_0_8px_rgba(245,158,11,0.6)]' : 'bg-slate-600 group-hover:bg-emerald-500/40'
@@ -85,8 +87,8 @@ export default function Sidebar({ services, providers }: SidebarProps) {
                                 key={provider}
                                 onClick={() => handleFilter('provider', provider)}
                                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-300 group ${selectedProvider === provider
-                                        ? 'bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.1)]'
-                                        : 'hover:bg-white/5 border border-transparent text-slate-400 hover:text-emerald-300'
+                                    ? 'bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.1)]'
+                                    : 'hover:bg-white/5 border border-transparent text-slate-400 hover:text-emerald-300'
                                     }`}
                             >
                                 <div className={`w-2 h-2 rounded-full transition-all duration-300 ${selectedProvider === provider ? 'bg-amber-400 shadow-[0_0_8px_rgba(245,158,11,0.6)]' : 'bg-slate-600 group-hover:bg-emerald-500/40'

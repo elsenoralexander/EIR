@@ -1,35 +1,44 @@
+import { db } from '../lib/firebase';
+import { collection, query, getDocs, doc, getDoc, where } from 'firebase/firestore';
 import { SparePart } from '../types';
 import Fuse from 'fuse.js';
-
-type RawSparePart = {
-    id?: string;
-    name: string;
-    providerRef: string;
-    contact: string;
-    provider: string;
-    machine: string;
-    services: string[];
-    price: string;
-    category: string;
-    internalCode: string | number;
-    commonName: string | number;
-    imageFile: string | number;
-};
 
 export class PartService {
     private parts: SparePart[] = [];
     private fuse: Fuse<SparePart> | null = null;
+    private initialized = false;
 
     async fetchData(): Promise<SparePart[]> {
         try {
-            const response = await fetch('/api/parts');
-            const data = await response.json();
-            this.parts = this.normalizeData(data);
+            // First try to fetch from Firestore
+            const partsCollection = collection(db, 'parts');
+            const partsSnapshot = await getDocs(partsCollection);
+
+            if (!partsSnapshot.empty) {
+                this.parts = partsSnapshot.docs.map(doc => ({
+                    ...doc.data(),
+                    id: doc.id
+                })) as SparePart[];
+            } else {
+                // Fallback or empty state
+                this.parts = [];
+            }
+
             this.initFuse();
+            this.initialized = true;
             return this.parts;
         } catch (error) {
-            console.error('Error fetching parts:', error);
-            return [];
+            console.error('Error fetching parts from Firestore:', error);
+            // Fallback to local API if Firebase fails (useful during setup)
+            try {
+                const response = await fetch('/api/parts');
+                const data = await response.json();
+                this.parts = this.normalizeData(data);
+                this.initFuse();
+                return this.parts;
+            } catch (localError) {
+                return [];
+            }
         }
     }
 
@@ -44,7 +53,6 @@ export class PartService {
 
     private normalizeData(rawData: any[]): SparePart[] {
         if (!Array.isArray(rawData)) return [];
-
         return rawData.map(item => ({
             id: String(item.id || ''),
             name: String(item.name || ''),
@@ -52,15 +60,13 @@ export class PartService {
             contact: String(item.contact || ''),
             provider: String(item.provider || ''),
             machine: String(item.machine || ''),
-            services: Array.isArray(item.services)
-                ? item.services.flatMap((s: any) => typeof s === 'string' ? s.split(',').map(sub => sub.trim()) : [])
-                : [],
+            services: Array.isArray(item.services) ? item.services : [],
             price: String(item.price || ''),
             category: String(item.category || ''),
-            internalCode: String(item.internalCode || '').replace('NaN', ''),
-            commonName: String(item.commonName || '').replace('NaN', ''),
-            imageFile: String(item.imageFile || '').replace('NaN', ''),
-        })).filter(part => part.name && part.name !== 'NaN');
+            internalCode: String(item.internalCode || ''),
+            commonName: String(item.commonName || ''),
+            imageFile: String(item.imageFile || ''),
+        }));
     }
 
     getAllParts(): SparePart[] {
@@ -71,14 +77,10 @@ export class PartService {
         return this.parts.find(p => p.id === id);
     }
 
-    searchParts(query: string): SparePart[] {
-        if (!query) return this.parts;
+    searchParts(queryStr: string): SparePart[] {
+        if (!queryStr) return this.parts;
         if (!this.fuse) return this.parts;
-        return this.fuse.search(query).map(result => result.item);
-    }
-
-    getPartsByProvider(provider: string): SparePart[] {
-        return this.parts.filter(p => p.provider === provider);
+        return this.fuse.search(queryStr).map(result => result.item);
     }
 
     getPartsByService(service: string): SparePart[] {

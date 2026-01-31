@@ -1,17 +1,23 @@
-import { readFile } from 'fs/promises';
-import { join } from 'path';
+import { db } from '@/lib/firebase';
+import { doc, getDoc } from 'firebase/firestore';
 import AddPartForm from '@/components/AddPartForm';
-import { Package } from 'lucide-react';
 import { SparePart } from '@/types';
 import { redirect } from 'next/navigation';
 
 async function getPart(id: string): Promise<SparePart | undefined> {
     try {
-        const filePath = join(process.cwd(), 'src/data/spare_parts_data.json');
-        const fileContent = await readFile(filePath, 'utf-8');
-        const parts = JSON.parse(fileContent) as SparePart[];
-        return parts.find(p => String(p.id) === String(id));
+        const docRef = doc(db, 'parts', id);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            return {
+                id: docSnap.id,
+                ...docSnap.data()
+            } as SparePart;
+        }
+        return undefined;
     } catch (error) {
+        console.error('Error fetching part from Firestore:', error);
         return undefined;
     }
 }
@@ -34,7 +40,9 @@ export default async function AdminEditPage(props: { params: Promise<{ id: strin
                 <div className="flex items-center gap-4">
                     <div className="relative group">
                         <div className="absolute inset-0 bg-emerald-500/20 blur-xl rounded-full group-hover:bg-emerald-500/40 transition-all duration-500" />
-                        <img src="/eir_logo.png" alt="Eir" className="relative w-12 h-12 object-contain filter drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+                        <div className="relative w-14 h-14 bg-emerald-500/10 border border-emerald-500/20 rounded-full p-1 shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+                            <img src="/eir_logo.png" alt="Eir" className="w-full h-full object-cover rounded-full" />
+                        </div>
                     </div>
                     <div>
                         <h1 className="text-2xl font-display font-black text-white tracking-tight">

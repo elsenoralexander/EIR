@@ -1,7 +1,10 @@
+'use client';
+
 import { SparePart } from '@/types';
-import { X, Phone, Mail, FileText, ShoppingCart, Image as ImageIcon, Edit3 } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { X, Phone, Mail, FileText, ShoppingCart, Image as ImageIcon, Edit3, Trash2 } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { deletePart } from '@/actions/partActions';
 
 interface PartDetailModalProps {
     part: SparePart | null;
@@ -10,6 +13,21 @@ interface PartDetailModalProps {
 
 export default function PartDetailModal({ part, onClose }: PartDetailModalProps) {
     const modalRef = useRef<HTMLDivElement>(null);
+    const [deleting, setDeleting] = useState(false);
+
+    async function handleDelete() {
+        if (!part) return;
+        if (confirm('¿Estás seguro de que deseas eliminar este repuesto?')) {
+            setDeleting(true);
+            const result = await deletePart(part.id);
+            if (result.success) {
+                onClose();
+            } else {
+                alert(result.error);
+                setDeleting(false);
+            }
+        }
+    }
 
     useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {
@@ -60,6 +78,17 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
                                     Editar
                                 </div>
                             </Link>
+                            <button
+                                onClick={handleDelete}
+                                disabled={deleting}
+                                className="group relative px-4 py-1.5 rounded-full overflow-hidden transition-all active:scale-95 disabled:opacity-50"
+                            >
+                                <div className="absolute inset-0 bg-rose-500/10 border border-rose-500/30 rounded-full" />
+                                <div className="relative flex items-center gap-1.5 text-rose-400 text-[10px] font-bold uppercase tracking-widest">
+                                    <Trash2 className="w-3.5 h-3.5" />
+                                    {deleting ? 'Borrando...' : 'Borrar'}
+                                </div>
+                            </button>
                         </div>
                         <p className="text-[10px] text-emerald-500/60 font-medium uppercase tracking-[0.2em]">Ficha Técnica de Suministro</p>
                     </div>
