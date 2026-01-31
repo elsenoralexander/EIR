@@ -61,7 +61,7 @@ export default function PartCard({ part, onClick }: PartCardProps) {
                 </div>
 
                 <h3 className="font-display font-bold text-white mb-4 line-clamp-2 group-hover:text-emerald-400 transition-colors duration-300 text-base leading-tight">
-                    {part.commonName && part.commonName !== 'NaN' ? part.commonName : part.name}
+                    {part.name}
                 </h3>
 
                 <div className="space-y-2 mt-auto pt-4 border-t border-white/5">

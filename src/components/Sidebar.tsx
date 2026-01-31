@@ -40,19 +40,24 @@ export default function Sidebar({ services, providers }: SidebarProps) {
                             />
                         </div>
                     </div>
-                    <h1 className="text-3xl font-display font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-amber-300 to-emerald-400 bg-[length:200%_auto] animate-gradient-flow">
+                    <h1 className="text-3xl font-display font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-amber-300 to-emerald-400 bg-[length:200%_auto] animate-gradient-flow">
                         EIR
                     </h1>
-                    <p className="text-[10px] uppercase tracking-[0.3em] font-medium text-emerald-500/60 mt-1">
-                        Diosa de la Salud
-                    </p>
+                    <div className="flex flex-col items-center gap-0.5 mt-2">
+                        <p className="text-[10px] uppercase tracking-[0.25em] font-black text-emerald-400">
+                            TU BUSCADOR DE REPUESTOS
+                        </p>
+                        <p className="text-[9px] uppercase tracking-[0.1em] font-medium text-emerald-500/40">
+                            Creado por Alex Lesaka
+                        </p>
+                    </div>
                 </div>
 
                 <div className="flex items-center gap-3 mb-8 px-2">
                     <div className="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
                         <Filter className="w-4 h-4 text-emerald-400" />
                     </div>
-                    <h2 className="font-display font-semibold text-lg text-white">Refinar Suministros</h2>
+                    <h2 className="font-display font-semibold text-lg text-white">Refinar Repuestos</h2>
                 </div>
 
                 <div className="mb-10">

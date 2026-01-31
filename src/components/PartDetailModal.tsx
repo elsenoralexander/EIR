@@ -1,7 +1,7 @@
 'use client';
 
 import { SparePart } from '@/types';
-import { X, Phone, Mail, FileText, ShoppingCart, Image as ImageIcon, Edit3, Trash2 } from 'lucide-react';
+import { X, Phone, Mail, FileText, ShoppingCart, Image as ImageIcon, Edit3, Trash2, Tag } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { deletePart } from '@/actions/partActions';
@@ -74,7 +74,7 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
                     <div className="flex flex-col gap-1">
                         <div className="flex items-center gap-3">
                             <h2 className="text-2xl font-display font-black text-white tracking-tight leading-none">
-                                {part.commonName && part.commonName !== 'NaN' ? part.commonName : part.name}
+                                {part.name}
                             </h2>
                             <Link
                                 href={`/admin/edit/${part.id}`}
@@ -169,6 +169,18 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
                                         <p className="text-white font-bold tracking-wide">{part.provider}</p>
                                     </div>
                                 </div>
+
+                                {part.commonName && part.commonName !== 'NaN' && (
+                                    <div className="flex items-start gap-4 p-4 rounded-3xl bg-amber-500/5 border border-amber-500/10 group hover:border-amber-500/30 transition-colors">
+                                        <div className="p-2.5 rounded-xl bg-white/5 text-amber-500/50 group-hover:text-amber-400">
+                                            <Tag className="w-5 h-5" />
+                                        </div>
+                                        <div>
+                                            <label className="text-[9px] font-bold text-amber-500/40 uppercase tracking-widest block mb-1">Nombre Común</label>
+                                            <p className="text-white font-medium italic">"{part.commonName}"</p>
+                                        </div>
+                                    </div>
+                                )}
 
                                 <div className="flex items-start gap-4 p-4 rounded-3xl bg-white/5 border border-white/5 group hover:border-emerald-500/30 transition-colors">
                                     <div className="p-2.5 rounded-xl bg-white/5 text-emerald-500/50 group-hover:text-emerald-400">

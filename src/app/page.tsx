@@ -119,7 +119,7 @@ function HomeContent() {
             <div className="mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-6 border-b border-white/5">
               <div>
                 <h2 className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight mb-2">
-                  Biblioteca de <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300">Suministros</span>
+                  Biblioteca de <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300">Repuestos</span>
                 </h2>
                 <p className="text-emerald-500/60 font-medium text-sm tracking-widest uppercase">
                   {loading ? 'Consultando Oráculo...' : `Localizados ${filteredParts.length} repuestos divinos`}
