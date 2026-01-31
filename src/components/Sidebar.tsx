@@ -13,7 +13,7 @@ export default function Sidebar({ services, providers, machines }: SidebarProps)
     const router = useRouter();
 
     const [openSections, setOpenSections] = useState<Record<string, boolean>>({
-        providers: true,
+        providers: false,
         services: false,
         machines: false
     });
@@ -122,12 +122,6 @@ export default function Sidebar({ services, providers, machines }: SidebarProps)
                     </div>
                 </div>
 
-                <div className="flex items-center gap-3 mb-8 px-2">
-                    <div className="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
-                        <Filter className="w-4 h-4 text-emerald-400" />
-                    </div>
-                    <h2 className="font-display font-semibold text-lg text-white">Refinar Repuestos</h2>
-                </div>
 
                 <div className="space-y-2">
                     <FilterSection

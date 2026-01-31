@@ -137,10 +137,6 @@ function HomeContent() {
                 </p>
               </div>
 
-              <div className="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full text-xs font-bold text-slate-400">
-                <LayoutGrid className="w-3.5 h-3.5 text-emerald-500" />
-                VISTA DE REJILLA
-              </div>
             </div>
 
             {loading ? (
@@ -152,7 +148,12 @@ function HomeContent() {
                 <p className="font-display font-bold text-lg tracking-widest uppercase animate-pulse">Sincronizando con Eir...</p>
               </div>
             ) : filteredParts.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 pb-32">
+              <div className={`grid gap-8 pb-32 transition-all duration-500 ${filteredParts.length === 1
+                  ? 'grid-cols-1 max-w-xl mx-auto'
+                  : filteredParts.length === 2
+                    ? 'grid-cols-1 lg:grid-cols-2 max-w-5xl mx-auto'
+                    : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+                }`}>
                 {filteredParts.map((part, index) => (
                   <div
                     key={`${part.providerRef}-${index}`}
