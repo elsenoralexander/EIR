@@ -189,7 +189,7 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                                             id="price"
                                             name="price"
                                             type="text"
-                                            defaultValue={part?.price.replace(' €', '')}
+                                            defaultValue={String(part?.price || '').replace(' €', '')}
                                             placeholder="85,00"
                                             className="w-full p-4 bg-[#020617]/50 border border-white/5 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/20 outline-none text-amber-400 font-display font-black tracking-tighter text-xl transition-all placeholder:text-slate-600"
                                         />
@@ -290,8 +290,10 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                                         {isEditing && part.imageFile && (
                                             <div className="relative w-24 h-24 rounded-2xl overflow-hidden border border-white/10 shadow-emerald-500/10 shadow-lg mb-2">
                                                 <img src={part.imageFile} alt="primary" className="w-full h-full object-cover" />
-                                                <div className="absolute inset-0 bg-[#020617]/40 flex items-center justify-center opacity-0 group-hover:upload:opacity-100 transition-opacity">
-                                                    <Upload className="w-5 h-5 text-white" />
+                                                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                                    <div className="p-3 rounded-full bg-white/20 backdrop-blur-md">
+                                                        <Upload className="w-6 h-6 text-white" />
+                                                    </div>
                                                 </div>
                                             </div>
                                         )}

@@ -11,10 +11,22 @@ async function getPart(id: string): Promise<SparePart | undefined> {
 
         if (docSnap.exists()) {
             const data = docSnap.data();
-            // Serialize non-plain objects like Timestamps
+
+            // Bulletproof serialization for Client Components
             return {
                 id: docSnap.id,
-                ...data,
+                name: String(data.name || ''),
+                providerRef: String(data.providerRef || ''),
+                contact: String(data.contact || ''),
+                provider: String(data.provider || ''),
+                machine: String(data.machine || ''),
+                services: Array.isArray(data.services) ? data.services.map(String) : [],
+                price: String(data.price || ''),
+                category: String(data.category || ''),
+                internalCode: String(data.internalCode || ''),
+                commonName: String(data.commonName || ''),
+                imageFile: String(data.imageFile || ''),
+                additionalImages: Array.isArray(data.additionalImages) ? data.additionalImages.map(String) : [],
                 createdAt: data.createdAt?.toDate?.()?.toISOString() || null,
                 updatedAt: data.updatedAt?.toDate?.()?.toISOString() || null
             } as any;

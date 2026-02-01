@@ -40,15 +40,16 @@ export default function CustomSelector({
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
-    const filteredOptions = (options || []).filter(opt =>
-        opt && opt.toLowerCase().includes((searchTerm || '').toLowerCase())
-    );
+    const filteredOptions = (options || []).filter(opt => {
+        if (typeof opt !== 'string') return false;
+        return opt.toLowerCase().includes((searchTerm || '').toLowerCase());
+    });
 
     const isCustomOption = searchTerm &&
-        !(options || []).some(opt => opt && opt.toLowerCase() === searchTerm.toLowerCase());
+        !(options || []).some(opt => typeof opt === 'string' && opt.toLowerCase() === searchTerm.toLowerCase());
 
-    const toggleOption = (opt: string) => {
-        const normalized = opt.toUpperCase();
+    const toggleOption = (opt: any) => {
+        const normalized = String(opt || '').toUpperCase();
         if (multiple) {
             setSelected(prev =>
                 prev.includes(normalized)
@@ -79,12 +80,12 @@ export default function CustomSelector({
             >
                 {selected.length > 0 ? (
                     selected.map(val => (
-                        <span key={val} className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-black tracking-wider uppercase">
-                            {val}
+                        <span key={String(val)} className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-black tracking-wider uppercase">
+                            {String(val)}
                             {multiple && (
                                 <button
                                     type="button"
-                                    onClick={(e) => { e.stopPropagation(); removeOption(val); }}
+                                    onClick={(e) => { e.stopPropagation(); removeOption(String(val)); }}
                                     className="hover:text-amber-400 transition-colors"
                                 >
                                     <X className="w-3 h-3" />
@@ -102,7 +103,7 @@ export default function CustomSelector({
 
                 {/* Hidden Inputs for Form Submission */}
                 {selected.map((val, idx) => (
-                    <input key={idx} type="hidden" name={name} value={val} />
+                    <input key={idx} type="hidden" name={name} value={String(val)} />
                 ))}
             </div>
 

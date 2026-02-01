@@ -20,16 +20,27 @@ const storage = getStorage(app);
 // Initialize Analytics (Client Side only)
 let analytics: any = null;
 if (typeof window !== "undefined") {
-    const { getAnalytics, isSupported } = require("firebase/analytics");
-    isSupported().then((yes: boolean) => {
-        if (yes) {
-            try {
-                analytics = getAnalytics(app);
-            } catch (err) {
-                console.warn("Firebase Analytics could not be initialized:", err);
-            }
+    // Check if indexedDB is available (required for Analytics)
+    const isIndexedDBAvailable = typeof indexedDB !== 'undefined';
+
+    if (isIndexedDBAvailable) {
+        try {
+            const { getAnalytics, isSupported } = require("firebase/analytics");
+            isSupported().then((yes: boolean) => {
+                if (yes) {
+                    try {
+                        analytics = getAnalytics(app);
+                    } catch (err) {
+                        console.warn("Firebase Analytics could not be initialized:", err);
+                    }
+                }
+            }).catch(() => { });
+        } catch (e) {
+            console.warn("Analytics module could not be loaded");
         }
-    }).catch(() => { });
+    } else {
+        console.warn("IndexedDB is not available; Firebase Analytics will be disabled.");
+    }
 }
 
 export { app, db, storage, analytics };
