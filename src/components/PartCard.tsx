@@ -29,7 +29,8 @@ export default function PartCard({ part, onClick }: PartCardProps) {
                             src={imageToDisplay.startsWith('http') || imageToDisplay.startsWith('/') ? imageToDisplay : `https://placehold.co/400x400/020617/10b981?text=${encodeURIComponent(part.name)}`}
                             alt={part.name}
                             fill
-                            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            quality={85}
                             className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                         />
                     </div>

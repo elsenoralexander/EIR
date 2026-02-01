@@ -25,6 +25,6 @@ export async function uploadToImgBB(file: File): Promise<ImgBBResponse> {
 
     return {
         url: data.data.url,
-        thumbUrl: data.data.thumb.url
+        thumbUrl: data.data.medium?.url || data.data.display_url || data.data.thumb.url
     };
 }
