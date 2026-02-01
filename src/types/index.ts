@@ -11,5 +11,6 @@ export interface SparePart {
     internalCode: string;
     commonName: string;
     imageFile: string;
+    thumbnailUrl?: string;
     additionalImages?: string[];
 }

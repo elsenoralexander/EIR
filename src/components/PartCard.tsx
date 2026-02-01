@@ -1,6 +1,7 @@
 import { SparePart } from '@/types';
 import { Tag, Building2, Monitor, Image as ImageIcon, Edit2 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface PartCardProps {
     part: SparePart;
@@ -9,6 +10,7 @@ interface PartCardProps {
 
 export default function PartCard({ part, onClick }: PartCardProps) {
     const hasImage = part.imageFile && part.imageFile !== 'NaN' && part.imageFile !== '';
+    const imageToDisplay = part.thumbnailUrl || part.imageFile;
 
     return (
         <div
@@ -23,10 +25,12 @@ export default function PartCard({ part, onClick }: PartCardProps) {
 
                 {hasImage ? (
                     <div className="relative w-full h-full">
-                        <img
-                            src={part.imageFile.startsWith('http') || part.imageFile.startsWith('/') ? part.imageFile : `https://placehold.co/400x400/020617/10b981?text=${encodeURIComponent(part.name)}`}
+                        <Image
+                            src={imageToDisplay.startsWith('http') || imageToDisplay.startsWith('/') ? imageToDisplay : `https://placehold.co/400x400/020617/10b981?text=${encodeURIComponent(part.name)}`}
                             alt={part.name}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                            fill
+                            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+                            className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                         />
                     </div>
                 ) : (

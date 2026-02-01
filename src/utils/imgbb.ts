@@ -1,4 +1,9 @@
-export async function uploadToImgBB(file: File): Promise<string> {
+export interface ImgBBResponse {
+    url: string;
+    thumbUrl: string;
+}
+
+export async function uploadToImgBB(file: File): Promise<ImgBBResponse> {
     const apiKey = process.env.NEXT_PUBLIC_IMGBB_API_KEY;
     if (!apiKey) {
         throw new Error('La API Key de ImgBB no está configurada.');
@@ -18,5 +23,8 @@ export async function uploadToImgBB(file: File): Promise<string> {
         throw new Error(data.error?.message || 'Error al subir la imagen a ImgBB');
     }
 
-    return data.data.url;
+    return {
+        url: data.data.url,
+        thumbUrl: data.data.thumb.url
+    };
 }

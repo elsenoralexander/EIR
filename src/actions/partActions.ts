@@ -26,18 +26,21 @@ export async function createPart(formData: FormData) {
         const additionalImagesFiles = formData.getAll('additionalImages') as File[];
 
         let imageURL = '';
+        let thumbnailUrl = '';
         const additionalImages: string[] = [];
 
         // Upload primary image
         if (imageFile && imageFile.size > 0) {
-            imageURL = await uploadToImgBB(imageFile);
+            const result = await uploadToImgBB(imageFile);
+            imageURL = result.url;
+            thumbnailUrl = result.thumbUrl;
         }
 
         // Upload additional images
         for (const file of additionalImagesFiles) {
             if (file && file.size > 0) {
-                const url = await uploadToImgBB(file);
-                additionalImages.push(url);
+                const result = await uploadToImgBB(file);
+                additionalImages.push(result.url);
             }
         }
 
@@ -53,6 +56,7 @@ export async function createPart(formData: FormData) {
             internalCode,
             commonName,
             imageFile: imageURL,
+            thumbnailUrl,
             additionalImages,
             createdAt: Timestamp.now(),
         };
@@ -95,18 +99,21 @@ export async function updatePart(formData: FormData) {
         const additionalImagesFiles = formData.getAll('additionalImages') as File[];
 
         let imageURL = currentImage;
+        let thumbnailUrl = (formData.get('currentThumb') as string) || '';
         const additionalImages: string[] = [...currentAdditionalImages];
 
         // Upload primary image if changed
         if (imageFile && imageFile.size > 0) {
-            imageURL = await uploadToImgBB(imageFile);
+            const result = await uploadToImgBB(imageFile);
+            imageURL = result.url;
+            thumbnailUrl = result.thumbUrl;
         }
 
         // Upload NEW additional images
         for (const file of additionalImagesFiles) {
             if (file && file.size > 0) {
-                const url = await uploadToImgBB(file);
-                additionalImages.push(url);
+                const result = await uploadToImgBB(file);
+                additionalImages.push(result.url);
             }
         }
 
@@ -124,6 +131,7 @@ export async function updatePart(formData: FormData) {
             internalCode,
             commonName,
             imageFile: imageURL,
+            thumbnailUrl,
             additionalImages,
             updatedAt: Timestamp.now(),
         });

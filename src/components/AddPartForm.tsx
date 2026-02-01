@@ -358,7 +358,14 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                                         </div>
                                     )}
                                 </div>
-                                {isEditing && part.additionalImages && <input type="hidden" name="currentAdditionalImages" value={JSON.stringify(part.additionalImages)} />}
+                                {isEditing && (
+                                    <>
+                                        <input type="hidden" name="id" value={part.id} />
+                                        <input type="hidden" name="currentImage" value={part.imageFile} />
+                                        <input type="hidden" name="currentThumb" value={part.thumbnailUrl || ''} />
+                                        <input type="hidden" name="currentAdditionalImages" value={JSON.stringify(part.additionalImages || [])} />
+                                    </>
+                                )}
                             </div>
                         </div>
                     </div>

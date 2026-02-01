@@ -26,6 +26,7 @@ async function getPart(id: string): Promise<SparePart | undefined> {
                 internalCode: String(data.internalCode || ''),
                 commonName: String(data.commonName || ''),
                 imageFile: String(data.imageFile || ''),
+                thumbnailUrl: String(data.thumbnailUrl || ''),
                 additionalImages: Array.isArray(data.additionalImages) ? data.additionalImages.map(String) : [],
                 createdAt: data.createdAt?.toDate?.()?.toISOString() || null,
                 updatedAt: data.updatedAt?.toDate?.()?.toISOString() || null
