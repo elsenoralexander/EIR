@@ -4,6 +4,7 @@ import { SparePart } from '@/types';
 import { X, Phone, Mail, FileText, ShoppingCart, Image as ImageIcon, Edit3, Trash2, Tag } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { deletePart } from '@/actions/partActions';
 
 interface PartDetailModalProps {
@@ -124,11 +125,14 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
                             <div className="aspect-square bg-[#020617] rounded-3xl flex items-center justify-center border border-white/5 overflow-hidden relative group">
                                 <div className="absolute inset-0 bg-gradient-to-t from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                 {hasImages ? (
-                                    <img
+                                    <Image
                                         src={activeImage || allImages[0]}
                                         alt={part.name}
-                                        className="w-full h-full object-contain p-6 relative z-10 transition-all duration-700 hover:scale-105 cursor-zoom-in"
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, 50vw"
+                                        className="object-contain p-6 relative z-10 transition-all duration-700 hover:scale-105 cursor-zoom-in"
                                         onClick={() => setIsPreviewOpen(true)}
+                                        priority
                                     />
                                 ) : (
                                     <div className="flex flex-col items-center justify-center text-emerald-500/20">
@@ -147,7 +151,13 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
                                             onClick={() => setActiveImage(img)}
                                             className={`relative w-16 h-16 rounded-xl overflow-hidden shrink-0 border-2 transition-all ${activeImage === img ? 'border-emerald-500 scale-105 shadow-lg shadow-emerald-500/20' : 'border-white/5 grayscale opacity-50 hover:grayscale-0 hover:opacity-100'}`}
                                         >
-                                            <img src={img} alt={`thumb-${idx}`} className="w-full h-full object-cover" />
+                                            <Image
+                                                src={img}
+                                                alt={`thumb-${idx}`}
+                                                fill
+                                                sizes="64px"
+                                                className="object-cover"
+                                            />
                                         </button>
                                     ))}
                                 </div>
@@ -280,11 +290,15 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
                     </button>
 
                     <div className="relative w-full h-full flex items-center justify-center p-4 sm:p-12">
-                        <img
+                        <Image
                             src={activeImage || allImages[0]}
                             alt={part.name}
-                            className="max-w-full max-h-full object-contain shadow-2xl animate-in zoom-in-95 duration-300"
+                            fill
+                            sizes="100vw"
+                            quality={100}
+                            className="object-contain shadow-2xl animate-in zoom-in-95 duration-300"
                             onClick={(e) => e.stopPropagation()}
+                            priority
                         />
                     </div>
                 </div>
