@@ -18,10 +18,14 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
 
     const [activeImage, setActiveImage] = useState<string | null>(null);
     const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+    const [isOrderMode, setIsOrderMode] = useState(false);
+    const [quantity, setQuantity] = useState(1);
 
     useEffect(() => {
         if (part) {
             setActiveImage(part.imageFile || null);
+            setIsOrderMode(false);
+            setQuantity(1);
         }
     }, [part]);
 
@@ -38,6 +42,29 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
             }
         }
     }
+
+    const handleOrder = () => {
+        if (!part) return;
+
+        const category = (part.category || 'COMPRAS').toUpperCase();
+        let recipients = '';
+
+        if (category === 'MANTENIMIENTO') {
+            recipients = 'mantenimiento.gpk@quironsalud.es, alex.lesaka@quironsalud.es, unai.lecube@quironsalud.es';
+        } else {
+            recipients = 'compras.gpk@quironsalud.es, monica.pozuelo@quironsalud.es';
+        }
+
+        const subject = `Petición de Repuesto: ${part.name}`;
+        const body = `Hola,
+
+Necesito pedir ${quantity} de ${part.commonName || part.name}. Su referencia es ${part.providerRef} y el proveedor ${part.provider}. El último precio que tenemos es ${part.price} y habitualmente se le pide a ${part.contact || 'consultar'}.
+
+Muchas gracias`;
+
+        const mailtoUrl = `mailto:${recipients}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailtoUrl;
+    };
 
     useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {
@@ -260,19 +287,48 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
                 </div>
 
                 {/* Final Action */}
-                <div className="p-8 border-t border-white/5 bg-white/5 flex gap-4">
-                    <button
-                        onClick={onClose}
-                        className="flex-1 py-4 px-6 bg-white/5 hover:bg-white/10 text-white font-display font-bold rounded-2xl border border-white/10 transition-all uppercase tracking-[0.2em] text-xs shadow-lg active:scale-95"
-                    >
-                        Retornar al Oráculo
-                    </button>
-                    <button
-                        onClick={onClose}
-                        className="flex-1 py-4 px-6 bg-gradient-to-r from-emerald-600 to-emerald-500 hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] text-white font-display font-bold rounded-2xl transition-all uppercase tracking-[0.2em] text-xs shadow-lg active:scale-95"
-                    >
-                        Confirmar Petición
-                    </button>
+                <div className="p-8 border-t border-white/5 bg-white/5 space-y-4">
+                    {isOrderMode && (
+                        <div className="flex flex-col gap-3 p-6 rounded-[28px] bg-emerald-500/5 border border-emerald-500/20 animate-in slide-in-from-bottom-4 duration-500">
+                            <div className="flex items-center justify-between">
+                                <span className="text-[10px] font-bold text-emerald-500/60 uppercase tracking-widest pl-1">Cantidad a solicitar</span>
+                                <div className="flex items-center gap-4 bg-[#020617] p-1.5 rounded-full border border-white/10">
+                                    <button
+                                        onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                                        className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+                                    >
+                                        <span className="text-xl font-bold leading-none">-</span>
+                                    </button>
+                                    <span className="w-8 text-center font-display font-black text-white text-lg">{quantity}</span>
+                                    <button
+                                        onClick={() => setQuantity(quantity + 1)}
+                                        className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 hover:bg-emerald-500/30 transition-colors"
+                                    >
+                                        <span className="text-xl font-bold leading-none">+</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    <div className="flex gap-4">
+                        <button
+                            onClick={onClose}
+                            className="flex-1 py-4 px-6 bg-white/5 hover:bg-white/10 text-white font-display font-bold rounded-2xl border border-white/10 transition-all uppercase tracking-[0.2em] text-xs shadow-lg active:scale-95"
+                        >
+                            Retornar al Oráculo
+                        </button>
+                        <button
+                            onClick={() => isOrderMode ? handleOrder() : setIsOrderMode(true)}
+                            className={`flex-1 py-4 px-6 font-display font-bold rounded-2xl transition-all uppercase tracking-[0.2em] text-xs shadow-lg active:scale-95 flex items-center justify-center gap-2
+                                ${isOrderMode
+                                    ? 'bg-amber-500 hover:bg-amber-400 shadow-amber-500/20'
+                                    : 'bg-gradient-to-r from-emerald-600 to-emerald-500 hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]'
+                                } text-white`}
+                        >
+                            {isOrderMode ? 'Confirmar y Enviar Mail' : 'Realizar pedido'}
+                        </button>
+                    </div>
                 </div>
             </div>
 
