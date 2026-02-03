@@ -120,43 +120,48 @@ Muchas gracias.
                 aria-modal="true"
             >
                 {/* Modal Header */}
-                <div className="flex items-center justify-between p-8 border-b border-white/5 shrink-0 bg-white/5">
-                    <div className="flex flex-col gap-1">
-                        <div className="flex items-center gap-3">
-                            <h2 className="text-2xl font-display font-black text-white tracking-tight leading-none">
-                                {part.name}
-                            </h2>
+                <div className="flex items-start justify-between p-6 sm:p-8 border-b border-white/5 shrink-0 bg-white/5 gap-4">
+                    <div className="flex-1 min-w-0">
+                        <h2 className="text-xl sm:text-2xl font-display font-black text-white tracking-tight leading-tight break-words mb-1">
+                            {part.name}
+                        </h2>
+                        <p className="text-[9px] sm:text-[10px] text-emerald-500/60 font-medium uppercase tracking-[0.2em]">Ficha Técnica de Suministro</p>
+                    </div>
+
+                    <div className="flex items-start gap-3 shrink-0">
+                        <div className="flex flex-col gap-2">
                             <Link
                                 href={`/admin/edit/${part.id}`}
-                                className="group relative px-4 py-1.5 rounded-full overflow-hidden transition-all active:scale-95"
+                                className="group relative px-3 py-1.5 rounded-xl overflow-hidden transition-all active:scale-95"
                                 onClick={onClose}
                             >
-                                <div className="absolute inset-0 bg-emerald-500/10 border border-emerald-500/30 rounded-full" />
-                                <div className="relative flex items-center gap-1.5 text-emerald-400 text-[10px] font-bold uppercase tracking-widest">
+                                <div className="absolute inset-0 bg-emerald-500/10 border border-emerald-500/30 rounded-xl" />
+                                <div className="relative flex items-center justify-center gap-1.5 text-emerald-400 text-[9px] font-bold uppercase tracking-widest">
                                     <Edit3 className="w-3.5 h-3.5" />
-                                    Editar
+                                    <span className="hidden sm:inline">Editar</span>
                                 </div>
                             </Link>
                             <button
                                 onClick={handleDelete}
                                 disabled={deleting}
-                                className="group relative px-4 py-1.5 rounded-full overflow-hidden transition-all active:scale-95 disabled:opacity-50"
+                                className="group relative px-3 py-1.5 rounded-xl overflow-hidden transition-all active:scale-95 disabled:opacity-50"
                             >
-                                <div className="absolute inset-0 bg-rose-500/10 border border-rose-500/30 rounded-full" />
-                                <div className="relative flex items-center gap-1.5 text-rose-400 text-[10px] font-bold uppercase tracking-widest">
+                                <div className="absolute inset-0 bg-rose-500/10 border border-rose-500/30 rounded-xl" />
+                                <div className="relative flex items-center justify-center gap-1.5 text-rose-400 text-[9px] font-bold uppercase tracking-widest">
                                     <Trash2 className="w-3.5 h-3.5" />
-                                    {deleting ? 'Borrando...' : 'Borrar'}
+                                    <span className="hidden sm:inline">{deleting ? '...' : 'Borrar'}</span>
                                 </div>
                             </button>
                         </div>
-                        <p className="text-[10px] text-emerald-500/60 font-medium uppercase tracking-[0.2em]">Ficha Técnica de Suministro</p>
+
+                        <button
+                            onClick={onClose}
+                            className="p-2 sm:p-3 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 transition shrink-0"
+                            title="Cerrar"
+                        >
+                            <X className="w-5 h-5 sm:w-6 h-6" />
+                        </button>
                     </div>
-                    <button
-                        onClick={onClose}
-                        className="p-3 rounded-full bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 transition"
-                    >
-                        <X className="w-6 h-6" />
-                    </button>
                 </div>
 
                 {/* Modal Content */}
