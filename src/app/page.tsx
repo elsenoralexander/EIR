@@ -10,6 +10,7 @@ import PartCard from '@/components/PartCard';
 import PartDetailModal from '@/components/PartDetailModal';
 import { LayoutGrid, AlertCircle, Menu, X, Plus, Loader2 } from 'lucide-react';
 import Link from 'next/link';
+import { TextHoverEffect } from '@/components/ui/text-hover-effect';
 
 function HomeContent() {
   const searchParams = useSearchParams();
@@ -125,15 +126,12 @@ function HomeContent() {
           <div className="max-w-7xl mx-auto">
             {/* Page Header Detail */}
             <div className="mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-6 border-b border-white/5">
-              <div>
-                <h2 className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight mb-2">
-                  Biblioteca de <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300">Repuestos</span>
-                </h2>
-                <p className="text-emerald-500/60 font-medium text-sm tracking-widest uppercase">
+              <div className="w-full h-32 -ml-4 flex flex-col justify-end">
+                <TextHoverEffect text="REPUESTOS" />
+                <p className="text-emerald-500/60 font-medium text-xs tracking-[0.3em] uppercase ml-6 -mt-4">
                   {loading ? 'Consultando Oráculo...' : `Localizados ${filteredParts.length} repuestos divinos`}
                 </p>
               </div>
-
             </div>
 
             {loading ? (
@@ -192,8 +190,8 @@ function HomeContent() {
 
 export default function Home() {
   return (
-    <Suspense fallback={<div className="flex items-center justify-center h-screen bg-white">
-      <Loader2 className="w-8 h-8 animate-spin text-sky-600" />
+    <Suspense fallback={<div className="flex items-center justify-center h-screen bg-[#020617]">
+      <Loader2 className="w-8 h-8 animate-spin text-emerald-500" />
     </div>}>
       <HomeContent />
     </Suspense>
