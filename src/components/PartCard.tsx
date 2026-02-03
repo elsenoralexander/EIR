@@ -12,6 +12,7 @@ interface PartCardProps {
 export default function PartCard({ part, onClick }: PartCardProps) {
     const cardRef = useRef<HTMLDivElement>(null);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [tilt, setTilt] = useState({ x: 0, y: 0 });
     const [isHovered, setIsHovered] = useState(false);
 
     const hasImage = part.imageFile && part.imageFile !== 'NaN' && part.imageFile !== '';
@@ -20,10 +21,23 @@ export default function PartCard({ part, onClick }: PartCardProps) {
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
         if (!cardRef.current) return;
         const rect = cardRef.current.getBoundingClientRect();
-        setMousePosition({
-            x: e.clientX - rect.left,
-            y: e.clientY - rect.top,
-        });
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        setMousePosition({ x, y });
+
+        // Calculate tilt
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const tiltX = (y - centerY) / 15;
+        const tiltY = (x - centerX) / -15;
+
+        setTilt({ x: tiltX, y: tiltY });
+    };
+
+    const handleMouseLeave = () => {
+        setIsHovered(false);
+        setTilt({ x: 0, y: 0 });
     };
 
     return (
@@ -31,8 +45,12 @@ export default function PartCard({ part, onClick }: PartCardProps) {
             ref={cardRef}
             onMouseMove={handleMouseMove}
             onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            className="glass-panel rounded-3xl border border-white/5 overflow-hidden hover:shadow-[0_0_40px_rgba(16,185,129,0.1)] hover:border-emerald-500/40 transition-all duration-500 group flex flex-col h-full relative animate-reveal transform-gpu will-change-transform"
+            onMouseLeave={handleMouseLeave}
+            className="glass-panel rounded-3xl border border-white/5 overflow-hidden hover:shadow-[0_40px_80px_rgba(0,0,0,0.4)] hover:border-emerald-500/40 transition-all duration-300 group flex flex-col h-full relative animate-reveal transform-gpu"
+            style={{
+                transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+                willChange: 'transform'
+            }}
         >
             {/* Spotlight Effect */}
             <div

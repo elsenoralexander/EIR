@@ -31,6 +31,7 @@ export default function RootLayout({
         <div className="noise-overlay" />
         <div className="bg-glow-1" />
         <div className="bg-glow-2" />
+        <div className="bg-glow-3" />
         <GatedAccess>
           {children}
         </GatedAccess>

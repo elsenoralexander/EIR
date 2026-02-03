@@ -102,14 +102,106 @@
 
     0%,
     100% {
-      transform: scale(1) translate(0, 0);
-      opacity: 0.05;
+      transform: scale(1);
+      opacity: 0.15;
     }
 
     50% {
-      transform: scale(1.1) translate(2%, 2%);
-      opacity: 0.1;
+      transform: scale(1.05);
+      opacity: 0.25;
     }
+  }
+
+  /* Aurora Morphing */
+  @keyframes aurora-1 {
+
+    0%,
+    100% {
+      top: -20%;
+      left: -20%;
+      transform: rotate(0deg) scale(1);
+    }
+
+    33% {
+      top: -10%;
+      left: 0%;
+      transform: rotate(20deg) scale(1.1);
+    }
+
+    66% {
+      top: -25%;
+      left: -10%;
+      transform: rotate(-20deg) scale(0.9);
+    }
+  }
+
+  @keyframes aurora-2 {
+
+    0%,
+    100% {
+      bottom: -20%;
+      right: -20%;
+      transform: rotate(0deg) scale(1);
+    }
+
+    50% {
+      bottom: -10%;
+      right: 0%;
+      transform: rotate(-30deg) scale(1.2);
+    }
+  }
+
+  @keyframes aurora-3 {
+
+    0%,
+    100% {
+      top: 30%;
+      left: 30%;
+      transform: scale(1) translate(0, 0);
+    }
+
+    50% {
+      top: 40%;
+      left: 20%;
+      transform: scale(1.2) translate(10%, 10%);
+    }
+  }
+
+  /* Holographic Scan */
+  @keyframes laser-scan {
+    0% {
+      top: -10%;
+      opacity: 0;
+    }
+
+    10% {
+      opacity: 1;
+    }
+
+    90% {
+      opacity: 1;
+    }
+
+    100% {
+      top: 110%;
+      opacity: 0;
+    }
+  }
+
+  .laser-scanner {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #10b981, transparent);
+    box-shadow: 0 0 15px #10b981, 0 0 30px #10b981;
+    z-index: 20;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .group:hover .laser-scanner {
+    animation: laser-scan 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
 }
 
