@@ -29,13 +29,18 @@ export default function SearchBar() {
     };
 
     return (
-        <div className="relative w-full">
-            <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-emerald-500/50">
+        <div className="relative w-full group">
+            {/* Orbiting Light Beam */}
+            <div className="orbit-beam-container !rounded-2xl">
+                <div className="orbit-beam !opacity-40" style={{ offsetPath: 'rect(0 auto auto 0 round 16px)' }} />
+            </div>
+
+            <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-emerald-500/50 z-10">
                 <Search className="w-5 h-5" />
             </div>
             <input
                 type="text"
-                className="block w-full p-4 pl-12 text-sm text-white border border-white/5 rounded-2xl bg-white/5 backdrop-blur-md focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/50 transition-all placeholder:text-slate-500 shadow-inner"
+                className="block w-full p-4 pl-12 text-sm text-white border border-white/5 rounded-2xl bg-white/5 backdrop-blur-md focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/50 transition-all placeholder:text-slate-500 shadow-inner relative z-0"
                 placeholder="Invocar repuesto por nombre, referencia o máquina..."
                 defaultValue={searchParams.get('q')?.toString()}
                 onChange={(e) => debouncedSearch(e.target.value)}

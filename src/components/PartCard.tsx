@@ -44,31 +44,32 @@ export default function PartCard({ part, onClick }: PartCardProps) {
         <div className="h-full w-full animate-reveal" style={{ animationDelay: 'inherit' }}>
             <div
                 ref={cardRef}
-                onMouseMove={handleMouseMove}
                 onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={handleMouseLeave}
-                className="glass-panel rounded-3xl border border-white/5 overflow-hidden hover:shadow-[0_40px_80px_rgba(0,0,0,0.4)] hover:border-emerald-500/40 transition-all duration-300 group flex flex-col h-full relative transform-gpu"
+                onMouseLeave={() => setIsHovered(false)}
+                className="glass-panel rounded-3xl border border-white/5 overflow-hidden hover:shadow-[0_40px_80px_rgba(0,0,0,0.4)] hover:border-emerald-500/40 transition-all duration-500 group flex flex-col h-full relative transform-gpu"
                 style={{
                     transform: isHovered
-                        ? 'perspective(1000px) rotateX(10deg) translateY(-5px) scale(1.02)'
+                        ? 'perspective(1000px) rotateX(10deg) translateY(-8px) scale(1.02)'
                         : 'perspective(1000px) rotateX(0deg) translateY(0) scale(1)',
                     willChange: 'transform'
                 }}
             >
+                {/* Orbiting Light Beam */}
+                <div className="orbit-beam-container">
+                    <div className="orbit-beam" />
+                </div>
+
                 {/* Spotlight Effect */}
                 <div
                     className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-50 will-change-[background]"
                     style={{
-                        background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(16, 185, 129, 0.1), transparent 40%)`,
+                        background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(16, 185, 129, 0.08), transparent 40%)`,
                     }}
                 />
                 <div
                     onClick={() => onClick(part)}
                     className="aspect-square relative bg-white/5 flex items-center justify-center overflow-hidden cursor-pointer"
                 >
-                    {/* Laser Scanner */}
-                    <div className="laser-scanner" />
-
                     {/* Image Overlay Gradient */}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60 z-[1]" />
 
