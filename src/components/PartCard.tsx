@@ -31,8 +31,8 @@ export default function PartCard({ part, onClick }: PartCardProps) {
                 }}
             >
                 {/* Text Hover Effect Background */}
-                <div className="absolute inset-0 z-0 opacity-20 pointer-events-none group-hover:opacity-100 transition-opacity duration-500">
-                    <TextHoverEffect text={part.providerRef || "EIR"} />
+                <div className="absolute inset-0 z-0 opacity-40 pointer-events-none group-hover:opacity-100 transition-opacity duration-700">
+                    <TextHoverEffect text="EIR" />
                 </div>
 
                 <div
