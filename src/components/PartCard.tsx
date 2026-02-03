@@ -49,7 +49,9 @@ export default function PartCard({ part, onClick }: PartCardProps) {
                 onMouseLeave={handleMouseLeave}
                 className="glass-panel rounded-3xl border border-white/5 overflow-hidden hover:shadow-[0_40px_80px_rgba(0,0,0,0.4)] hover:border-emerald-500/40 transition-all duration-300 group flex flex-col h-full relative transform-gpu"
                 style={{
-                    transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+                    transform: isHovered
+                        ? 'perspective(1000px) rotateX(10deg) translateY(-5px) scale(1.02)'
+                        : 'perspective(1000px) rotateX(0deg) translateY(0) scale(1)',
                     willChange: 'transform'
                 }}
             >
