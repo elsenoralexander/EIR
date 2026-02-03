@@ -65,9 +65,6 @@ function HomeContent() {
 
   return (
     <div className="flex h-screen bg-[#020617] overflow-hidden">
-      {/* Background Decorative Glows */}
-      <div className="fixed top-0 left-0 w-[500px] h-[500px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none z-0" />
-      <div className="fixed bottom-0 right-0 w-[500px] h-[500px] bg-amber-500/5 blur-[120px] rounded-full pointer-events-none z-0" />
 
       {/* Sidebar - Desktop */}
       <div className="hidden md:block h-full shrink-0 z-20">
@@ -149,16 +146,16 @@ function HomeContent() {
               </div>
             ) : filteredParts.length > 0 ? (
               <div className={`grid gap-8 pb-32 transition-all duration-500 ${filteredParts.length === 1
-                  ? 'grid-cols-1 max-w-xl mx-auto'
-                  : filteredParts.length === 2
-                    ? 'grid-cols-1 lg:grid-cols-2 max-w-5xl mx-auto'
-                    : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+                ? 'grid-cols-1 max-w-xl mx-auto'
+                : filteredParts.length === 2
+                  ? 'grid-cols-1 lg:grid-cols-2 max-w-5xl mx-auto'
+                  : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
                 }`}>
                 {filteredParts.map((part, index) => (
                   <div
                     key={`${part.providerRef}-${index}`}
-                    className="animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both"
-                    style={{ animationDelay: `${index * 50}ms` }}
+                    className="flex h-full"
+                    style={{ animationDelay: `${index * 80}ms` }}
                   >
                     <PartCard
                       part={part}

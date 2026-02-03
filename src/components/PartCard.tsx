@@ -1,3 +1,4 @@
+import { useState, useRef } from 'react';
 import { SparePart } from '@/types';
 import { Tag, Building2, Monitor, Image as ImageIcon, Edit2 } from 'lucide-react';
 import Link from 'next/link';
@@ -9,13 +10,37 @@ interface PartCardProps {
 }
 
 export default function PartCard({ part, onClick }: PartCardProps) {
+    const cardRef = useRef<HTMLDivElement>(null);
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [isHovered, setIsHovered] = useState(false);
+
     const hasImage = part.imageFile && part.imageFile !== 'NaN' && part.imageFile !== '';
     const imageToDisplay = part.thumbnailUrl || part.imageFile;
 
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!cardRef.current) return;
+        const rect = cardRef.current.getBoundingClientRect();
+        setMousePosition({
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top,
+        });
+    };
+
     return (
         <div
-            className="glass-panel rounded-3xl border border-white/5 overflow-hidden hover:shadow-[0_0_30px_rgba(16,185,129,0.15)] hover:border-emerald-500/30 transition-all duration-500 group flex flex-col h-full relative"
+            ref={cardRef}
+            onMouseMove={handleMouseMove}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className="glass-panel rounded-3xl border border-white/5 overflow-hidden hover:shadow-[0_0_40px_rgba(16,185,129,0.1)] hover:border-emerald-500/40 transition-all duration-500 group flex flex-col h-full relative animate-reveal"
         >
+            {/* Spotlight Effect */}
+            <div
+                className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+                style={{
+                    background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(16, 185, 129, 0.08), transparent 40%)`,
+                }}
+            />
             <div
                 onClick={() => onClick(part)}
                 className="aspect-square relative bg-white/5 flex items-center justify-center overflow-hidden cursor-pointer"
