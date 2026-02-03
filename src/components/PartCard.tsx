@@ -32,13 +32,13 @@ export default function PartCard({ part, onClick }: PartCardProps) {
             onMouseMove={handleMouseMove}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className="glass-panel rounded-3xl border border-white/5 overflow-hidden hover:shadow-[0_0_40px_rgba(16,185,129,0.1)] hover:border-emerald-500/40 transition-all duration-500 group flex flex-col h-full relative animate-reveal"
+            className="glass-panel rounded-3xl border border-white/5 overflow-hidden hover:shadow-[0_0_40px_rgba(16,185,129,0.1)] hover:border-emerald-500/40 transition-all duration-500 group flex flex-col h-full relative animate-reveal transform-gpu will-change-transform"
         >
             {/* Spotlight Effect */}
             <div
-                className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+                className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-50 will-change-[background]"
                 style={{
-                    background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(16, 185, 129, 0.08), transparent 40%)`,
+                    background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(16, 185, 129, 0.1), transparent 40%)`,
                 }}
             />
             <div

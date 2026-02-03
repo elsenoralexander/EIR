@@ -64,7 +64,7 @@ function HomeContent() {
   }, [parts, query, serviceFilter, providerFilter, machineFilter]);
 
   return (
-    <div className="flex h-screen bg-[#020617] overflow-hidden">
+    <div className="flex h-screen overflow-hidden">
 
       {/* Sidebar - Desktop */}
       <div className="hidden md:block h-full shrink-0 z-20">
