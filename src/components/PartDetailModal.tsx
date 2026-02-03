@@ -52,7 +52,7 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
         if (category === 'MANTENIMIENTO') {
             recipients = 'mantenimiento.gpk@quironsalud.es, alex.lesaka@quironsalud.es, unai.lecube@quironsalud.es';
         } else {
-            recipients = 'compras.gpk@quironsalud.es, monica.pozuelo@quironsalud.es';
+            recipients = 'compras.gpk@quironsalud.es, comprasq.gpk@quironsalud.es, monica.pozuelo@quironsalud.es';
         }
 
         const subject = `PEDIDO: ${part.name} [Ref: ${part.providerRef}]`;
