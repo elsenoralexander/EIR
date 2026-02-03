@@ -63,6 +63,9 @@ export default function PartCard({ part, onClick }: PartCardProps) {
                 onClick={() => onClick(part)}
                 className="aspect-square relative bg-white/5 flex items-center justify-center overflow-hidden cursor-pointer"
             >
+                {/* Laser Scanner */}
+                <div className="laser-scanner" />
+
                 {/* Image Overlay Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60 z-[1]" />
 
