@@ -28,7 +28,9 @@ export default function AddPartForm({ part }: AddPartFormProps) {
 
     // Image states
     const [primaryFile, setPrimaryFile] = useState<File | null>(null);
+    const [primaryPreview, setPrimaryPreview] = useState<string | null>(null);
     const [extraFiles, setExtraFiles] = useState<File[]>([]);
+    const [extraPreviews, setExtraPreviews] = useState<string[]>([]);
     const [compressing, setCompressing] = useState(false);
 
     useEffect(() => {
@@ -277,6 +279,7 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                                             setCompressing(true);
                                             const compressed = await compressImage(file);
                                             setPrimaryFile(compressed);
+                                            setPrimaryPreview(URL.createObjectURL(compressed));
                                             setCompressing(false);
 
                                             const label = document.getElementById('file-label');
@@ -285,11 +288,21 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                                     />
                                     <label
                                         htmlFor="imageFile"
-                                        className="flex flex-col items-center justify-center gap-4 p-8 w-full bg-[#020617]/50 border-2 border-dashed border-white/5 rounded-[32px] cursor-pointer hover:bg-emerald-500/5 hover:border-emerald-500/40 transition-all duration-500"
+                                        className="flex flex-col items-center justify-center gap-4 p-8 w-full bg-[#020617]/50 border-2 border-dashed border-white/5 rounded-[32px] cursor-pointer hover:bg-emerald-500/5 hover:border-emerald-500/40 transition-all duration-500 overflow-hidden relative"
                                     >
-                                        {isEditing && part.imageFile && (
-                                            <div className="relative w-24 h-24 rounded-2xl overflow-hidden border border-white/10 shadow-emerald-500/10 shadow-lg mb-2">
-                                                <img src={part.imageFile} alt="primary" className="w-full h-full object-cover" />
+                                        {(primaryPreview || (isEditing && part?.imageFile)) && (
+                                            <div className="absolute inset-0 z-0">
+                                                <img
+                                                    src={primaryPreview || part?.imageFile}
+                                                    alt="preview"
+                                                    className="w-full h-full object-cover opacity-20 grayscale"
+                                                />
+                                                <div className="absolute inset-0 bg-[#020617]/60" />
+                                            </div>
+                                        )}
+                                        {((isEditing && part?.imageFile) || primaryPreview) && (
+                                            <div className="relative w-24 h-24 rounded-2xl overflow-hidden border border-white/10 shadow-emerald-500/10 shadow-lg mb-2 z-10">
+                                                <img src={primaryPreview || part?.imageFile} alt="primary" className="w-full h-full object-cover" />
                                                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                                                     <div className="p-3 rounded-full bg-white/20 backdrop-blur-md">
                                                         <Upload className="w-6 h-6 text-white" />
@@ -297,13 +310,18 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                                                 </div>
                                             </div>
                                         )}
-                                        <div className="flex flex-col items-center gap-2 text-center">
+                                        <div className="flex flex-col items-center gap-2 text-center relative z-10">
                                             <div className="p-3 rounded-full bg-emerald-500/10 text-emerald-400 group-hover/upload:scale-110 transition-transform duration-300">
                                                 <Upload className="w-6 h-6" />
                                             </div>
                                             <span id="file-label" className="font-display font-bold text-[10px] uppercase tracking-widest text-emerald-500/60 group-hover/upload:text-emerald-400">
                                                 {compressing ? 'COMPRIMIENDO...' : (isEditing ? 'REEMPLAZAR PRINCIPAL' : 'IMAGEN PRINCIPAL')}
                                             </span>
+                                            {primaryPreview && !compressing && (
+                                                <span className="text-[9px] text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
+                                                    LISTA PARA SUBIR
+                                                </span>
+                                            )}
                                         </div>
                                     </label>
                                 </div>
@@ -331,28 +349,52 @@ export default function AddPartForm({ part }: AddPartFormProps) {
 
                                             setCompressing(true);
                                             const compressed = await compressImages(files);
-                                            setExtraFiles(compressed);
+                                            setExtraFiles(prev => [...prev, ...compressed]);
+
+                                            const newPreviews = compressed.map(f => URL.createObjectURL(f));
+                                            setExtraPreviews(prev => [...prev, ...newPreviews]);
+
                                             setCompressing(false);
 
                                             const label = document.getElementById('additional-label');
-                                            if (label) label.textContent = `${compressed.length} imágenes listas`;
+                                            if (label) label.textContent = `${extraFiles.length + compressed.length} imágenes listas`;
                                         }}
                                     />
+
                                     <label
                                         htmlFor="additionalImages"
-                                        className="flex flex-col items-center justify-center gap-3 p-6 bg-white/5 border border-white/5 rounded-[24px] cursor-pointer hover:bg-amber-500/5 hover:border-amber-500/30 transition-all group/extra"
+                                        className="flex flex-col items-center justify-center gap-3 p-6 bg-white/5 border border-white/5 rounded-[24px] cursor-pointer hover:bg-amber-500/5 hover:border-amber-500/30 transition-all group/extra h-full aspect-square"
                                     >
                                         <Plus className="w-5 h-5 text-amber-500/40 group-hover/extra:text-amber-400 transition-colors" />
                                         <span id="additional-label" className="text-[9px] font-bold text-slate-500 uppercase tracking-widest text-center">
                                             Añadir Vistas
                                         </span>
                                     </label>
+                                    {/* Previews of new files */}
+                                    {extraPreviews.map((url, idx) => (
+                                        <div key={`new-${idx}`} className="relative group/thumb w-full aspect-square rounded-[20px] overflow-hidden border border-emerald-500/30">
+                                            <img src={url} alt="preview" className="w-full h-full object-cover" />
+                                            <button
+                                                type="button"
+                                                onClick={() => {
+                                                    setExtraFiles(prev => prev.filter((_, i) => i !== idx));
+                                                    setExtraPreviews(prev => prev.filter((_, i) => i !== idx));
+                                                }}
+                                                className="absolute top-1 right-1 p-1.5 rounded-full bg-rose-500 text-white opacity-0 group-hover/thumb:opacity-100 transition-opacity"
+                                            >
+                                                <Plus className="w-3 h-3 rotate-45" />
+                                            </button>
+                                        </div>
+                                    ))}
 
-                                    {isEditing && part.additionalImages && part.additionalImages.length > 0 && (
-                                        <div className="flex gap-2 overflow-x-auto py-1 scrollbar-hide">
+                                    {isEditing && part?.additionalImages && part?.additionalImages.length > 0 && (
+                                        <div className="contents">
                                             {part.additionalImages.map((img, idx) => (
-                                                <div key={idx} className="relative w-14 h-14 rounded-xl overflow-hidden shrink-0 border border-white/5">
-                                                    <img src={img} alt={`extra-${idx}`} className="w-full h-full object-cover" />
+                                                <div key={idx} className="relative w-full aspect-square rounded-[20px] overflow-hidden border border-white/5 opacity-60">
+                                                    <img src={img} alt={`extra-${idx}`} className="w-full h-full object-cover grayscale" />
+                                                    <div className="absolute inset-0 bg-[#020617]/40 flex items-center justify-center">
+                                                        <span className="text-[8px] font-bold text-white/40 uppercase tracking-widest">Existente</span>
+                                                    </div>
                                                 </div>
                                             ))}
                                         </div>

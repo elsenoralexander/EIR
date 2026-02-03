@@ -42,15 +42,6 @@ export default function PartCard({ part, onClick }: PartCardProps) {
                 )}
             </div>
 
-            <Link
-                href={`/admin/edit/${part.id}`}
-                className="absolute top-4 right-4 p-2.5 bg-[#f59e0b]/10 backdrop-blur-md border border-[#f59e0b]/20 rounded-xl text-[#f59e0b] hover:bg-[#f59e0b] hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 z-10"
-                title="Editar repuesto"
-                onClick={(e) => e.stopPropagation()}
-            >
-                <Edit2 className="w-4 h-4" />
-            </Link>
-
             <div className="p-5 flex-1 flex flex-col cursor-pointer bg-gradient-to-b from-transparent to-white/[0.02]" onClick={() => onClick(part)}>
                 <div className="flex items-center justify-between mb-3 gap-2">
                     <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-[9px] font-bold bg-emerald-500/10 text-emerald-400 uppercase tracking-widest border border-emerald-500/20 shadow-sm">
