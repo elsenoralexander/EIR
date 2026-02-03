@@ -18,14 +18,6 @@ export default function PartCard({ part, onClick }: PartCardProps) {
 
     return (
         <div className="h-full w-full animate-reveal relative" style={{ animationDelay: 'inherit' }}>
-            <GlowingEffect
-                spread={40}
-                glow
-                disabled={false}
-                proximity={64}
-                inactiveZone={0.01}
-                borderWidth={3}
-            />
             <div
                 ref={cardRef}
                 onMouseEnter={() => setIsHovered(true)}
@@ -38,6 +30,14 @@ export default function PartCard({ part, onClick }: PartCardProps) {
                     willChange: 'transform'
                 }}
             >
+                <GlowingEffect
+                    spread={40}
+                    glow
+                    disabled={false}
+                    proximity={64}
+                    inactiveZone={0.01}
+                    borderWidth={3}
+                />
                 <div
                     onClick={() => onClick(part)}
                     className="aspect-square relative bg-white/5 flex items-center justify-center overflow-hidden cursor-pointer"
