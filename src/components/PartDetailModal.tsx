@@ -58,7 +58,7 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
         const subject = `PEDIDO: ${part.name} [Ref: ${part.providerRef}]`;
         const body = `Hola,
 
-Por la presente solicito el pedido de material detallado a continuación:
+Necesitamos pedir el siguiente material:
 
 --------------------------------------------------
 📦 DETALLES DEL PRODUCTO
