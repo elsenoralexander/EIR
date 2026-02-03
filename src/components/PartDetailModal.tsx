@@ -55,12 +55,27 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
             recipients = 'compras.gpk@quironsalud.es, monica.pozuelo@quironsalud.es';
         }
 
-        const subject = `Petición de Repuesto: ${part.name}`;
+        const subject = `PEDIDO: ${part.name} [Ref: ${part.providerRef}]`;
         const body = `Hola,
 
-Necesito pedir ${quantity} de ${part.commonName || part.name}. Su referencia es ${part.providerRef} y el proveedor ${part.provider}. El último precio que tenemos es ${part.price} y habitualmente se le pide a ${part.contact || 'consultar'}.
+Por la presente solicito el pedido de material detallado a continuación:
 
-Muchas gracias`;
+--------------------------------------------------
+📦 DETALLES DEL PRODUCTO
+--------------------------------------------------
+ARTÍCULO:   ${part.commonName || part.name}
+CANTIDAD:   ${quantity} unidades
+REFERENCIA: ${part.providerRef}
+PROVEEDOR:  ${part.provider}
+
+--------------------------------------------------
+💰 INFORMACIÓN DE COMPRA
+--------------------------------------------------
+ÚLTIMO PRECIO: ${part.price}
+CONTACTO:      ${part.contact || 'consultar'}
+
+Muchas gracias.
+--------------------------------------------------`;
 
         const mailtoUrl = `mailto:${recipients}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         window.location.href = mailtoUrl;
