@@ -25,12 +25,7 @@ export default function SearchBar() {
     };
 
     return (
-        <div className="relative w-full group search-beam-active">
-            {/* Constant Orbiting Beam for SearchBar */}
-            <div className="orbit-beam-container !rounded-2xl">
-                <div className="orbit-beam" />
-            </div>
-
+        <div className="relative w-full group">
             <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-emerald-500/50 z-10">
                 <Search className="w-5 h-5" />
             </div>

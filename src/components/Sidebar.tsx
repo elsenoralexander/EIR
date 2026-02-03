@@ -99,13 +99,13 @@ export default function Sidebar({ services, providers, machines }: SidebarProps)
             <div className="p-8">
                 {/* Brand Logo Section */}
                 <div className="flex flex-col items-center mb-10">
-                    <div className="relative w-24 h-24 mb-4 group">
-                        <div className="absolute inset-0 bg-emerald-500/20 blur-xl rounded-full group-hover:bg-emerald-500/40 transition-all duration-500"></div>
-                        <div className="relative w-full h-full bg-emerald-500/10 border border-emerald-500/20 rounded-full p-1 overflow-hidden shadow-[0_0_20px_rgba(16,185,129,0.2)]">
+                    <div className="relative w-24 h-24 mb-4 group cursor-pointer">
+                        <div className="absolute inset-0 bg-emerald-500/40 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div className="relative w-full h-full bg-emerald-500/10 border border-emerald-500/20 rounded-full p-1 overflow-hidden shadow-[0_0_20px_rgba(16,185,129,0.2)] group-hover:border-emerald-500/50 group-hover:shadow-[0_0_40px_rgba(16,185,129,0.4)] transition-all duration-500">
                             <img
                                 src="/eir_logo.png"
                                 alt="EIR Logo"
-                                className="w-full h-full object-cover rounded-full"
+                                className="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-700"
                             />
                         </div>
                     </div>

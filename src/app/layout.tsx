@@ -29,9 +29,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="noise-overlay" />
-        <div className="aurora-base bg-glow-1" />
-        <div className="aurora-base bg-glow-2" />
-        <div className="aurora-base bg-glow-3" />
         <GatedAccess>
           {children}
         </GatedAccess>

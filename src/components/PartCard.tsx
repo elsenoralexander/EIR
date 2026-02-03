@@ -21,25 +21,20 @@ export default function PartCard({ part, onClick }: PartCardProps) {
                 ref={cardRef}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
-                className="glass-panel rounded-[2rem] border border-white/5 overflow-hidden hover:shadow-[0_20px_50px_rgba(16,185,129,0.15)] hover:border-emerald-500/30 transition-all duration-300 group flex flex-col h-full relative"
+                className="glass-panel rounded-3xl border border-white/5 overflow-hidden hover:shadow-[0_40px_80px_rgba(0,0,0,0.4)] hover:border-emerald-500/40 transition-all duration-500 group flex flex-col h-full relative transform-gpu"
                 style={{
                     transform: isHovered
-                        ? 'perspective(1000px) rotateX(8deg) translateY(-6px)'
-                        : 'perspective(1000px) rotateX(0deg) translateY(0)',
-                    transition: 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s, box-shadow 0.3s'
+                        ? 'perspective(1000px) rotateX(10deg) translateY(-8px) scale(1.02)'
+                        : 'perspective(1000px) rotateX(0deg) translateY(0) scale(1)',
+                    willChange: 'transform'
                 }}
             >
-                {/* Optimized Orbiting Light Beam */}
-                <div className="orbit-beam-container">
-                    <div className="orbit-beam" />
-                </div>
-
                 <div
                     onClick={() => onClick(part)}
                     className="aspect-square relative bg-white/5 flex items-center justify-center overflow-hidden cursor-pointer"
                 >
                     {/* Image Overlay Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60 z-[2]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60 z-[1]" />
 
                     {hasImage ? (
                         <div className="relative w-full h-full">
