@@ -59,13 +59,6 @@ export default function PartCard({ part, onClick }: PartCardProps) {
                     <div className="orbit-beam" />
                 </div>
 
-                {/* Spotlight Effect */}
-                <div
-                    className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-50 will-change-[background]"
-                    style={{
-                        background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(16, 185, 129, 0.08), transparent 40%)`,
-                    }}
-                />
                 <div
                     onClick={() => onClick(part)}
                     className="aspect-square relative bg-white/5 flex items-center justify-center overflow-hidden cursor-pointer"
