@@ -1,11 +1,7 @@
 'use client';
 
-import { Search, X } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
-// import { useDebouncedCallback } from 'use-debounce'; // Removed unused import
-
-// Simple debounce hook implementation to avoid extra dependency if not needed, 
-// but use-debounce is standard. I'll just use a timer here.
 
 export default function SearchBar() {
     const searchParams = useSearchParams();
@@ -29,10 +25,10 @@ export default function SearchBar() {
     };
 
     return (
-        <div className="relative w-full group">
-            {/* Orbiting Light Beam */}
+        <div className="relative w-full group search-beam-active">
+            {/* Constant Orbiting Beam for SearchBar */}
             <div className="orbit-beam-container !rounded-2xl">
-                <div className="orbit-beam !opacity-40" style={{ offsetPath: 'rect(0 auto auto 0 round 16px)' }} />
+                <div className="orbit-beam" />
             </div>
 
             <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-emerald-500/50 z-10">

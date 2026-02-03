@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react';
 import { SparePart } from '@/types';
-import { Tag, Building2, Monitor, Image as ImageIcon, Edit2 } from 'lucide-react';
-import Link from 'next/link';
+import { Tag, Building2, Monitor, Image as ImageIcon } from 'lucide-react';
 import Image from 'next/image';
 
 interface PartCardProps {
@@ -11,34 +10,10 @@ interface PartCardProps {
 
 export default function PartCard({ part, onClick }: PartCardProps) {
     const cardRef = useRef<HTMLDivElement>(null);
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const [tilt, setTilt] = useState({ x: 0, y: 0 });
     const [isHovered, setIsHovered] = useState(false);
 
     const hasImage = part.imageFile && part.imageFile !== 'NaN' && part.imageFile !== '';
     const imageToDisplay = part.thumbnailUrl || part.imageFile;
-
-    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (!cardRef.current) return;
-        const rect = cardRef.current.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        setMousePosition({ x, y });
-
-        // Calculate tilt
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const tiltX = (y - centerY) / 15;
-        const tiltY = (x - centerX) / -15;
-
-        setTilt({ x: tiltX, y: tiltY });
-    };
-
-    const handleMouseLeave = () => {
-        setIsHovered(false);
-        setTilt({ x: 0, y: 0 });
-    };
 
     return (
         <div className="h-full w-full animate-reveal" style={{ animationDelay: 'inherit' }}>
@@ -46,15 +21,15 @@ export default function PartCard({ part, onClick }: PartCardProps) {
                 ref={cardRef}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
-                className="glass-panel rounded-3xl border border-white/5 overflow-hidden hover:shadow-[0_40px_80px_rgba(0,0,0,0.4)] hover:border-emerald-500/40 transition-all duration-500 group flex flex-col h-full relative transform-gpu"
+                className="glass-panel rounded-[2rem] border border-white/5 overflow-hidden hover:shadow-[0_20px_50px_rgba(16,185,129,0.15)] hover:border-emerald-500/30 transition-all duration-300 group flex flex-col h-full relative"
                 style={{
                     transform: isHovered
-                        ? 'perspective(1000px) rotateX(10deg) translateY(-8px) scale(1.02)'
-                        : 'perspective(1000px) rotateX(0deg) translateY(0) scale(1)',
-                    willChange: 'transform'
+                        ? 'perspective(1000px) rotateX(8deg) translateY(-6px)'
+                        : 'perspective(1000px) rotateX(0deg) translateY(0)',
+                    transition: 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s, box-shadow 0.3s'
                 }}
             >
-                {/* Orbiting Light Beam */}
+                {/* Optimized Orbiting Light Beam */}
                 <div className="orbit-beam-container">
                     <div className="orbit-beam" />
                 </div>
@@ -64,7 +39,7 @@ export default function PartCard({ part, onClick }: PartCardProps) {
                     className="aspect-square relative bg-white/5 flex items-center justify-center overflow-hidden cursor-pointer"
                 >
                     {/* Image Overlay Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60 z-[1]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60 z-[2]" />
 
                     {hasImage ? (
                         <div className="relative w-full h-full">
