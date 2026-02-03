@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import { SparePart } from '@/types';
 import { Tag, Building2, Monitor, Image as ImageIcon } from 'lucide-react';
 import Image from 'next/image';
+import { TextHoverEffect } from './TextHoverEffect';
 
 interface PartCardProps {
     part: SparePart;
@@ -29,9 +30,14 @@ export default function PartCard({ part, onClick }: PartCardProps) {
                     willChange: 'transform'
                 }}
             >
+                {/* Text Hover Effect Background */}
+                <div className="absolute inset-0 z-0 opacity-20 pointer-events-none group-hover:opacity-100 transition-opacity duration-500">
+                    <TextHoverEffect text={part.providerRef || "EIR"} />
+                </div>
+
                 <div
                     onClick={() => onClick(part)}
-                    className="aspect-square relative bg-white/5 flex items-center justify-center overflow-hidden cursor-pointer"
+                    className="aspect-square relative bg-white/5 flex items-center justify-center overflow-hidden cursor-pointer z-10"
                 >
                     {/* Image Overlay Gradient */}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60 z-[1]" />
