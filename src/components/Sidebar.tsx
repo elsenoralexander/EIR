@@ -1,6 +1,7 @@
 import { Filter, ChevronDown, ChevronRight, Building2, Monitor, Hammer } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
+import { GlowingEffect } from './ui/glowing-effect';
 
 interface SidebarProps {
     services: string[];
@@ -54,20 +55,31 @@ export default function Sidebar({ services, providers, machines }: SidebarProps)
         const isOpen = openSections[id];
         return (
             <div className="mb-4">
-                <button
-                    onClick={() => toggleSection(id)}
-                    className="w-full flex items-center justify-between px-3 py-3 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all group"
-                >
-                    <div className="flex items-center gap-3">
-                        <div className={`p-1.5 rounded-lg ${isOpen ? 'bg-emerald-500/20 text-emerald-400' : 'bg-white/5 text-slate-500'} transition-colors`}>
-                            <Icon className="w-4 h-4" />
+                <div className="relative rounded-2xl">
+                    <GlowingEffect
+                        blur={0}
+                        borderWidth={2}
+                        spread={40}
+                        glow
+                        proximity={64}
+                        inactiveZone={0.01}
+                        disabled={false}
+                    />
+                    <button
+                        onClick={() => toggleSection(id)}
+                        className="w-full flex items-center justify-between px-3 py-3 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all group relative z-10"
+                    >
+                        <div className="flex items-center gap-3">
+                            <div className={`p-1.5 rounded-lg ${isOpen ? 'bg-emerald-500/20 text-emerald-400' : 'bg-white/5 text-slate-500'} transition-colors`}>
+                                <Icon className="w-4 h-4" />
+                            </div>
+                            <span className={`text-[11px] font-black uppercase tracking-[0.15em] ${isOpen ? 'text-white' : 'text-slate-400'}`}>
+                                {title}
+                            </span>
                         </div>
-                        <span className={`text-[11px] font-black uppercase tracking-[0.15em] ${isOpen ? 'text-white' : 'text-slate-400'}`}>
-                            {title}
-                        </span>
-                    </div>
-                    {isOpen ? <ChevronDown className="w-4 h-4 text-emerald-500/50" /> : <ChevronRight className="w-4 h-4 text-slate-600" />}
-                </button>
+                        {isOpen ? <ChevronDown className="w-4 h-4 text-emerald-500/50" /> : <ChevronRight className="w-4 h-4 text-slate-600" />}
+                    </button>
+                </div>
 
                 {isOpen && (
                     <div className="mt-2 space-y-1 pl-1 animate-in slide-in-from-top-2 duration-300">

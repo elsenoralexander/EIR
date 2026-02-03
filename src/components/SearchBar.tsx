@@ -2,6 +2,7 @@
 
 import { Search } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { GlowingEffect } from './ui/glowing-effect';
 
 export default function SearchBar() {
     const searchParams = useSearchParams();
@@ -25,7 +26,16 @@ export default function SearchBar() {
     };
 
     return (
-        <div className="relative w-full group">
+        <div className="relative w-full group rounded-2xl">
+            <GlowingEffect
+                blur={0}
+                borderWidth={2}
+                spread={80}
+                glow
+                proximity={64}
+                inactiveZone={0.01}
+                disabled={false}
+            />
             <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-emerald-500/50 z-10">
                 <Search className="w-5 h-5" />
             </div>
