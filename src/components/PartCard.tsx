@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { SparePart } from '@/types';
 import { Tag, Building2, Monitor, Image as ImageIcon } from 'lucide-react';
 import Image from 'next/image';
-import { TextHoverEffect } from './TextHoverEffect';
+import { TextHoverEffect } from './ui/text-hover-effect';
 
 interface PartCardProps {
     part: SparePart;
@@ -22,15 +22,9 @@ export default function PartCard({ part, onClick }: PartCardProps) {
                 ref={cardRef}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
-                className="glass-panel rounded-3xl border border-white/5 overflow-hidden hover:shadow-[0_40px_80px_rgba(0,0,0,0.4)] hover:border-emerald-500/40 transition-all duration-500 group flex flex-col h-full relative transform-gpu"
-                style={{
-                    transform: isHovered
-                        ? 'perspective(1000px) rotateX(10deg) translateY(-8px) scale(1.02)'
-                        : 'perspective(1000px) rotateX(0deg) translateY(0) scale(1)',
-                    willChange: 'transform'
-                }}
+                className="glass-panel rounded-3xl border border-white/5 overflow-hidden hover:shadow-[0_40px_80px_rgba(0,0,0,0.4)] hover:border-emerald-500/40 transition-all duration-500 group flex flex-col h-full relative"
             >
-                {/* Text Hover Effect Background */}
+                {/* Text Hover Effect Background - Replaces Tilt */}
                 <div className="absolute inset-0 z-0 opacity-40 pointer-events-none group-hover:opacity-100 transition-opacity duration-700">
                     <TextHoverEffect text="EIR" />
                 </div>
@@ -61,7 +55,7 @@ export default function PartCard({ part, onClick }: PartCardProps) {
                     )}
                 </div>
 
-                <div className="p-5 flex-1 flex flex-col cursor-pointer bg-gradient-to-b from-transparent to-white/[0.02]" onClick={() => onClick(part)}>
+                <div className="p-5 flex-1 flex flex-col cursor-pointer bg-gradient-to-b from-transparent to-white/[0.02] z-10" onClick={() => onClick(part)}>
                     <div className="flex items-center justify-between mb-3 gap-2">
                         <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-[9px] font-bold bg-emerald-500/10 text-emerald-400 uppercase tracking-widest border border-emerald-500/20 shadow-sm">
                             {part.providerRef}

@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef, useEffect, useState, useId } from "react";
 import { motion } from "motion/react";
+import { cn } from "@/lib/utils";
 
 export const TextHoverEffect = ({
     text,
@@ -8,6 +9,7 @@ export const TextHoverEffect = ({
 }: {
     text: string;
     duration?: number;
+    automatic?: boolean;
 }) => {
     const svgRef = useRef<SVGSVGElement>(null);
     const [cursor, setCursor] = useState({ x: 0, y: 0 });
@@ -16,7 +18,7 @@ export const TextHoverEffect = ({
     const uniqueId = useId().replace(/:/g, "");
 
     useEffect(() => {
-        if (svgRef.current) {
+        if (svgRef.current && cursor.x !== null && cursor.y !== null) {
             const svgRect = svgRef.current.getBoundingClientRect();
             const cxPercentage = ((cursor.x - svgRect.left) / svgRect.width) * 100;
             const cyPercentage = ((cursor.y - svgRect.top) / svgRect.height) * 100;
@@ -33,7 +35,6 @@ export const TextHoverEffect = ({
             width="100%"
             height="100%"
             viewBox="0 0 300 100"
-            preserveAspectRatio="xMidYMid meet"
             xmlns="http://www.w3.org/2000/svg"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
@@ -50,11 +51,11 @@ export const TextHoverEffect = ({
                 >
                     {hovered && (
                         <>
-                            <stop offset="0%" stopColor="#10b981" /> {/* Emerald */}
-                            <stop offset="25%" stopColor="#34d399" />
-                            <stop offset="50%" stopColor="#f59e0b" /> {/* Amber */}
-                            <stop offset="75%" stopColor="#fbbf24" />
-                            <stop offset="100%" stopColor="#10b981" />
+                            <stop offset="0%" stopColor="#eab308" />
+                            <stop offset="25%" stopColor="#ef4444" />
+                            <stop offset="50%" stopColor="#3b82f6" />
+                            <stop offset="75%" stopColor="#06b6d4" />
+                            <stop offset="100%" stopColor="#8b5cf6" />
                         </>
                     )}
                 </linearGradient>
@@ -62,7 +63,7 @@ export const TextHoverEffect = ({
                 <motion.radialGradient
                     id={`revealMask-${uniqueId}`}
                     gradientUnits="userSpaceOnUse"
-                    r="30%"
+                    r="20%"
                     initial={{ cx: "50%", cy: "50%" }}
                     animate={maskPosition}
                     transition={{ duration: duration ?? 0, ease: "easeOut" }}
@@ -80,25 +81,24 @@ export const TextHoverEffect = ({
                     />
                 </mask>
             </defs>
-            {/* Background (Always visible outline) */}
             <text
                 x="50%"
                 y="50%"
                 textAnchor="middle"
                 dominantBaseline="middle"
-                strokeWidth="0.5"
-                className="fill-transparent stroke-white/10 font-display font-black text-7xl uppercase"
+                strokeWidth="0.3"
+                className="fill-transparent stroke-neutral-200 font-[helvetica] text-7xl font-bold dark:stroke-neutral-800"
+                style={{ opacity: hovered ? 0.7 : 0 }}
             >
                 {text}
             </text>
-            {/* Animation stroke */}
             <motion.text
                 x="50%"
                 y="50%"
                 textAnchor="middle"
                 dominantBaseline="middle"
-                strokeWidth="0.5"
-                className="fill-transparent stroke-emerald-500/20 font-display font-black text-7xl uppercase"
+                strokeWidth="0.3"
+                className="fill-transparent stroke-neutral-200 font-[helvetica] text-7xl font-bold dark:stroke-neutral-800"
                 initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
                 animate={{
                     strokeDashoffset: 0,
@@ -111,16 +111,15 @@ export const TextHoverEffect = ({
             >
                 {text}
             </motion.text>
-            {/* Hover reveal (The rainbow part) */}
             <text
                 x="50%"
                 y="50%"
                 textAnchor="middle"
                 dominantBaseline="middle"
                 stroke={`url(#textGradient-${uniqueId})`}
-                strokeWidth="0.8"
+                strokeWidth="0.3"
                 mask={`url(#textMask-${uniqueId})`}
-                className="fill-transparent font-display font-black text-7xl uppercase"
+                className="fill-transparent font-[helvetica] text-7xl font-bold"
             >
                 {text}
             </text>
