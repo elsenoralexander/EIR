@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import { SparePart } from '@/types';
 import { Tag, Building2, Monitor, Image as ImageIcon } from 'lucide-react';
 import Image from 'next/image';
+import { GlowingEffect } from './ui/glowing-effect';
 
 interface PartCardProps {
     part: SparePart;
@@ -16,7 +17,15 @@ export default function PartCard({ part, onClick }: PartCardProps) {
     const imageToDisplay = part.thumbnailUrl || part.imageFile;
 
     return (
-        <div className="h-full w-full animate-reveal" style={{ animationDelay: 'inherit' }}>
+        <div className="h-full w-full animate-reveal relative" style={{ animationDelay: 'inherit' }}>
+            <GlowingEffect
+                spread={40}
+                glow
+                disabled={false}
+                proximity={64}
+                inactiveZone={0.01}
+                borderWidth={3}
+            />
             <div
                 ref={cardRef}
                 onMouseEnter={() => setIsHovered(true)}
