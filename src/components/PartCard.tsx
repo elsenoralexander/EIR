@@ -60,7 +60,7 @@ export default function PartCard({ part, onClick }: PartCardProps) {
                         <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-[9px] font-bold bg-emerald-500/10 text-emerald-400 uppercase tracking-widest border border-emerald-500/20 shadow-sm">
                             {part.providerRef}
                         </span>
-                        <span className="font-display font-black text-amber-400 tracking-tight">
+                        <span className="font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300 tracking-tight">
                             {part.price !== 'NaN' ? (
                                 <span className="flex items-center gap-1">
                                     {part.price}

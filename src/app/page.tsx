@@ -177,13 +177,25 @@ function HomeContent() {
                   ))}
                 </div>
               ) : (
-                <div className="flex flex-col items-center justify-center p-20 text-slate-500 glass-panel rounded-[40px] border border-white/5 border-dashed">
-                  <div className="w-24 h-24 bg-white/5 rounded-full flex items-center justify-center mb-8">
-                    <AlertCircle className="w-12 h-12 text-emerald-500/30" />
+                <div className="flex flex-col items-center justify-center p-12 sm:p-20 text-slate-500 glass-panel rounded-[40px] border border-white/5 relative overflow-hidden group">
+                  {/* Background Glow for image */}
+                  <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-emerald-500/10 to-transparent pointer-events-none" />
+
+                  <div className="relative w-48 h-48 sm:w-64 sm:h-64 mb-10 group-hover:scale-105 transition-transform duration-700">
+                    <div className="absolute inset-0 bg-emerald-500/20 blur-3xl rounded-full opacity-60 animate-pulse" />
+                    <img
+                      src="/eir_not_found.jpg"
+                      alt="No encontrado"
+                      className="w-full h-full object-contain rounded-3xl relative z-10 shadow-2xl border border-white/10"
+                    />
                   </div>
-                  <p className="text-2xl font-display font-black text-white mb-2 tracking-tight">El oráculo no encuentra rastro</p>
-                  <p className="text-sm text-slate-400 max-w-sm text-center font-medium leading-relaxed">
-                    No hemos podido localizar piezas que coincidan con tu búsqueda. Intenta refinar los filtros para invocar los resultados correctos.
+
+                  <p className="text-2xl sm:text-3xl font-display font-black text-white mb-3 tracking-tighter text-center relative z-10">
+                    El oráculo no encuentra rastro
+                  </p>
+                  <p className="text-sm text-slate-400 max-w-sm text-center font-medium leading-relaxed relative z-10">
+                    No hemos podido localizar piezas que coincidan con tu búsqueda. <br className="hidden sm:block" />
+                    Intenta refinar los filtros para invocar los resultados correctos.
                   </p>
                 </div>
               )}

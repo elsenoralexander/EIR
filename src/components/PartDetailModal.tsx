@@ -219,8 +219,8 @@ Muchas gracias.
                                     <p className="font-mono text-sm font-bold text-white truncate">{part.providerRef}</p>
                                 </div>
                                 <div className="p-4 rounded-3xl bg-emerald-500/5 border border-emerald-500/10">
-                                    <label className="text-[9px] font-bold text-amber-500/40 uppercase tracking-widest block mb-1">Precio Divino</label>
-                                    <p className="text-xl font-display font-black text-amber-400 tracking-tighter">{part.price !== 'NaN' ? part.price : 'Consultar'}</p>
+                                    <label className="text-[9px] font-bold text-emerald-500/40 uppercase tracking-widest block mb-1">Precio Divino</label>
+                                    <p className="text-xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300 tracking-tighter">{part.price !== 'NaN' ? part.price : 'Consultar'}</p>
                                 </div>
                             </div>
 

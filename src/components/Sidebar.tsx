@@ -73,7 +73,7 @@ export default function Sidebar({ services, providers, machines }: SidebarProps)
                             <div className={`p-1.5 rounded-lg ${isOpen ? 'bg-emerald-500/20 text-emerald-400' : 'bg-white/5 text-slate-500'} transition-colors`}>
                                 <Icon className="w-4 h-4" />
                             </div>
-                            <span className={`text-[11px] font-black uppercase tracking-[0.15em] ${isOpen ? 'text-white' : 'text-slate-400'}`}>
+                            <span className={`text-[11px] font-black uppercase tracking-[0.15em] ${isOpen ? 'text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300' : 'text-slate-400'}`}>
                                 {title}
                             </span>
                         </div>
