@@ -17,14 +17,16 @@ export default function PartCard({ part, onClick }: PartCardProps) {
 
     return (
         <div className="h-full w-full animate-reveal relative rounded-3xl" style={{ animationDelay: 'inherit' }}>
-            <GlowingEffect
-                spread={40}
-                glow
-                disabled={false}
-                proximity={64}
-                inactiveZone={0.01}
-                borderWidth={3}
-            />
+            <div className="hidden sm:block">
+                <GlowingEffect
+                    spread={40}
+                    glow
+                    disabled={false}
+                    proximity={64}
+                    inactiveZone={0.01}
+                    borderWidth={3}
+                />
+            </div>
             <div
                 ref={cardRef}
                 className="glass-panel rounded-3xl border border-white/5 overflow-hidden hover:shadow-[0_40px_80px_rgba(0,0,0,0.4)] hover:border-emerald-500/40 transition-all duration-500 group flex flex-col h-full relative"

@@ -129,10 +129,30 @@ Muchas gracias.
                         <h2 className="text-xl sm:text-2xl font-display font-black text-white tracking-tight leading-tight break-words mb-1">
                             {part.name}
                         </h2>
-                        <p className="text-[9px] sm:text-[10px] text-emerald-500/60 font-medium uppercase tracking-[0.2em]">Ficha Técnica de Suministro</p>
+                        <p className="text-[9px] sm:text-[10px] text-emerald-500/60 font-medium uppercase tracking-[0.2em] mb-4 sm:mb-0">Ficha Técnica de Suministro</p>
+
+                        {/* Mobile Admin Actions (Below Title) */}
+                        <div className="flex sm:hidden items-center gap-3 mt-3">
+                            <Link
+                                href={`/admin/edit/${part.id}`}
+                                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold uppercase tracking-widest active:scale-95"
+                                onClick={onClose}
+                            >
+                                <Edit3 className="w-3.5 h-3.5" />
+                                <span>Editar</span>
+                            </Link>
+                            <button
+                                onClick={handleDelete}
+                                disabled={deleting}
+                                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-[10px] font-bold uppercase tracking-widest active:scale-95 disabled:opacity-50"
+                            >
+                                <Trash2 className="w-3.5 h-3.5" />
+                                <span>{deleting ? '...' : 'Borrar'}</span>
+                            </button>
+                        </div>
                     </div>
 
-                    <div className="flex items-start gap-3 shrink-0">
+                    <div className="hidden sm:flex items-start gap-3 shrink-0">
                         <div className="flex flex-col gap-2">
                             <Link
                                 href={`/admin/edit/${part.id}`}

@@ -100,8 +100,15 @@ export default function AddPartForm({ part }: AddPartFormProps) {
 
     return (
         <div className="max-w-4xl mx-auto pb-32">
-            <div className="mb-10 flex items-center justify-between">
-                <div className="relative rounded-2xl group/btn">
+            <div className="mb-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+                <div className="w-full sm:order-2 sm:text-right">
+                    <h1 className="text-3xl sm:text-4xl font-display font-black text-white tracking-tighter">
+                        {isEditing ? 'Editar Repuesto' : 'Añadir Nuevo Repuesto'}
+                    </h1>
+                    <p className="text-emerald-500/40 text-[10px] uppercase tracking-[0.3em] font-medium mt-1">Configuración técnica de pieza</p>
+                </div>
+
+                <div className="relative rounded-2xl group/btn w-fit sm:order-1">
                     <GlowingEffect
                         blur={0}
                         borderWidth={2}
@@ -120,12 +127,6 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                             Volver al Oráculo
                         </span>
                     </Link>
-                </div>
-                <div className="text-right">
-                    <h1 className="text-4xl font-display font-black text-white tracking-tighter">
-                        {isEditing ? 'Editar Repuesto' : 'Añadir Nuevo Repuesto'}
-                    </h1>
-                    <p className="text-emerald-500/40 text-[10px] uppercase tracking-[0.3em] font-medium mt-1">Configuración técnica de pieza</p>
                 </div>
             </div>
 
@@ -507,14 +508,8 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                     )}
                 </div>
 
-                <div className="p-10 bg-white/5 border-t border-white/5 flex items-center justify-end gap-6">
-                    <Link
-                        href="/"
-                        className="px-8 py-3 text-slate-500 font-display font-bold uppercase tracking-widest text-xs hover:text-white transition-colors"
-                    >
-                        Desistir
-                    </Link>
-                    <div className="relative rounded-2xl group/submit">
+                <div className="p-10 bg-white/5 border-t border-white/5 flex flex-col sm:flex-row items-center sm:justify-end gap-6">
+                    <div className="relative rounded-2xl group/submit w-full sm:w-auto order-1 sm:order-2">
                         <GlowingEffect
                             blur={0}
                             borderWidth={2}
@@ -527,7 +522,7 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                         <button
                             disabled={loading || compressing}
                             type="submit"
-                            className="relative z-10 flex items-center gap-3 px-10 py-4 rounded-2xl bg-white/5 border border-white/10 transition-all active:scale-95 disabled:opacity-50 disabled:active:scale-100 group-hover/submit:bg-white/10"
+                            className="relative z-10 flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-4 rounded-2xl bg-white/5 border border-white/10 transition-all active:scale-95 disabled:opacity-50 disabled:active:scale-100 group-hover/submit:bg-white/10"
                         >
                             <div className="flex items-center gap-3 text-sm font-display font-black tracking-widest uppercase">
                                 {loading ? (
@@ -548,6 +543,12 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                             </div>
                         </button>
                     </div>
+                    <Link
+                        href="/"
+                        className="w-full sm:w-auto text-center px-8 py-3 text-slate-500 font-display font-bold uppercase tracking-widest text-xs hover:text-white transition-colors order-2 sm:order-1"
+                    >
+                        Desistir
+                    </Link>
                 </div>
             </form>
         </div>

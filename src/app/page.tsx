@@ -90,14 +90,15 @@ function HomeContent() {
         <BackgroundBeamsWithCollision className="flex-col !justify-start !items-stretch">
           {/* Header */}
           <header className="glass-panel border-b border-white/5 p-5 sm:p-7 flex items-center justify-between shrink-0 z-30 gap-6">
+            {/* Mobile buttons hidden to gain space */}
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="md:hidden p-2.5 text-emerald-400 hover:bg-emerald-500/10 border border-emerald-500/20 rounded-xl shrink-0 transition-colors"
+              className="hidden md:hidden p-2.5 text-emerald-400 hover:bg-emerald-500/10 border border-emerald-500/20 rounded-xl shrink-0 transition-colors"
             >
               <Menu className="w-6 h-6" />
             </button>
 
-            <div className="flex items-center gap-4 shrink-0 md:hidden">
+            <div className="hidden items-center gap-4 shrink-0 md:hidden">
               <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-full p-1 shadow-[0_0_10px_rgba(16,185,129,0.3)]">
                 <img src="/eir_logo.png" alt="Eir" className="w-8 h-8 object-cover rounded-full" />
               </div>

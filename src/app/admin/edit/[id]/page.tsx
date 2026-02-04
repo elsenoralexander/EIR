@@ -54,7 +54,7 @@ export default async function AdminEditPage(props: { params: Promise<{ id: strin
             <div className="fixed bottom-0 right-0 w-[600px] h-[600px] bg-amber-500/10 blur-[140px] rounded-full pointer-events-none z-0" />
             <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-emerald-500/5 blur-[160px] rounded-full pointer-events-none z-0" />
 
-            <header className="glass-panel border-b border-white/10 p-6 sm:p-8 flex items-center justify-center shrink-0 mb-12 relative z-10 backdrop-blur-xl">
+            <header className="glass-panel border-b border-white/10 p-4 sm:p-8 flex items-center justify-center shrink-0 mb-6 sm:mb-12 relative z-10 backdrop-blur-xl">
                 <div className="flex items-center gap-4">
                     <div className="relative group">
                         <div className="absolute inset-0 bg-emerald-500/30 blur-2xl rounded-full group-hover:bg-emerald-500/50 transition-all duration-500 animate-pulse" />
