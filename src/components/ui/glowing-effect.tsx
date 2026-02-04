@@ -44,7 +44,6 @@ const GlowingEffect = memo(
                 animationFrameRef.current = requestAnimationFrame(() => {
                     const element = containerRef.current;
                     if (!element) return;
-
                     const { left, top, width, height } = element.getBoundingClientRect();
                     const mouseX = e?.x ?? lastPosition.current.x;
                     const mouseY = e?.y ?? lastPosition.current.y;

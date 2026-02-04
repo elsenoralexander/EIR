@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createPart, updatePart } from '@/actions/partActions';
 import { ArrowLeft, Package, Plus, Upload, Loader2, CheckCircle2, Save } from 'lucide-react';
+import { GlowingEffect } from './ui/glowing-effect';
 import Link from 'next/link';
 import { SparePart } from '@/types';
 import CustomSelector from './CustomSelector';
@@ -100,13 +101,26 @@ export default function AddPartForm({ part }: AddPartFormProps) {
     return (
         <div className="max-w-4xl mx-auto pb-32">
             <div className="mb-10 flex items-center justify-between">
-                <Link
-                    href="/"
-                    className="group flex items-center gap-3 px-5 py-2.5 rounded-2xl bg-white/5 border border-white/10 text-slate-400 hover:text-emerald-400 hover:border-emerald-500/30 transition-all duration-300 font-bold text-sm tracking-wide"
-                >
-                    <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-                    Volver al Oráculo
-                </Link>
+                <div className="relative rounded-2xl group/btn">
+                    <GlowingEffect
+                        blur={0}
+                        borderWidth={2}
+                        spread={40}
+                        glow
+                        proximity={64}
+                        inactiveZone={0.01}
+                        disabled={false}
+                    />
+                    <Link
+                        href="/"
+                        className="relative z-10 flex items-center gap-3 px-5 py-2.5 rounded-2xl bg-white/5 border border-white/10 transition-all duration-300 group-hover/btn:bg-white/10"
+                    >
+                        <ArrowLeft className="w-4 h-4 text-emerald-400 transition-transform group-hover/btn:-translate-x-1" />
+                        <span className="font-display font-black text-xs tracking-[0.15em] uppercase text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300">
+                            Volver al Oráculo
+                        </span>
+                    </Link>
+                </div>
                 <div className="text-right">
                     <h1 className="text-4xl font-display font-black text-white tracking-tighter">
                         {isEditing ? 'Editar Repuesto' : 'Añadir Nuevo Repuesto'}
@@ -123,95 +137,157 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                         <div className="space-y-8">
                             <div className="space-y-2">
-                                <label className="text-[10px] font-bold text-emerald-500/50 uppercase tracking-[0.2em] block pl-1" htmlFor="name">
+                                <label className="text-[11px] font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300 uppercase tracking-[0.25em] block pl-1 mb-1" htmlFor="name">
                                     Nombre Completo <span className="text-amber-500">*</span>
                                 </label>
-                                <input
-                                    required
-                                    id="name"
-                                    name="name"
-                                    type="text"
-                                    defaultValue={part?.name}
-                                    placeholder="Ej: Desfibrilador Zoll R Series..."
-                                    className="w-full p-4 rounded-2xl bg-[#020617]/50 border border-white/5 focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 outline-none text-white transition-all placeholder:text-slate-600 font-medium"
-                                />
+                                <div className="relative rounded-2xl group/input">
+                                    <GlowingEffect
+                                        blur={0}
+                                        borderWidth={2}
+                                        spread={40}
+                                        glow
+                                        proximity={64}
+                                        inactiveZone={0.01}
+                                        disabled={false}
+                                    />
+                                    <input
+                                        required
+                                        id="name"
+                                        name="name"
+                                        type="text"
+                                        defaultValue={part?.name}
+                                        placeholder="Ej: Desfibrilador Zoll R Series..."
+                                        className="w-full p-4 rounded-2xl bg-[#020617]/50 border border-white/5 focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 outline-none text-white transition-all placeholder:text-slate-600 font-medium relative z-10"
+                                    />
+                                </div>
                             </div>
 
                             <div className="space-y-2">
-                                <label className="text-[10px] font-bold text-emerald-500/50 uppercase tracking-[0.2em] block pl-1" htmlFor="commonName">
+                                <label className="text-[11px] font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300 uppercase tracking-[0.25em] block pl-1 mb-1" htmlFor="commonName">
                                     Nombre Común / Descriptivo
                                 </label>
-                                <input
-                                    id="commonName"
-                                    name="commonName"
-                                    type="text"
-                                    defaultValue={part?.commonName}
-                                    placeholder="Ej: Desfibrilador de transporte"
-                                    className="w-full p-4 rounded-2xl bg-[#020617]/50 border border-white/5 focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 outline-none text-white transition-all placeholder:text-slate-600 font-medium"
-                                />
+                                <div className="relative rounded-2xl group/input">
+                                    <GlowingEffect
+                                        blur={0}
+                                        borderWidth={2}
+                                        spread={40}
+                                        glow
+                                        proximity={64}
+                                        inactiveZone={0.01}
+                                        disabled={false}
+                                    />
+                                    <input
+                                        id="commonName"
+                                        name="commonName"
+                                        type="text"
+                                        defaultValue={part?.commonName}
+                                        placeholder="Ej: Desfibrilador de transporte"
+                                        className="w-full p-4 rounded-2xl bg-[#020617]/50 border border-white/5 focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 outline-none text-white transition-all placeholder:text-slate-600 font-medium relative z-10"
+                                    />
+                                </div>
                             </div>
 
                             <div className="grid grid-cols-2 gap-6">
                                 <div className="space-y-2">
-                                    <label className="text-[10px] font-bold text-emerald-500/50 uppercase tracking-[0.2em] block pl-1" htmlFor="providerRef">
+                                    <label className="text-[11px] font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300 uppercase tracking-[0.25em] block pl-1 mb-1" htmlFor="providerRef">
                                         Referencia <span className="text-amber-500">*</span>
                                     </label>
-                                    <input
-                                        required
-                                        id="providerRef"
-                                        name="providerRef"
-                                        type="text"
-                                        defaultValue={part?.providerRef}
-                                        placeholder="Cod. 12345"
-                                        className="w-full p-4 font-mono text-sm leading-none bg-[#020617]/50 border border-white/5 focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 outline-none text-white transition-all placeholder:text-slate-600"
-                                    />
+                                    <div className="relative rounded-2xl group/input font-mono">
+                                        <GlowingEffect
+                                            blur={0}
+                                            borderWidth={2}
+                                            spread={40}
+                                            glow
+                                            proximity={64}
+                                            inactiveZone={0.01}
+                                            disabled={false}
+                                        />
+                                        <input
+                                            required
+                                            id="providerRef"
+                                            name="providerRef"
+                                            type="text"
+                                            defaultValue={part?.providerRef}
+                                            placeholder="Cod. 12345"
+                                            className="w-full p-4 font-mono text-sm leading-none bg-[#020617]/50 border border-white/5 focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 outline-none text-white transition-all placeholder:text-slate-600 relative z-10 rounded-2xl"
+                                        />
+                                    </div>
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-[10px] font-bold text-emerald-500/50 uppercase tracking-[0.2em] block pl-1" htmlFor="internalCode">
+                                    <label className="text-[11px] font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300 uppercase tracking-[0.25em] block pl-1 mb-1" htmlFor="internalCode">
                                         Código Interno
                                     </label>
-                                    <input
-                                        id="internalCode"
-                                        name="internalCode"
-                                        type="text"
-                                        defaultValue={part?.internalCode}
-                                        placeholder="01-XXXXXX"
-                                        className="w-full p-4 font-mono text-sm leading-none bg-[#020617]/50 border border-white/5 focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 outline-none text-white transition-all placeholder:text-slate-600"
-                                    />
+                                    <div className="relative rounded-2xl group/input font-mono">
+                                        <GlowingEffect
+                                            blur={0}
+                                            borderWidth={2}
+                                            spread={40}
+                                            glow
+                                            proximity={64}
+                                            inactiveZone={0.01}
+                                            disabled={false}
+                                        />
+                                        <input
+                                            id="internalCode"
+                                            name="internalCode"
+                                            type="text"
+                                            defaultValue={part?.internalCode}
+                                            placeholder="01-XXXXXX"
+                                            className="w-full p-4 font-mono text-sm leading-none bg-[#020617]/50 border border-white/5 focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 outline-none text-white transition-all placeholder:text-slate-600 relative z-10 rounded-2xl"
+                                        />
+                                    </div>
                                 </div>
                             </div>
 
                             <div className="grid grid-cols-2 gap-6">
                                 <div className="space-y-2">
-                                    <label className="text-[10px] font-bold text-emerald-500/50 uppercase tracking-[0.2em] block pl-1" htmlFor="price">
+                                    <label className="text-[11px] font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300 uppercase tracking-[0.25em] block pl-1 mb-1" htmlFor="price">
                                         Precio (€)
                                     </label>
-                                    <div className="relative group/price">
+                                    <div className="relative group/price rounded-2xl">
+                                        <GlowingEffect
+                                            blur={0}
+                                            borderWidth={2}
+                                            spread={40}
+                                            glow
+                                            proximity={64}
+                                            inactiveZone={0.01}
+                                            disabled={false}
+                                        />
                                         <input
                                             id="price"
                                             name="price"
                                             type="text"
                                             defaultValue={String(part?.price || '').replace(' €', '')}
                                             placeholder="85,00"
-                                            className="w-full p-4 bg-[#020617]/50 border border-white/5 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/20 outline-none text-amber-400 font-display font-black tracking-tighter text-xl transition-all placeholder:text-slate-600"
+                                            className="w-full p-4 bg-[#020617]/50 border border-white/5 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/20 outline-none text-amber-400 font-display font-black tracking-tighter text-xl transition-all placeholder:text-slate-600 relative z-10 rounded-2xl"
                                         />
                                     </div>
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-[10px] font-bold text-emerald-500/50 uppercase tracking-[0.2em] block pl-1" htmlFor="category">
+                                    <label className="text-[11px] font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300 uppercase tracking-[0.25em] block pl-1 mb-1" htmlFor="category">
                                         Categoría
                                     </label>
-                                    <div className="relative">
+                                    <div className="relative rounded-2xl group/input">
+                                        <GlowingEffect
+                                            blur={0}
+                                            borderWidth={2}
+                                            spread={40}
+                                            glow
+                                            proximity={64}
+                                            inactiveZone={0.01}
+                                            disabled={false}
+                                        />
                                         <select
                                             id="category"
                                             name="category"
                                             defaultValue={part?.category || 'COMPRAS'}
-                                            className="w-full p-4 rounded-2xl bg-[#020617]/50 border border-white/5 focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 outline-none text-white transition-all appearance-none font-bold text-sm"
+                                            className="w-full p-4 rounded-2xl bg-[#020617]/50 border border-white/5 focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 outline-none text-white transition-all appearance-none font-bold text-sm relative z-10"
                                         >
                                             <option value="COMPRAS">Compras</option>
                                             <option value="MANTENIMIENTO">Mantenimiento</option>
                                         </select>
-                                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-emerald-500/40">
+                                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-emerald-500/40 z-20">
                                             <Package className="w-4 h-4" />
                                         </div>
                                     </div>
@@ -247,22 +323,33 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                             />
 
                             <div className="space-y-2">
-                                <label className="text-[10px] font-bold text-emerald-500/50 uppercase tracking-[0.2em] block pl-1" htmlFor="contact">
+                                <label className="text-[11px] font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300 uppercase tracking-[0.25em] block pl-1 mb-1" htmlFor="contact">
                                     Canal de Comunicación <span className="text-amber-500">*</span>
                                 </label>
-                                <input
-                                    required
-                                    id="contact"
-                                    name="contact"
-                                    type="text"
-                                    defaultValue={part?.contact}
-                                    placeholder="Email o Teléfono"
-                                    className="w-full p-4 rounded-2xl bg-[#020617]/50 border border-white/5 focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 outline-none text-white transition-all placeholder:text-slate-600 font-medium"
-                                />
+                                <div className="relative rounded-2xl group/input">
+                                    <GlowingEffect
+                                        blur={0}
+                                        borderWidth={2}
+                                        spread={40}
+                                        glow
+                                        proximity={64}
+                                        inactiveZone={0.01}
+                                        disabled={false}
+                                    />
+                                    <input
+                                        required
+                                        id="contact"
+                                        name="contact"
+                                        type="text"
+                                        defaultValue={part?.contact}
+                                        placeholder="Email o Teléfono"
+                                        className="w-full p-4 rounded-2xl bg-[#020617]/50 border border-white/5 focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 outline-none text-white transition-all placeholder:text-slate-600 font-medium relative z-10"
+                                    />
+                                </div>
                             </div>
 
                             <div className="space-y-4">
-                                <label className="text-[10px] font-bold text-emerald-500/50 uppercase tracking-[0.2em] block pl-1">
+                                <label className="text-[11px] font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300 uppercase tracking-[0.25em] block pl-1 mb-1">
                                     Imagen Principal
                                 </label>
                                 <div className="relative group/upload">
@@ -329,7 +416,7 @@ export default function AddPartForm({ part }: AddPartFormProps) {
 
                             <div className="space-y-4">
                                 <div className="flex items-center justify-between pl-1">
-                                    <label className="text-[10px] font-bold text-amber-500/50 uppercase tracking-[0.2em] block">
+                                    <label className="text-[11px] font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300 uppercase tracking-[0.25em] block">
                                         Galería Adicional
                                     </label>
                                     <span className="text-[9px] text-slate-500 font-mono uppercase tracking-tighter">Varias vistas</span>
@@ -427,27 +514,40 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                     >
                         Desistir
                     </Link>
-                    <button
-                        disabled={loading || compressing}
-                        type="submit"
-                        className="relative group px-10 py-4 rounded-2xl font-display font-black text-white transition-all active:scale-95 overflow-hidden disabled:opacity-50 disabled:active:scale-100"
-                    >
-                        <div className={`absolute inset-0 bg-gradient-to-r ${isEditing ? 'from-emerald-600 to-emerald-400' : 'from-emerald-600 to-amber-500 animate-gradient-flow'} group-hover:scale-110 transition-transform duration-500`} />
-                        <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
-                        <div className="relative flex items-center gap-3 text-sm tracking-widest uppercase">
-                            {loading ? (
-                                <>
-                                    <Loader2 className="w-5 h-5 animate-spin" />
-                                    Sincronizando...
-                                </>
-                            ) : (
-                                <>
-                                    {isEditing ? <Save className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
-                                    {isEditing ? 'Guardar Cambios' : 'Crear Repuesto'}
-                                </>
-                            )}
-                        </div>
-                    </button>
+                    <div className="relative rounded-2xl group/submit">
+                        <GlowingEffect
+                            blur={0}
+                            borderWidth={2}
+                            spread={40}
+                            glow
+                            proximity={64}
+                            inactiveZone={0.01}
+                            disabled={loading || compressing}
+                        />
+                        <button
+                            disabled={loading || compressing}
+                            type="submit"
+                            className="relative z-10 flex items-center gap-3 px-10 py-4 rounded-2xl bg-white/5 border border-white/10 transition-all active:scale-95 disabled:opacity-50 disabled:active:scale-100 group-hover/submit:bg-white/10"
+                        >
+                            <div className="flex items-center gap-3 text-sm font-display font-black tracking-widest uppercase">
+                                {loading ? (
+                                    <>
+                                        <Loader2 className="w-5 h-5 animate-spin text-emerald-400" />
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300">
+                                            Sincronizando...
+                                        </span>
+                                    </>
+                                ) : (
+                                    <>
+                                        {isEditing ? <Save className="w-5 h-5 text-emerald-400" /> : <Plus className="w-5 h-5 text-emerald-400" />}
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300">
+                                            {isEditing ? 'Guardar Cambios' : 'Crear Repuesto'}
+                                        </span>
+                                    </>
+                                )}
+                            </div>
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>

@@ -4,6 +4,7 @@ import { Suspense, useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { partService } from '@/services/partService';
 import { SparePart } from '@/types';
+import { GlowingEffect } from '@/components/ui/glowing-effect';
 import Sidebar from '@/components/Sidebar';
 import SearchBar from '@/components/SearchBar';
 import PartCard from '@/components/PartCard';
@@ -106,17 +107,26 @@ function HomeContent() {
           </div>
 
           <div className="flex items-center gap-4 shrink-0">
-            <Link
-              href="/admin/add"
-              className="group relative px-4 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-display font-bold text-white transition-all active:scale-95 overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-emerald-400 group-hover:scale-110 transition-transform duration-500" />
-              <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="relative flex items-center gap-2">
-                <Plus className="w-5 h-5" />
-                <span className="hidden sm:inline text-sm tracking-wide">Nuevo Repuesto</span>
-              </div>
-            </Link>
+            <div className="relative rounded-2xl group/btn">
+              <GlowingEffect
+                blur={0}
+                borderWidth={2}
+                spread={40}
+                glow
+                proximity={64}
+                inactiveZone={0.01}
+                disabled={false}
+              />
+              <Link
+                href="/admin/add"
+                className="relative z-10 flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3 rounded-2xl bg-white/5 border border-white/10 transition-all active:scale-95 overflow-hidden group-hover/btn:bg-white/10"
+              >
+                <Plus className="w-5 h-5 text-emerald-400" />
+                <span className="hidden sm:inline text-sm font-display font-black tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300">
+                  Nuevo Repuesto
+                </span>
+              </Link>
+            </div>
           </div>
         </header>
 

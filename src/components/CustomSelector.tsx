@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { ChevronDown, Plus, X, Search } from 'lucide-react';
+import { GlowingEffect } from './ui/glowing-effect';
 
 interface CustomSelectorProps {
     label: string;
@@ -69,42 +70,53 @@ export default function CustomSelector({
 
     return (
         <div className="space-y-2 relative" ref={containerRef}>
-            <label className="text-[10px] font-bold text-emerald-500/50 uppercase tracking-[0.2em] block pl-1">
+            <label className="text-[11px] font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300 uppercase tracking-[0.25em] block pl-1 mb-1">
                 {label} {required && <span className="text-amber-500">*</span>}
             </label>
 
-            <div
-                className={`min-h-[56px] w-full p-2.5 rounded-2xl bg-[#020617]/50 border transition-all cursor-pointer flex flex-wrap gap-2 items-center
-                    ${isOpen ? 'border-emerald-500/50 ring-2 ring-emerald-500/20' : 'border-white/5 hover:border-white/10'}`}
-                onClick={() => setIsOpen(!isOpen)}
-            >
-                {selected.length > 0 ? (
-                    selected.map(val => (
-                        <span key={String(val)} className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-black tracking-wider uppercase">
-                            {String(val)}
-                            {multiple && (
-                                <button
-                                    type="button"
-                                    onClick={(e) => { e.stopPropagation(); removeOption(String(val)); }}
-                                    className="hover:text-amber-400 transition-colors"
-                                >
-                                    <X className="w-3 h-3" />
-                                </button>
-                            )}
-                        </span>
-                    ))
-                ) : (
-                    <span className="text-slate-600 text-sm pl-2 font-medium">{placeholder}</span>
-                )}
+            <div className="relative rounded-2xl group/selector">
+                <GlowingEffect
+                    blur={0}
+                    borderWidth={2}
+                    spread={40}
+                    glow
+                    proximity={64}
+                    inactiveZone={0.01}
+                    disabled={false}
+                />
+                <div
+                    className={`min-h-[56px] w-full p-2.5 rounded-2xl bg-[#020617]/50 border transition-all cursor-pointer flex flex-wrap gap-2 items-center relative z-10
+                        ${isOpen ? 'border-emerald-500/50 ring-2 ring-emerald-500/20' : 'border-white/5 hover:border-white/10'}`}
+                    onClick={() => setIsOpen(!isOpen)}
+                >
+                    {selected.length > 0 ? (
+                        selected.map(val => (
+                            <span key={String(val)} className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-black tracking-wider uppercase shadow-[0_0_10px_rgba(16,185,129,0.1)]">
+                                {String(val)}
+                                {multiple && (
+                                    <button
+                                        type="button"
+                                        onClick={(e) => { e.stopPropagation(); removeOption(String(val)); }}
+                                        className="hover:text-amber-400 transition-colors"
+                                    >
+                                        <X className="w-3 h-3" />
+                                    </button>
+                                )}
+                            </span>
+                        ))
+                    ) : (
+                        <span className="text-slate-600 text-sm pl-2 font-medium">{placeholder}</span>
+                    )}
 
-                <div className="ml-auto pr-2 text-slate-600">
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isOpen ? 'rotate-180 text-emerald-500' : ''}`} />
+                    <div className="ml-auto pr-2 text-slate-600">
+                        <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isOpen ? 'rotate-180 text-emerald-500' : ''}`} />
+                    </div>
+
+                    {/* Hidden Inputs for Form Submission */}
+                    {selected.map((val, idx) => (
+                        <input key={idx} type="hidden" name={name} value={String(val)} />
+                    ))}
                 </div>
-
-                {/* Hidden Inputs for Form Submission */}
-                {selected.map((val, idx) => (
-                    <input key={idx} type="hidden" name={name} value={String(val)} />
-                ))}
             </div>
 
             {isOpen && (
