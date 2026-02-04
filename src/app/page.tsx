@@ -11,6 +11,7 @@ import PartCard from '@/components/PartCard';
 import PartDetailModal from '@/components/PartDetailModal';
 import { LayoutGrid, AlertCircle, Menu, X, Plus, Loader2 } from 'lucide-react';
 import Link from 'next/link';
+import { BackgroundBeamsWithCollision } from '@/components/ui/background-beams-with-collision';
 
 function HomeContent() {
   const searchParams = useSearchParams();
@@ -86,107 +87,109 @@ function HomeContent() {
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col h-screen overflow-hidden relative w-full z-10">
-        {/* Header */}
-        <header className="glass-panel border-b border-white/5 p-5 sm:p-7 flex items-center justify-between shrink-0 z-30 gap-6">
-          <button
-            onClick={() => setIsMobileMenuOpen(true)}
-            className="md:hidden p-2.5 text-emerald-400 hover:bg-emerald-500/10 border border-emerald-500/20 rounded-xl shrink-0 transition-colors"
-          >
-            <Menu className="w-6 h-6" />
-          </button>
+        <BackgroundBeamsWithCollision className="flex-col !justify-start !items-stretch">
+          {/* Header */}
+          <header className="glass-panel border-b border-white/5 p-5 sm:p-7 flex items-center justify-between shrink-0 z-30 gap-6">
+            <button
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="md:hidden p-2.5 text-emerald-400 hover:bg-emerald-500/10 border border-emerald-500/20 rounded-xl shrink-0 transition-colors"
+            >
+              <Menu className="w-6 h-6" />
+            </button>
 
-          <div className="flex items-center gap-4 shrink-0 md:hidden">
-            <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-full p-1 shadow-[0_0_10px_rgba(16,185,129,0.3)]">
-              <img src="/eir_logo.png" alt="Eir" className="w-8 h-8 object-cover rounded-full" />
-            </div>
-            <h1 className="text-xl font-display font-black tracking-tighter text-white">EIR</h1>
-          </div>
-
-          <div className="flex-1 max-w-2xl mx-auto min-w-0">
-            <SearchBar />
-          </div>
-
-          <div className="flex items-center gap-4 shrink-0">
-            <div className="relative rounded-2xl group/btn">
-              <GlowingEffect
-                blur={0}
-                borderWidth={2}
-                spread={40}
-                glow
-                proximity={64}
-                inactiveZone={0.01}
-                disabled={false}
-              />
-              <Link
-                href="/admin/add"
-                className="relative z-10 flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3 rounded-2xl bg-white/5 border border-white/10 transition-all active:scale-95 overflow-hidden group-hover/btn:bg-white/10"
-              >
-                <Plus className="w-5 h-5 text-emerald-400" />
-                <span className="hidden sm:inline text-sm font-display font-black tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300">
-                  Nuevo Repuesto
-                </span>
-              </Link>
-            </div>
-          </div>
-        </header>
-
-        {/* Results Grid */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-8 scrollbar-hide">
-          <div className="max-w-7xl mx-auto">
-            {/* Page Header Detail */}
-            <div className="mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-6 border-b border-white/5">
-              <div>
-                <h2 className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight mb-2">
-                  Biblioteca de <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300">Repuestos</span>
-                </h2>
-                <p className="text-emerald-500/60 font-medium text-sm tracking-widest uppercase">
-                  {loading ? 'Consultando Oráculo...' : `Localizados ${filteredParts.length} repuestos divinos`}
-                </p>
+            <div className="flex items-center gap-4 shrink-0 md:hidden">
+              <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-full p-1 shadow-[0_0_10px_rgba(16,185,129,0.3)]">
+                <img src="/eir_logo.png" alt="Eir" className="w-8 h-8 object-cover rounded-full" />
               </div>
-
+              <h1 className="text-xl font-display font-black tracking-tighter text-white">EIR</h1>
             </div>
 
-            {loading ? (
-              <div className="flex flex-col items-center justify-center h-[50vh] text-emerald-500/40">
-                <div className="relative mb-6">
-                  <div className="absolute inset-0 bg-emerald-500/20 blur-2xl animate-pulse rounded-full" />
-                  <Loader2 className="w-16 h-16 animate-spin-slow relative z-10" />
+            <div className="flex-1 max-w-2xl mx-auto min-w-0">
+              <SearchBar />
+            </div>
+
+            <div className="flex items-center gap-4 shrink-0">
+              <div className="relative rounded-2xl group/btn">
+                <GlowingEffect
+                  blur={0}
+                  borderWidth={2}
+                  spread={40}
+                  glow
+                  proximity={64}
+                  inactiveZone={0.01}
+                  disabled={false}
+                />
+                <Link
+                  href="/admin/add"
+                  className="relative z-10 flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3 rounded-2xl bg-white/5 border border-white/10 transition-all active:scale-95 overflow-hidden group-hover/btn:bg-white/10"
+                >
+                  <Plus className="w-5 h-5 text-emerald-400" />
+                  <span className="hidden sm:inline text-sm font-display font-black tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300">
+                    Nuevo Repuesto
+                  </span>
+                </Link>
+              </div>
+            </div>
+          </header>
+
+          {/* Results Grid */}
+          <div className="flex-1 overflow-y-auto p-4 sm:p-8 scrollbar-hide">
+            <div className="max-w-7xl mx-auto">
+              {/* Page Header Detail */}
+              <div className="mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-6 border-b border-white/5">
+                <div>
+                  <h2 className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight mb-2">
+                    Biblioteca de <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300">Repuestos</span>
+                  </h2>
+                  <p className="text-emerald-500/60 font-medium text-sm tracking-widest uppercase">
+                    {loading ? 'Consultando Oráculo...' : `Localizados ${filteredParts.length} repuestos divinos`}
+                  </p>
                 </div>
-                <p className="font-display font-bold text-lg tracking-widest uppercase animate-pulse">Sincronizando con Eir...</p>
+
               </div>
-            ) : filteredParts.length > 0 ? (
-              <div className={`grid gap-8 pb-32 transition-all duration-500 ${filteredParts.length === 1
-                ? 'grid-cols-1 max-w-xl mx-auto'
-                : filteredParts.length === 2
-                  ? 'grid-cols-1 lg:grid-cols-2 max-w-5xl mx-auto'
-                  : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
-                }`}>
-                {filteredParts.map((part, index) => (
-                  <div
-                    key={`${part.providerRef}-${index}`}
-                    className="flex h-full"
-                    style={{ animationDelay: `${index * 80}ms` }}
-                  >
-                    <PartCard
-                      part={part}
-                      onClick={setSelectedPart}
-                    />
+
+              {loading ? (
+                <div className="flex flex-col items-center justify-center h-[50vh] text-emerald-500/40">
+                  <div className="relative mb-6">
+                    <div className="absolute inset-0 bg-emerald-500/20 blur-2xl animate-pulse rounded-full" />
+                    <Loader2 className="w-16 h-16 animate-spin-slow relative z-10" />
                   </div>
-                ))}
-              </div>
-            ) : (
-              <div className="flex flex-col items-center justify-center p-20 text-slate-500 glass-panel rounded-[40px] border border-white/5 border-dashed">
-                <div className="w-24 h-24 bg-white/5 rounded-full flex items-center justify-center mb-8">
-                  <AlertCircle className="w-12 h-12 text-emerald-500/30" />
+                  <p className="font-display font-bold text-lg tracking-widest uppercase animate-pulse">Sincronizando con Eir...</p>
                 </div>
-                <p className="text-2xl font-display font-black text-white mb-2 tracking-tight">El oráculo no encuentra rastro</p>
-                <p className="text-sm text-slate-400 max-w-sm text-center font-medium leading-relaxed">
-                  No hemos podido localizar piezas que coincidan con tu búsqueda. Intenta refinar los filtros para invocar los resultados correctos.
-                </p>
-              </div>
-            )}
+              ) : filteredParts.length > 0 ? (
+                <div className={`grid gap-8 pb-32 transition-all duration-500 ${filteredParts.length === 1
+                  ? 'grid-cols-1 max-w-xl mx-auto'
+                  : filteredParts.length === 2
+                    ? 'grid-cols-1 lg:grid-cols-2 max-w-5xl mx-auto'
+                    : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+                  }`}>
+                  {filteredParts.map((part, index) => (
+                    <div
+                      key={`${part.providerRef}-${index}`}
+                      className="flex h-full"
+                      style={{ animationDelay: `${index * 80}ms` }}
+                    >
+                      <PartCard
+                        part={part}
+                        onClick={setSelectedPart}
+                      />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="flex flex-col items-center justify-center p-20 text-slate-500 glass-panel rounded-[40px] border border-white/5 border-dashed">
+                  <div className="w-24 h-24 bg-white/5 rounded-full flex items-center justify-center mb-8">
+                    <AlertCircle className="w-12 h-12 text-emerald-500/30" />
+                  </div>
+                  <p className="text-2xl font-display font-black text-white mb-2 tracking-tight">El oráculo no encuentra rastro</p>
+                  <p className="text-sm text-slate-400 max-w-sm text-center font-medium leading-relaxed">
+                    No hemos podido localizar piezas que coincidan con tu búsqueda. Intenta refinar los filtros para invocar los resultados correctos.
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        </BackgroundBeamsWithCollision>
       </main>
 
       {/* Detail Modal */}
