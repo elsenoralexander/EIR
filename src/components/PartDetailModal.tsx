@@ -20,6 +20,7 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
     const [isPreviewOpen, setIsPreviewOpen] = useState(false);
     const [isOrderMode, setIsOrderMode] = useState(false);
     const [quantity, setQuantity] = useState(1);
+    const [isAxionalAlertOpen, setIsAxionalAlertOpen] = useState(false);
 
     useEffect(() => {
         if (part) {
@@ -52,7 +53,10 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
         if (category === 'MANTENIMIENTO') {
             recipients = 'mantenimiento.gpk@quironsalud.es, alex.lesaka@quironsalud.es, unai.lecube@quironsalud.es';
         } else {
-            recipients = 'compras.gpk@quironsalud.es, comprasq.gpk@quironsalud.es, monica.pozuelo@quironsalud.es';
+            // Lógica de Compras: Solo dos destinatarios según el servicio
+            const hasQuirofano = part.services.some(s => s.toUpperCase().includes('QUIROFANO'));
+            const mainMail = hasQuirofano ? 'comprasq.gpk@quironsalud.es' : 'compras.gpk@quironsalud.es';
+            recipients = `${mainMail}, monica.pozuelo@quironsalud.es`;
         }
 
         const subject = `PEDIDO: ${part.name} [Ref: ${part.providerRef}]`;
@@ -295,7 +299,7 @@ Muchas gracias.
 
                                 {part.internalCode && part.internalCode !== 'NaN' && (
                                     <div className="space-y-1">
-                                        <span className="block text-[9px] font-bold text-emerald-500/40 uppercase tracking-widest">Sello Interno</span>
+                                        <span className="block text-[9px] font-bold text-emerald-500/40 uppercase tracking-widest">Código Axional</span>
                                         <div className="flex items-center gap-3 text-amber-400">
                                             <span className="font-display font-black text-2xl tracking-[0.15em]">{part.internalCode}</span>
                                         </div>
@@ -339,14 +343,24 @@ Muchas gracias.
                             Retornar al Oráculo
                         </button>
                         <button
-                            onClick={() => isOrderMode ? handleOrder() : setIsOrderMode(true)}
+                            onClick={() => {
+                                if (part.internalCode && part.internalCode !== 'NaN' && part.internalCode !== '') {
+                                    setIsAxionalAlertOpen(true);
+                                } else if (isOrderMode) {
+                                    handleOrder();
+                                } else {
+                                    setIsOrderMode(true);
+                                }
+                            }}
                             className={`flex-1 py-4 px-6 font-display font-bold rounded-2xl transition-all uppercase tracking-[0.2em] text-xs shadow-lg active:scale-95 flex items-center justify-center gap-2
-                                ${isOrderMode
+                                ${isOrderMode || (part.internalCode && part.internalCode !== 'NaN' && part.internalCode !== '')
                                     ? 'bg-amber-500 hover:bg-amber-400 shadow-amber-500/20'
                                     : 'bg-gradient-to-r from-emerald-600 to-emerald-500 hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]'
                                 } text-white`}
                         >
-                            {isOrderMode ? 'Confirmar y Enviar Mail' : 'Realizar pedido'}
+                            {part.internalCode && part.internalCode !== 'NaN' && part.internalCode !== ''
+                                ? 'Solicitar vía Axional'
+                                : isOrderMode ? 'Confirmar y Enviar Mail' : 'Realizar pedido'}
                         </button>
                     </div>
                 </div>
@@ -376,6 +390,54 @@ Muchas gracias.
                             onClick={(e) => e.stopPropagation()}
                             priority
                         />
+                    </div>
+                </div>
+            )}
+
+            {/* Axional Redirection Alert Modal */}
+            {isAxionalAlertOpen && (
+                <div className="fixed inset-0 z-[250] flex items-center justify-center p-4 bg-[#020617]/95 backdrop-blur-2xl animate-in fade-in duration-300">
+                    <div className="glass-panel border-2 border-emerald-500/20 rounded-[40px] p-10 max-w-md w-full shadow-[0_0_100px_rgba(16,185,129,0.1)] text-center space-y-8 animate-in zoom-in-95 duration-300">
+                        <div className="relative w-28 h-28 mx-auto group">
+                            <div className="absolute inset-0 bg-emerald-500/20 blur-2xl rounded-full animate-pulse" />
+                            <div className="relative w-full h-full bg-emerald-500/10 border border-emerald-500/20 rounded-full p-1 overflow-hidden shadow-[0_0_20px_rgba(16,185,129,0.2)]">
+                                <img
+                                    src="/eir_not_found.jpg"
+                                    alt="EIR Goddess"
+                                    className="w-full h-full object-cover rounded-full"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="space-y-4">
+                            <h3 className="text-2xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300 tracking-tight leading-tight">
+                                TRÁMITE VÍA AXIONAL
+                            </h3>
+                            <div className="p-6 rounded-3xl bg-white/5 border border-white/10 space-y-2">
+                                <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-emerald-500/40 text-center">Código Axional</p>
+                                <p className="text-2xl font-display font-black text-amber-400 tracking-[0.15em] text-center drop-shadow-[0_0_10px_rgba(251,191,36,0.3)]">
+                                    {part.internalCode}
+                                </p>
+                            </div>
+                            <p className="text-sm text-slate-400 font-medium leading-relaxed">
+                                Este artículo debe ser solicitado exclusivamente a través de la plataforma Axional utilizando el código indicado arriba.
+                            </p>
+                        </div>
+
+                        <div className="flex flex-col gap-3 pt-4">
+                            <button
+                                onClick={() => window.open('https://axional.quironsalud.es/webOS/desktop/', '_blank')}
+                                className="w-full py-4 px-6 bg-gradient-to-r from-emerald-600 to-emerald-500 hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] text-white font-display font-black rounded-2xl transition-all uppercase tracking-[0.2em] text-xs active:scale-95"
+                            >
+                                IR A AXIONAL
+                            </button>
+                            <button
+                                onClick={() => setIsAxionalAlertOpen(false)}
+                                className="w-full py-4 px-6 bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white font-display font-bold rounded-2xl border border-white/10 transition-all uppercase tracking-[0.2em] text-xs active:scale-95"
+                            >
+                                VOLVER
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}

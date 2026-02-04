@@ -215,7 +215,7 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-[11px] font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300 uppercase tracking-[0.25em] block pl-1 mb-1" htmlFor="internalCode">
-                                        Código Interno
+                                        Código Axional
                                     </label>
                                     <div className="relative rounded-2xl group/input font-mono">
                                         <GlowingEffect

@@ -181,12 +181,12 @@ function HomeContent() {
                   {/* Background Glow for image */}
                   <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-emerald-500/10 to-transparent pointer-events-none" />
 
-                  <div className="relative w-48 h-48 sm:w-64 sm:h-64 mb-10 group-hover:scale-105 transition-transform duration-700">
+                  <div className="relative w-40 h-40 sm:w-48 sm:h-48 mb-10 group-hover:scale-105 transition-transform duration-700">
                     <div className="absolute inset-0 bg-emerald-500/20 blur-3xl rounded-full opacity-60 animate-pulse" />
                     <img
                       src="/eir_not_found.jpg"
                       alt="No encontrado"
-                      className="w-full h-full object-contain rounded-3xl relative z-10 shadow-2xl border border-white/10"
+                      className="w-full h-full object-cover rounded-full relative z-10 shadow-2xl border border-white/10"
                     />
                   </div>
 
