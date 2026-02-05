@@ -380,7 +380,7 @@ Muchas gracias.
                         >
                             {part.internalCode && part.internalCode !== 'NaN' && part.internalCode !== ''
                                 ? 'Solicitar vía Axional'
-                                : isOrderMode ? 'Confirmar y Enviar Mail' : 'Realizar pedido'}
+                                : isOrderMode ? 'Confirmar y Enviar Mail' : 'Realizar solicitud'}
                         </button>
                     </div>
                 </div>

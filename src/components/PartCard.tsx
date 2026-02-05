@@ -17,7 +17,7 @@ export default function PartCard({ part, onClick }: PartCardProps) {
 
     return (
         <div className="h-full w-full animate-reveal relative rounded-3xl" style={{ animationDelay: 'inherit' }}>
-            <div className="hidden sm:block">
+            <div className="hidden sm:block rounded-[inherit]">
                 <GlowingEffect
                     spread={40}
                     glow
@@ -29,7 +29,7 @@ export default function PartCard({ part, onClick }: PartCardProps) {
             </div>
             <div
                 ref={cardRef}
-                className="glass-panel rounded-3xl border border-white/5 overflow-hidden hover:shadow-[0_40px_80px_rgba(0,0,0,0.4)] hover:border-emerald-500/40 transition-all duration-500 group flex flex-col h-full relative"
+                className="glass-panel rounded-3xl border border-white/5 overflow-hidden sm:hover:shadow-[0_40px_80px_rgba(0,0,0,0.4)] sm:hover:border-emerald-500/40 transition-all duration-500 group flex flex-col h-full relative"
             >
                 <div
                     onClick={() => onClick(part)}
@@ -46,7 +46,7 @@ export default function PartCard({ part, onClick }: PartCardProps) {
                                 fill
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 quality={85}
-                                className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                                className="object-cover sm:group-hover:scale-110 transition-transform duration-700 ease-out"
                             />
                         </div>
                     ) : (
@@ -71,19 +71,19 @@ export default function PartCard({ part, onClick }: PartCardProps) {
                         </span>
                     </div>
 
-                    <h3 className="font-display font-bold text-white mb-4 line-clamp-2 group-hover:text-emerald-400 transition-colors duration-300 text-base leading-tight">
+                    <h3 className="font-display font-bold text-white mb-4 line-clamp-2 sm:group-hover:text-emerald-400 transition-colors duration-300 text-base leading-tight">
                         {part.name}
                     </h3>
 
                     <div className="space-y-2 mt-auto pt-4 border-t border-white/5">
                         <div className="flex items-center text-[11px] text-slate-400 gap-2.5 group/info">
-                            <div className="p-1 rounded-md bg-white/5 group-hover/info:bg-emerald-500/10 transition-colors">
+                            <div className="p-1 rounded-md bg-white/5 sm:group-hover/info:bg-emerald-500/10 transition-colors">
                                 <Building2 className="w-3 h-3 shrink-0 text-emerald-500/50" />
                             </div>
                             <span className="truncate font-semibold tracking-wide">{part.provider}</span>
                         </div>
                         <div className="flex items-center text-[11px] text-slate-400 gap-2.5 group/info">
-                            <div className="p-1 rounded-md bg-white/5 group-hover/info:bg-emerald-500/10 transition-colors">
+                            <div className="p-1 rounded-md bg-white/5 sm:group-hover/info:bg-emerald-500/10 transition-colors">
                                 <Monitor className="w-3 h-3 shrink-0 text-emerald-500/50" />
                             </div>
                             <span className="truncate tracking-wide">{part.machine}</span>
