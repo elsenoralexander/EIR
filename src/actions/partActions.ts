@@ -20,6 +20,7 @@ export async function createPart(formData: FormData) {
         const category = (formData.get('category') as string || 'COMPRAS').toUpperCase();
         const internalCode = (formData.get('internalCode') as string || '').toUpperCase();
         const commonName = formData.get('commonName') as string;
+        const variants = JSON.parse(formData.get('variants') as string || '[]');
 
         // Primary and additional images
         const imageFile = formData.get('imageFile') as File;
@@ -51,13 +52,14 @@ export async function createPart(formData: FormData) {
             provider,
             machine,
             services,
-            price: price.includes('€') ? price : `${price} €`,
+            price: (price && price !== 'NaN') ? (price.includes('€') ? price : `${price} €`) : '',
             category,
             internalCode,
             commonName,
             imageFile: imageURL,
             thumbnailUrl,
             additionalImages,
+            variants,
             createdAt: Timestamp.now(),
         };
 
@@ -93,6 +95,7 @@ export async function updatePart(formData: FormData) {
         const commonName = formData.get('commonName') as string;
         const currentImage = formData.get('currentImage') as string;
         const currentAdditionalImages = JSON.parse(formData.get('currentAdditionalImages') as string || '[]');
+        const variants = JSON.parse(formData.get('variants') as string || '[]');
 
         // Primary and additional images from form
         const imageFile = formData.get('imageFile') as File;
@@ -126,13 +129,14 @@ export async function updatePart(formData: FormData) {
             provider,
             machine,
             services,
-            price: price.includes('€') ? price : `${price} €`,
+            price: (price && price !== 'NaN') ? (price.includes('€') ? price : `${price} €`) : '',
             category,
             internalCode,
             commonName,
             imageFile: imageURL,
             thumbnailUrl,
             additionalImages,
+            variants,
             updatedAt: Timestamp.now(),
         });
 

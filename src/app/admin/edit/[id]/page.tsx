@@ -28,6 +28,7 @@ async function getPart(id: string): Promise<SparePart | undefined> {
                 imageFile: String(data.imageFile || ''),
                 thumbnailUrl: String(data.thumbnailUrl || ''),
                 additionalImages: Array.isArray(data.additionalImages) ? data.additionalImages.map(String) : [],
+                variants: Array.isArray(data.variants) ? data.variants : [],
                 createdAt: data.createdAt?.toDate?.()?.toISOString() || null,
                 updatedAt: data.updatedAt?.toDate?.()?.toISOString() || null
             } as any;

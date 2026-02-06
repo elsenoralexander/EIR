@@ -1,3 +1,11 @@
+export interface ProductVariant {
+    id: string;
+    name: string;
+    internalCode: string;
+    providerRef?: string;
+    price?: string;
+}
+
 export interface SparePart {
     id: string;
     name: string;
@@ -6,11 +14,12 @@ export interface SparePart {
     provider: string;
     machine: string;
     services: string[];
-    price: string; // The JSON has "137,00 €", so it is a string. We might want to parse it later.
+    price: string;
     category: string;
     internalCode: string;
     commonName: string;
     imageFile: string;
     thumbnailUrl?: string;
     additionalImages?: string[];
+    variants?: ProductVariant[];
 }

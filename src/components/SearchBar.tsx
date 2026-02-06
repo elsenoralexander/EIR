@@ -2,6 +2,7 @@
 
 import { Search } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { useRef } from 'react';
 import { GlowingEffect } from './ui/glowing-effect';
 
 export default function SearchBar() {
@@ -18,11 +19,14 @@ export default function SearchBar() {
         replace(`/?${params.toString()}`);
     };
 
-    // Debounce logic
-    let debounceTimer: NodeJS.Timeout;
+    // Debounce logic using useRef to persist across re-renders
+    const debounceTimerRef = useRef<NodeJS.Timeout | undefined>(undefined);
+
     const debouncedSearch = (term: string) => {
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(() => handleSearch(term), 300);
+        if (debounceTimerRef.current) {
+            clearTimeout(debounceTimerRef.current);
+        }
+        debounceTimerRef.current = setTimeout(() => handleSearch(term), 300);
     };
 
     return (

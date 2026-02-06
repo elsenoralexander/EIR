@@ -1,7 +1,7 @@
 'use client';
 
 import { SparePart } from '@/types';
-import { X, Phone, Mail, FileText, ShoppingCart, Image as ImageIcon, Edit3, Trash2, Tag } from 'lucide-react';
+import { X, Phone, Mail, FileText, ShoppingCart, Image as ImageIcon, Edit3, Trash2, Tag, Loader2 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -21,26 +21,41 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
     const [isOrderMode, setIsOrderMode] = useState(false);
     const [quantity, setQuantity] = useState(1);
     const [isAxionalAlertOpen, setIsAxionalAlertOpen] = useState(false);
+    const [selectedVariantId, setSelectedVariantId] = useState<string | null>(null);
+
+    const selectedVariant = part?.variants?.find(v => v.id === selectedVariantId) || null;
 
     useEffect(() => {
         if (part) {
             setActiveImage(part.imageFile || null);
             setIsOrderMode(false);
             setQuantity(1);
+            setSelectedVariantId(part.variants && part.variants.length > 0 ? part.variants[0].id : null);
         }
-    }, [part]);
+    }, [part?.id]);
+
+    const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
     async function handleDelete() {
+        console.log('Confirmed deletion for:', part?.id);
         if (!part) return;
-        if (confirm('¿Estás seguro de que deseas eliminar este repuesto?')) {
-            setDeleting(true);
+
+        setDeleting(true);
+        try {
             const result = await deletePart(part.id);
+            console.log('Delete result:', result);
             if (result.success) {
                 onClose();
+                window.location.reload();
             } else {
                 alert(result.error);
                 setDeleting(false);
+                setShowDeleteConfirm(false);
             }
+        } catch (error) {
+            console.error('Error deleting part:', error);
+            setDeleting(false);
+            setShowDeleteConfirm(false);
         }
     }
 
@@ -59,7 +74,8 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
             recipients = `${mainMail}, monica.pozuelo@quironsalud.es`;
         }
 
-        const subject = `PEDIDO: ${part.name} [Ref: ${part.providerRef}]`;
+        const currentRef = selectedVariant?.providerRef || part.providerRef;
+        const subject = `PEDIDO: ${part.name} [Ref: ${currentRef}]`;
         const body = `Hola,
 
 Necesitamos pedir el siguiente material:
@@ -67,9 +83,9 @@ Necesitamos pedir el siguiente material:
 --------------------------------------------------
 📦 DETALLES DEL PRODUCTO
 --------------------------------------------------
-ARTÍCULO:   ${part.commonName || part.name}
+ARTÍCULO:   ${part.commonName || part.name}${selectedVariant ? ` (${selectedVariant.name})` : ''}
 CANTIDAD:   ${quantity} unidades
-REFERENCIA: ${part.providerRef}
+REFERENCIA: ${currentRef}
 PROVEEDOR:  ${part.provider}
 
 --------------------------------------------------
@@ -142,7 +158,7 @@ Muchas gracias.
                                 <span>Editar</span>
                             </Link>
                             <button
-                                onClick={handleDelete}
+                                onClick={() => setShowDeleteConfirm(true)}
                                 disabled={deleting}
                                 className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-[10px] font-bold uppercase tracking-widest active:scale-95 disabled:opacity-50"
                             >
@@ -166,7 +182,7 @@ Muchas gracias.
                                 </div>
                             </Link>
                             <button
-                                onClick={handleDelete}
+                                onClick={() => setShowDeleteConfirm(true)}
                                 disabled={deleting}
                                 className="group relative px-3 py-1.5 rounded-xl overflow-hidden transition-all active:scale-95 disabled:opacity-50"
                             >
@@ -240,13 +256,37 @@ Muchas gracias.
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="p-4 rounded-3xl bg-white/5 border border-white/5">
                                     <label className="text-[9px] font-bold text-emerald-500/40 uppercase tracking-widest block mb-1">Referencia</label>
-                                    <p className="font-mono text-sm font-bold text-white truncate">{part.providerRef}</p>
+                                    <p className="font-mono text-sm font-bold text-white truncate">{selectedVariant?.providerRef || part.providerRef}</p>
                                 </div>
                                 <div className="p-4 rounded-3xl bg-emerald-500/5 border border-emerald-500/10">
                                     <label className="text-[9px] font-bold text-emerald-500/40 uppercase tracking-widest block mb-1">Precio Divino</label>
                                     <p className="text-xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300 tracking-tighter">{part.price !== 'NaN' ? part.price : 'Consultar'}</p>
                                 </div>
                             </div>
+
+                            {/* Variants Selection UI */}
+                            {part.variants && part.variants.length > 0 && (
+                                <div className="space-y-4 p-6 rounded-3xl bg-white/5 border border-white/10 animate-in zoom-in-95 duration-500 mt-4">
+                                    <div className="flex items-center gap-2 mb-2">
+                                        <Tag className="w-4 h-4 text-emerald-400" />
+                                        <h4 className="text-[10px] font-black text-white uppercase tracking-[0.2em]">Seleccionar Variante / Tamaño</h4>
+                                    </div>
+                                    <div className="flex flex-wrap gap-2">
+                                        {part.variants.map((variant) => (
+                                            <button
+                                                key={variant.id}
+                                                onClick={() => setSelectedVariantId(variant.id)}
+                                                className={`px-4 py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-wider transition-all border ${selectedVariantId === variant.id
+                                                    ? 'bg-emerald-500/20 border-emerald-500 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.2)]'
+                                                    : 'bg-white/5 border-white/10 text-slate-400 hover:border-emerald-500/30 hover:text-emerald-500/60'
+                                                    }`}
+                                            >
+                                                {variant.name}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
 
                             <div className="space-y-4">
                                 <div className="flex items-start gap-4 p-4 rounded-3xl bg-white/5 border border-white/5 group hover:border-emerald-500/30 transition-colors">
@@ -317,11 +357,11 @@ Muchas gracias.
                                     </div>
                                 )}
 
-                                {part.internalCode && part.internalCode !== 'NaN' && (
+                                {((selectedVariant ? selectedVariant.internalCode : part.internalCode) && (selectedVariant ? selectedVariant.internalCode : part.internalCode) !== 'NaN') && (
                                     <div className="space-y-1">
                                         <span className="block text-[9px] font-bold text-emerald-500/40 uppercase tracking-widest">Código Axional</span>
                                         <div className="flex items-center gap-3 text-amber-400">
-                                            <span className="font-display font-black text-2xl tracking-[0.15em]">{part.internalCode}</span>
+                                            <span className="font-display font-black text-2xl tracking-[0.15em]">{selectedVariant ? selectedVariant.internalCode : part.internalCode}</span>
                                         </div>
                                     </div>
                                 )}
@@ -364,7 +404,8 @@ Muchas gracias.
                         </button>
                         <button
                             onClick={() => {
-                                if (part.internalCode && part.internalCode !== 'NaN' && part.internalCode !== '') {
+                                const activeCode = selectedVariant ? selectedVariant.internalCode : part.internalCode;
+                                if (activeCode && activeCode !== 'NaN' && activeCode !== '') {
                                     setIsAxionalAlertOpen(true);
                                 } else if (isOrderMode) {
                                     handleOrder();
@@ -373,12 +414,12 @@ Muchas gracias.
                                 }
                             }}
                             className={`flex-1 py-4 px-6 font-display font-bold rounded-2xl transition-all uppercase tracking-[0.2em] text-xs shadow-lg active:scale-95 flex items-center justify-center gap-2
-                                ${isOrderMode || (part.internalCode && part.internalCode !== 'NaN' && part.internalCode !== '')
+                                ${isOrderMode || ((selectedVariant ? selectedVariant.internalCode : part.internalCode) && (selectedVariant ? selectedVariant.internalCode : part.internalCode) !== 'NaN' && (selectedVariant ? selectedVariant.internalCode : part.internalCode) !== '')
                                     ? 'bg-amber-500 hover:bg-amber-400 shadow-amber-500/20'
                                     : 'bg-gradient-to-r from-emerald-600 to-emerald-500 hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]'
                                 } text-white`}
                         >
-                            {part.internalCode && part.internalCode !== 'NaN' && part.internalCode !== ''
+                            {(selectedVariant ? selectedVariant.internalCode : (part.internalCode && part.internalCode !== 'NaN' && part.internalCode !== ''))
                                 ? 'Solicitar vía Axional'
                                 : isOrderMode ? 'Confirmar y Enviar Mail' : 'Realizar solicitud'}
                         </button>
@@ -436,7 +477,7 @@ Muchas gracias.
                             <div className="p-6 rounded-3xl bg-white/5 border border-white/10 space-y-2">
                                 <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-emerald-500/40 text-center">Código Axional</p>
                                 <p className="text-2xl font-display font-black text-amber-400 tracking-[0.15em] text-center drop-shadow-[0_0_10px_rgba(251,191,36,0.3)]">
-                                    {part.internalCode}
+                                    {selectedVariant ? selectedVariant.internalCode : part.internalCode}
                                 </p>
                             </div>
                             <p className="text-sm text-slate-400 font-medium leading-relaxed">
@@ -456,6 +497,47 @@ Muchas gracias.
                                 className="w-full py-4 px-6 bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white font-display font-bold rounded-2xl border border-white/10 transition-all uppercase tracking-[0.2em] text-xs active:scale-95"
                             >
                                 VOLVER
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+            {/* Delete Confirmation Modal */}
+            {showDeleteConfirm && (
+                <div className="fixed inset-0 z-[300] flex items-center justify-center p-4 bg-[#020617]/95 backdrop-blur-2xl animate-in fade-in duration-300">
+                    <div className="glass-panel border-2 border-rose-500/20 rounded-[40px] p-10 max-w-sm w-full shadow-[0_0_100px_rgba(244,63,94,0.1)] text-center space-y-8 animate-in zoom-in-95 duration-300">
+                        <div className="w-20 h-20 mx-auto rounded-full bg-rose-500/10 flex items-center justify-center text-rose-500">
+                            <Trash2 className="w-10 h-10" />
+                        </div>
+
+                        <div className="space-y-3">
+                            <h3 className="text-2xl font-display font-black text-white tracking-tight">¿Eliminar Registro?</h3>
+                            <p className="text-sm text-slate-400 leading-relaxed font-medium">
+                                Esta acción es <span className="text-rose-400 font-bold">irreversible</span>. El repuesto desaparecerá de la biblioteca principal permanentemente.
+                            </p>
+                        </div>
+
+                        <div className="flex flex-col gap-3">
+                            <button
+                                onClick={handleDelete}
+                                disabled={deleting}
+                                className="w-full py-4 bg-rose-500 hover:bg-rose-400 text-white font-display font-bold rounded-2xl transition-all uppercase tracking-[0.2em] text-xs shadow-lg shadow-rose-500/20 active:scale-95 flex items-center justify-center gap-2"
+                            >
+                                {deleting ? (
+                                    <Loader2 className="w-4 h-4 animate-spin" />
+                                ) : (
+                                    <>
+                                        <Trash2 className="w-4 h-4" />
+                                        Confirmar Eliminación
+                                    </>
+                                )}
+                            </button>
+                            <button
+                                onClick={() => setShowDeleteConfirm(false)}
+                                disabled={deleting}
+                                className="w-full py-4 bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white font-display font-bold rounded-2xl border border-white/5 transition-all uppercase tracking-[0.2em] text-xs active:scale-95"
+                            >
+                                Mantener Repuesto
                             </button>
                         </div>
                     </div>

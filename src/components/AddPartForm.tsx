@@ -6,7 +6,7 @@ import { createPart, updatePart } from '@/actions/partActions';
 import { ArrowLeft, Package, Plus, Upload, Loader2, CheckCircle2, Save } from 'lucide-react';
 import { GlowingEffect } from './ui/glowing-effect';
 import Link from 'next/link';
-import { SparePart } from '@/types';
+import { SparePart, ProductVariant } from '@/types';
 import CustomSelector from './CustomSelector';
 import { partService } from '@/services/partService';
 import { useEffect } from 'react';
@@ -33,6 +33,9 @@ export default function AddPartForm({ part }: AddPartFormProps) {
     const [extraFiles, setExtraFiles] = useState<File[]>([]);
     const [extraPreviews, setExtraPreviews] = useState<string[]>([]);
     const [compressing, setCompressing] = useState(false);
+    const [variants, setVariants] = useState<ProductVariant[]>(
+        part?.variants?.map(v => ({ ...v, id: v.id || crypto.randomUUID() })) || []
+    );
 
     useEffect(() => {
         const loadOptions = async () => {
@@ -52,6 +55,20 @@ export default function AddPartForm({ part }: AddPartFormProps) {
 
     const isEditing = !!part;
 
+    const addVariant = () => {
+        setVariants([...variants, { id: crypto.randomUUID(), name: '', internalCode: '', providerRef: '', price: '' }]);
+    };
+
+    const removeVariant = (index: number) => {
+        setVariants(variants.filter((_, i) => i !== index));
+    };
+
+    const updateVariant = (index: number, field: keyof ProductVariant, value: string) => {
+        const newVariants = [...variants];
+        newVariants[index] = { ...newVariants[index], [field]: value };
+        setVariants(newVariants);
+    };
+
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         setLoading(true);
@@ -68,6 +85,9 @@ export default function AddPartForm({ part }: AddPartFormProps) {
             formData.delete('additionalImages');
             extraFiles.forEach(file => formData.append('additionalImages', file));
         }
+
+        // Add variants
+        formData.set('variants', JSON.stringify(variants));
 
         const result = isEditing ? await updatePart(formData) : await createPart(formData);
 
@@ -506,6 +526,76 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                             {error}
                         </div>
                     )}
+                </div>
+
+                {/* Variants Section */}
+                <div className="p-10 border-t border-white/5 space-y-8 bg-black/20">
+                    <div className="flex items-center justify-between">
+                        <div>
+                            <h3 className="text-xl font-display font-black text-white tracking-tight">Variantes / Tamaños</h3>
+                            <p className="text-emerald-500/40 text-[10px] uppercase tracking-[0.3em] font-medium mt-1">Configuración de piezas específicas</p>
+                        </div>
+                        <button
+                            type="button"
+                            onClick={addVariant}
+                            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-black uppercase tracking-widest hover:bg-emerald-500/20 transition-all active:scale-95"
+                        >
+                            <Plus className="w-4 h-4" />
+                            Añadir Variante
+                        </button>
+                    </div>
+
+                    <div className="space-y-4">
+                        {variants.map((variant, index) => (
+                            <div key={index} className="grid grid-cols-1 sm:grid-cols-5 gap-4 p-6 rounded-3xl bg-white/5 border border-white/5 relative group/variant animate-in slide-in-from-top-2 duration-300">
+                                <div className="sm:col-span-2 space-y-2">
+                                    <label className="text-[9px] font-black text-emerald-500/40 uppercase tracking-[0.2em] block pl-1">Nombre Variante (Ej: Pequeño)</label>
+                                    <input
+                                        type="text"
+                                        value={variant.name}
+                                        onChange={(e) => updateVariant(index, 'name', e.target.value)}
+                                        placeholder="Descripción"
+                                        className="w-full p-3 rounded-xl bg-[#020617]/50 border border-white/5 focus:border-emerald-500/50 outline-none text-white text-sm transition-all"
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="text-[9px] font-black text-emerald-500/40 uppercase tracking-[0.2em] block pl-1">Referencia</label>
+                                    <input
+                                        type="text"
+                                        value={variant.providerRef || ''}
+                                        onChange={(e) => updateVariant(index, 'providerRef', e.target.value)}
+                                        placeholder="Cod. Var"
+                                        className="w-full p-3 rounded-xl bg-[#020617]/50 border border-white/5 focus:border-emerald-500/50 outline-none text-emerald-400 font-mono text-xs transition-all"
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="text-[9px] font-black text-emerald-500/40 uppercase tracking-[0.2em] block pl-1">Código Axional</label>
+                                    <input
+                                        type="text"
+                                        value={variant.internalCode}
+                                        onChange={(e) => updateVariant(index, 'internalCode', e.target.value)}
+                                        placeholder="01-XXXX"
+                                        className="w-full p-3 rounded-xl bg-[#020617]/50 border border-white/5 focus:border-emerald-500/50 outline-none text-emerald-400 font-mono text-xs transition-all"
+                                    />
+                                </div>
+                                <div className="flex items-end justify-end gap-3">
+                                    <button
+                                        type="button"
+                                        onClick={() => removeVariant(index)}
+                                        className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 hover:bg-rose-500/20 transition-all"
+                                    >
+                                        <Plus className="w-5 h-5 rotate-45" />
+                                    </button>
+                                </div>
+                            </div>
+                        ))}
+
+                        {variants.length === 0 && (
+                            <div className="text-center py-10 border-2 border-dashed border-white/5 rounded-[30px]">
+                                <p className="text-slate-500 text-xs font-medium italic">No hay variantes definidas para este repuesto.</p>
+                            </div>
+                        )}
+                    </div>
                 </div>
 
                 <div className="p-10 bg-white/5 border-t border-white/5 flex flex-col sm:flex-row items-center sm:justify-end gap-6">

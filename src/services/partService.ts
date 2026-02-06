@@ -91,6 +91,7 @@ export class PartService {
                 commonName: String(item.commonName || ''),
                 imageFile: String(item.imageFile || ''),
                 additionalImages: Array.isArray(item.additionalImages) ? item.additionalImages : [],
+                variants: Array.isArray(item.variants) ? item.variants : [],
             };
         });
     }

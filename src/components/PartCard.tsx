@@ -63,7 +63,7 @@ export default function PartCard({ part, onClick }: PartCardProps) {
                             {part.providerRef}
                         </span>
                         <span className="font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300 tracking-tight">
-                            {part.price !== 'NaN' ? (
+                            {part.price && part.price !== 'NaN' && part.price !== '€' && part.price.trim() !== '' ? (
                                 <span className="flex items-center gap-1">
                                     {part.price}
                                 </span>
