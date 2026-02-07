@@ -578,6 +578,16 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                                         className="w-full p-3 rounded-xl bg-[#020617]/50 border border-white/5 focus:border-emerald-500/50 outline-none text-emerald-400 font-mono text-xs transition-all"
                                     />
                                 </div>
+                                <div className="space-y-2">
+                                    <label className="text-[9px] font-black text-emerald-500/40 uppercase tracking-[0.2em] block pl-1">Precio (€)</label>
+                                    <input
+                                        type="text"
+                                        value={variant.price || ''}
+                                        onChange={(e) => updateVariant(index, 'price', e.target.value)}
+                                        placeholder="85,00"
+                                        className="w-full p-3 rounded-xl bg-[#020617]/50 border border-white/5 focus:border-amber-500/50 outline-none text-amber-400 font-display font-black tracking-tighter text-sm transition-all"
+                                    />
+                                </div>
                                 <div className="flex items-end justify-end gap-3">
                                     <button
                                         type="button"

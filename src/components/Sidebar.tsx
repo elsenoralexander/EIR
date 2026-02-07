@@ -1,4 +1,5 @@
-import { Filter, ChevronDown, ChevronRight, Building2, Monitor, Hammer } from 'lucide-react';
+import { Filter, ChevronDown, ChevronRight, Building2, Monitor, Hammer, Database, TrendingUp } from 'lucide-react';
+import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { GlowingEffect } from './ui/glowing-effect';
@@ -160,6 +161,41 @@ export default function Sidebar({ services, providers, machines }: SidebarProps)
                         selected={selectedMachine}
                         paramKey="machine"
                     />
+                </div>
+
+                {/* New Admin & Suggestions Buttons */}
+                <div className="mt-10 space-y-4 pt-10 border-t border-white/5">
+                    <Link
+                        href="/admin/datos"
+                        className="w-full flex items-center gap-3 px-4 py-4 rounded-3xl bg-emerald-500/5 border border-emerald-500/10 hover:bg-emerald-500/10 hover:border-emerald-500/20 transition-all group"
+                    >
+                        <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-400 group-hover:scale-110 transition-transform">
+                            <Database className="w-5 h-5" />
+                        </div>
+                        <div className="flex flex-col">
+                            <span className="text-[10px] font-black text-white uppercase tracking-[0.2em] group-hover:text-emerald-400 transition-colors">Datos</span>
+                            <span className="text-[8px] text-emerald-500/40 font-bold uppercase tracking-widest">Dashboard de pedidos</span>
+                        </div>
+                    </Link>
+
+                    <button
+                        onClick={() => window.dispatchEvent(new CustomEvent('open-suggestions'))}
+                        className="w-full flex items-center justify-between px-5 py-5 rounded-[32px] bg-gradient-to-r from-amber-500/10 to-emerald-500/10 border border-white/10 hover:border-amber-500/30 transition-all group overflow-hidden relative"
+                    >
+                        <div className="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-emerald-500/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <div className="flex items-center gap-4 relative z-10">
+                            <div className="w-12 h-12 rounded-full border border-amber-500/30 overflow-hidden bg-[#020617] p-0.5 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
+                                <img src="/eir_not_found.jpg" alt="Suggestions" className="w-full h-full object-cover rounded-full" />
+                            </div>
+                            <div className="flex flex-col items-start translate-y-0.5">
+                                <span className="text-[11px] font-display font-black text-amber-400 uppercase tracking-[0.1em]">Sugerencias</span>
+                                <span className="text-[8px] text-slate-500 font-bold uppercase tracking-widest group-hover:text-slate-400 transition-colors">Habla con el Oráculo</span>
+                            </div>
+                        </div>
+                        <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-amber-500/40 group-hover:text-amber-400 transition-colors relative z-10">
+                            <TrendingUp className="w-4 h-4" />
+                        </div>
+                    </button>
                 </div>
             </div>
         </aside>

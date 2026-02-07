@@ -120,7 +120,7 @@ export default function CustomSelector({
             </div>
 
             {isOpen && (
-                <div className="absolute z-[100] top-full mt-2 w-full glass-panel rounded-3xl border border-white/10 shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-300">
+                <div className="absolute z-[100] top-full mt-2 w-full bg-[#0f172a] rounded-3xl border border-white/10 shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-300">
                     <div className="p-3 border-b border-white/5 bg-white/5">
                         <div className="relative">
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-500" />
@@ -131,7 +131,7 @@ export default function CustomSelector({
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 onClick={(e) => e.stopPropagation()}
-                                className="w-full pl-9 pr-4 py-2.5 bg-[#020617]/50 border border-white/5 rounded-xl outline-none text-xs text-white placeholder:text-slate-600 font-medium"
+                                className="w-full pl-9 pr-4 py-2.5 bg-[#0f172a] border border-white/10 rounded-xl outline-none text-xs text-white placeholder:text-slate-500 font-medium focus:border-emerald-500/50"
                             />
                         </div>
                     </div>
