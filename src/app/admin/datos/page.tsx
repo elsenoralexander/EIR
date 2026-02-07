@@ -15,7 +15,8 @@ export default function AdminDatosPage() {
     const [orders, setOrders] = useState<any[]>([]);
     const [suggestions, setSuggestions] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
-    const [filterDate, setFilterDate] = useState(new Date().toISOString().split('T')[0]);
+    const [startDate, setStartDate] = useState(new Date(new Date().setDate(new Date().getDate() - 7)).toISOString().split('T')[0]); // Default to last 7 days
+    const [endDate, setEndDate] = useState(new Date().toISOString().split('T')[0]);
     const [searchTerm, setSearchTerm] = useState('');
 
     const handleLogin = (e: React.FormEvent) => {
@@ -49,7 +50,7 @@ export default function AdminDatosPage() {
 
     const filteredOrders = orders.filter(order => {
         const orderDate = new Date(order.createdAt).toISOString().split('T')[0];
-        const matchesDate = orderDate >= filterDate;
+        const matchesDate = orderDate >= startDate && orderDate <= endDate;
         const matchesSearch = order.partName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
             order.provider?.toLowerCase().includes(searchTerm.toLowerCase());
         return matchesDate && matchesSearch;
@@ -218,12 +219,27 @@ export default function AdminDatosPage() {
                                         className="pl-11 pr-6 py-2.5 rounded-xl bg-[#020617] border border-white/5 text-[10px] font-bold uppercase tracking-widest focus:border-emerald-500 outline-none transition-all w-64"
                                     />
                                 </div>
-                                <input
-                                    type="date"
-                                    value={filterDate}
-                                    onChange={(e) => setFilterDate(e.target.value)}
-                                    className="px-4 py-2.5 rounded-xl bg-[#020617] border border-white/5 text-[10px] font-bold uppercase tracking-widest focus:border-emerald-500 outline-none transition-all text-emerald-400"
-                                />
+                                <div className="flex items-center gap-2 bg-[#020617] p-1 rounded-2xl border border-white/5">
+                                    <div className="relative flex items-center">
+                                        <Calendar className="absolute left-3 w-3.5 h-3.5 text-emerald-500/40" />
+                                        <input
+                                            type="date"
+                                            value={startDate}
+                                            onChange={(e) => setStartDate(e.target.value)}
+                                            className="pl-9 pr-3 py-2 rounded-xl bg-transparent text-[10px] font-bold uppercase tracking-widest focus:text-emerald-400 outline-none transition-all text-slate-400"
+                                        />
+                                    </div>
+                                    <div className="w-px h-4 bg-white/10" />
+                                    <div className="relative flex items-center">
+                                        <Calendar className="absolute left-3 w-3.5 h-3.5 text-emerald-500/40" />
+                                        <input
+                                            type="date"
+                                            value={endDate}
+                                            onChange={(e) => setEndDate(e.target.value)}
+                                            className="pl-9 pr-3 py-2 rounded-xl bg-transparent text-[10px] font-bold uppercase tracking-widest focus:text-emerald-400 outline-none transition-all text-slate-400"
+                                        />
+                                    </div>
+                                </div>
                                 <span className="text-[10px] font-bold text-emerald-500/40 bg-emerald-500/5 px-4 py-1.5 rounded-full border border-emerald-500/10 uppercase tracking-widest">
                                     {filteredOrders.length} Resultados
                                 </span>
