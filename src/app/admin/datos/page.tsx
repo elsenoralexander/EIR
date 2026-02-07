@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { getOrders } from '@/actions/orderActions';
 import { getSuggestions } from '@/actions/suggestionActions';
 import { ChevronLeft, Calendar, Package, TrendingUp, Lock, Search, Filter, Database, FileText, MessageSquare, Sparkles, Clock } from 'lucide-react';
@@ -18,6 +18,8 @@ export default function AdminDatosPage() {
     const [startDate, setStartDate] = useState(new Date(new Date().setDate(new Date().getDate() - 7)).toISOString().split('T')[0]); // Default to last 7 days
     const [endDate, setEndDate] = useState(new Date().toISOString().split('T')[0]);
     const [searchTerm, setSearchTerm] = useState('');
+    const startInputRef = useRef<HTMLInputElement>(null);
+    const endInputRef = useRef<HTMLInputElement>(null);
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
@@ -220,23 +222,31 @@ export default function AdminDatosPage() {
                                     />
                                 </div>
                                 <div className="flex items-center gap-2 bg-[#020617] p-1 rounded-2xl border border-white/5">
-                                    <div className="relative flex items-center">
+                                    <div
+                                        className="relative flex items-center cursor-pointer hover:bg-white/5 rounded-xl transition-all pr-1"
+                                        onClick={() => startInputRef.current?.showPicker()}
+                                    >
                                         <Calendar className="absolute left-3 w-3.5 h-3.5 text-emerald-500/40" />
                                         <input
+                                            ref={startInputRef}
                                             type="date"
                                             value={startDate}
                                             onChange={(e) => setStartDate(e.target.value)}
-                                            className="pl-9 pr-3 py-2 rounded-xl bg-transparent text-[10px] font-bold uppercase tracking-widest focus:text-emerald-400 outline-none transition-all text-slate-400"
+                                            className="pl-9 pr-3 py-2 rounded-xl bg-transparent text-[10px] font-bold uppercase tracking-widest focus:text-emerald-400 outline-none transition-all text-slate-400 cursor-pointer"
                                         />
                                     </div>
                                     <div className="w-px h-4 bg-white/10" />
-                                    <div className="relative flex items-center">
+                                    <div
+                                        className="relative flex items-center cursor-pointer hover:bg-white/5 rounded-xl transition-all pr-1"
+                                        onClick={() => endInputRef.current?.showPicker()}
+                                    >
                                         <Calendar className="absolute left-3 w-3.5 h-3.5 text-emerald-500/40" />
                                         <input
+                                            ref={endInputRef}
                                             type="date"
                                             value={endDate}
                                             onChange={(e) => setEndDate(e.target.value)}
-                                            className="pl-9 pr-3 py-2 rounded-xl bg-transparent text-[10px] font-bold uppercase tracking-widest focus:text-emerald-400 outline-none transition-all text-slate-400"
+                                            className="pl-9 pr-3 py-2 rounded-xl bg-transparent text-[10px] font-bold uppercase tracking-widest focus:text-emerald-400 outline-none transition-all text-slate-400 cursor-pointer"
                                         />
                                     </div>
                                 </div>
