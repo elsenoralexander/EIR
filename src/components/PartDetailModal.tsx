@@ -336,36 +336,73 @@ Muchas gracias.
                     {isOrderMode && (
                         <div className="p-6 rounded-[28px] bg-emerald-500/5 border border-emerald-500/20 flex flex-col gap-4 animate-in slide-in-from-bottom-2">
                             <div className="flex items-center justify-between">
-                                <span className="text-[10px] font-bold text-emerald-500/60 uppercase tracking-widest">Cantidad</span>
+                                <div className="flex flex-col">
+                                    <span className="text-[10px] font-bold text-emerald-500/60 uppercase tracking-widest">Añadiendo</span>
+                                    <span className="text-[11px] font-black text-white truncate max-w-[200px]">{selectedVariant ? selectedVariant.name : part.name}</span>
+                                </div>
                                 <div className="flex items-center gap-4 bg-[#020617] p-1 rounded-full border border-white/10">
                                     <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="w-8 h-8 rounded-full bg-white/5 text-white">-</button>
                                     <span className="w-6 text-center text-sm font-black text-white">{quantity}</span>
                                     <button onClick={() => setQuantity(quantity + 1)} className="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400">+</button>
                                 </div>
                             </div>
-                            <button onClick={addToCart} className="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-[10px] uppercase tracking-widest transition-all">
-                                Añadir a la Cesta
+                            <button onClick={addToCart} className="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-[10px] uppercase tracking-widest transition-all shadow-lg shadow-emerald-500/20">
+                                Confirmar y Añadir a la Cesta
                             </button>
                         </div>
                     )}
 
-                    <div className="flex gap-4">
-                        <button onClick={onClose} className="flex-1 py-4 bg-white/5 text-white font-bold rounded-2xl border border-white/10 uppercase tracking-widest text-xs">Retornar</button>
-                        <button
-                            onClick={() => {
-                                const activeCode = selectedVariant?.internalCode || part.internalCode;
-                                if (activeCode && activeCode !== 'NaN' && activeCode !== '' && cart.length === 0 && !isOrderMode) {
-                                    setIsAxionalAlertOpen(true);
-                                } else if (cart.length > 0) {
-                                    handleOrder();
-                                } else {
-                                    setIsOrderMode(true);
-                                }
-                            }}
-                            className={`flex-[2] py-4 font-bold rounded-2xl uppercase tracking-widest text-xs transition-all ${cart.length > 0 || isOrderMode ? 'bg-amber-500 text-white' : 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20'}`}
-                        >
-                            {cart.length > 0 ? `Realizar Pedido (${cart.length})` : isOrderMode ? 'Cerrar Cantidad' : 'Realizar Solicitud'}
-                        </button>
+                    <div className="flex gap-3">
+                        {isOrderMode ? (
+                            <button
+                                onClick={() => setIsOrderMode(false)}
+                                className="flex-1 py-4 bg-white/5 text-white font-bold rounded-2xl border border-white/10 uppercase tracking-widest text-[10px] transition-all hover:bg-white/10"
+                            >
+                                Cancelar Selección
+                            </button>
+                        ) : (
+                            <>
+                                <button
+                                    onClick={onClose}
+                                    className="flex-1 py-4 bg-white/5 text-white font-bold rounded-2xl border border-white/10 uppercase tracking-widest text-[10px] transition-all hover:bg-white/10"
+                                >
+                                    Retornar
+                                </button>
+
+                                {cart.length > 0 ? (
+                                    <>
+                                        <button
+                                            onClick={() => setIsOrderMode(true)}
+                                            className="flex-1 py-4 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold rounded-2xl uppercase tracking-widest text-[10px] transition-all hover:bg-emerald-500/20 flex items-center justify-center gap-2"
+                                        >
+                                            <ShoppingCart className="w-3.5 h-3.5" />
+                                            Mas Variantes
+                                        </button>
+                                        <button
+                                            onClick={handleOrder}
+                                            className="flex-[1.5] py-4 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-display font-black rounded-2xl uppercase tracking-widest text-[10px] transition-all shadow-lg shadow-amber-500/20 active:scale-95"
+                                        >
+                                            Finalizar Pedido ({cart.length})
+                                        </button>
+                                    </>
+                                ) : (
+                                    <button
+                                        onClick={() => {
+                                            const activeCode = selectedVariant?.internalCode || part.internalCode;
+                                            if (activeCode && activeCode !== 'NaN' && activeCode !== '' && !isOrderMode) {
+                                                setIsAxionalAlertOpen(true);
+                                            } else {
+                                                setIsOrderMode(true);
+                                            }
+                                        }}
+                                        className="flex-[2] py-4 bg-emerald-500 text-white font-display font-black rounded-2xl uppercase tracking-widest text-[10px] transition-all shadow-lg shadow-emerald-500/20 active:scale-95 flex items-center justify-center gap-2"
+                                    >
+                                        <ShoppingCart className="w-4 h-4" />
+                                        Solicitar Material
+                                    </button>
+                                )}
+                            </>
+                        )}
                     </div>
                 </div>
             </div>
