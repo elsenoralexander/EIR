@@ -2,13 +2,16 @@
 
 import { useState, useEffect } from 'react';
 import { getOrders } from '@/actions/orderActions';
-import { ChevronLeft, Calendar, Package, TrendingUp, Lock, Search, Filter, Database, FileText } from 'lucide-react';
+import { getSuggestions } from '@/actions/suggestionActions';
+import { ChevronLeft, Calendar, Package, TrendingUp, Lock, Search, Filter, Database, FileText, MessageSquare, Sparkles, Clock } from 'lucide-react';
 import Link from 'next/link';
 
 export default function AdminDatosPage() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [password, setPassword] = useState('');
+    const [activeTab, setActiveTab] = useState<'pedidos' | 'sugerencias'>('pedidos');
     const [orders, setOrders] = useState<any[]>([]);
+    const [suggestions, setSuggestions] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
     const [filterDate, setFilterDate] = useState(new Date().toISOString().split('T')[0]);
     const [searchTerm, setSearchTerm] = useState('');
@@ -17,21 +20,30 @@ export default function AdminDatosPage() {
         e.preventDefault();
         if (password === '9730') {
             setIsAuthenticated(true);
-            fetchOrders();
+            fetchAllData();
         } else {
             alert('Contraseña incorrecta');
         }
     };
 
-    const fetchOrders = async () => {
+    const fetchAllData = async () => {
         setLoading(true);
-        // Desired behavior: from today onwards. We'll fetch all and filter client side for better UX with the date picker
-        const result = await getOrders();
-        if (result.success) {
-            setOrders(result.orders);
-        }
+        const [ordersRes, suggestionsRes] = await Promise.all([
+            getOrders(),
+            getSuggestions()
+        ]);
+
+        if (ordersRes.success) setOrders(ordersRes.orders);
+        if (suggestionsRes.success) setSuggestions(suggestionsRes.suggestions);
+
         setLoading(false);
     };
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            fetchAllData();
+        }
+    }, [isAuthenticated]);
 
     const filteredOrders = orders.filter(order => {
         const orderDate = new Date(order.createdAt).toISOString().split('T')[0];
@@ -213,8 +225,8 @@ export default function AdminDatosPage() {
                                         </td>
                                         <td className="px-8 py-6 text-right">
                                             <span className={`inline-block px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest border ${order.category === 'MANTENIMIENTO'
-                                                    ? 'bg-amber-500/10 border-amber-500/30 text-amber-400'
-                                                    : 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
+                                                ? 'bg-amber-500/10 border-amber-500/30 text-amber-400'
+                                                : 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
                                                 }`}>
                                                 {order.category}
                                             </span>

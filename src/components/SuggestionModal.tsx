@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { X, Send, Sparkles, MessageSquare } from 'lucide-react';
+import { X, Send, Sparkles, MessageSquare, Loader2 } from 'lucide-react';
+import { saveSuggestion } from '@/actions/suggestionActions';
 
 export default function SuggestionModal() {
     const [isOpen, setIsOpen] = useState(false);
