@@ -1,4 +1,4 @@
-import { Filter, ChevronDown, ChevronRight, Building2, Monitor, Hammer, Database, TrendingUp } from 'lucide-react';
+import { Filter, ChevronDown, ChevronRight, Building2, Monitor, Hammer, Database, TrendingUp, X } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
@@ -36,6 +36,12 @@ export default function Sidebar({ services, providers, machines }: SidebarProps)
             params.set(key, value);
         }
         router.replace(`/?${params.toString()}`);
+    };
+
+    const hasFilters = selectedService || selectedProvider || selectedMachine || searchParams.get('q');
+
+    const resetFilters = () => {
+        router.replace('/');
     };
 
     const FilterSection = ({
@@ -135,6 +141,15 @@ export default function Sidebar({ services, providers, machines }: SidebarProps)
                     </div>
                 </div>
 
+                {hasFilters && (
+                    <button
+                        onClick={resetFilters}
+                        className="w-full mb-6 flex items-center justify-center gap-2 px-4 py-3 rounded-2xl bg-rose-500/5 border border-rose-500/20 text-rose-400 hover:bg-rose-500/10 hover:border-rose-500/40 transition-all font-display font-black text-[10px] uppercase tracking-widest group animate-in fade-in slide-in-from-top-2"
+                    >
+                        <X className="w-3.5 h-3.5 group-hover:rotate-90 transition-transform" />
+                        Limpiar Filtros
+                    </button>
+                )}
 
                 <div className="space-y-2">
                     <FilterSection

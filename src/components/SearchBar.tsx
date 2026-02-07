@@ -2,12 +2,21 @@
 
 import { Search } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { GlowingEffect } from './ui/glowing-effect';
 
 export default function SearchBar() {
     const searchParams = useSearchParams();
     const { replace } = useRouter();
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    // Sync input value with URL param (important for "Clear Filters")
+    const query = searchParams.get('q') || '';
+    useEffect(() => {
+        if (inputRef.current) {
+            inputRef.current.value = query;
+        }
+    }, [query]);
 
     const handleSearch = (term: string) => {
         const params = new URLSearchParams(searchParams);
@@ -46,10 +55,10 @@ export default function SearchBar() {
                 <Search className="w-5 h-5" />
             </div>
             <input
+                ref={inputRef}
                 type="text"
                 className="block w-full p-4 pl-12 text-sm text-white border border-white/5 rounded-2xl bg-white/5 backdrop-blur-md focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/50 transition-all placeholder:text-slate-500 shadow-inner relative z-0"
                 placeholder="Invocar repuesto por nombre, referencia o máquina..."
-                defaultValue={searchParams.get('q')?.toString()}
                 onChange={(e) => debouncedSearch(e.target.value)}
             />
         </div>

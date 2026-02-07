@@ -138,15 +138,16 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                         inactiveZone={0.01}
                         disabled={false}
                     />
-                    <Link
-                        href="/"
-                        className="relative z-10 flex items-center gap-3 px-5 py-2.5 rounded-2xl bg-white/5 border border-white/10 transition-all duration-300 group-hover/btn:bg-white/10"
+                    <button
+                        type="button"
+                        onClick={() => router.back()}
+                        className="relative z-10 flex items-center gap-3 px-5 py-2.5 rounded-2xl bg-white/5 border border-white/10 transition-all duration-300 group-hover/btn:bg-white/10 hover:border-emerald-500/30"
                     >
                         <ArrowLeft className="w-4 h-4 text-emerald-400 transition-transform group-hover/btn:-translate-x-1" />
                         <span className="font-display font-black text-xs tracking-[0.15em] uppercase text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300">
                             Volver al Oráculo
                         </span>
-                    </Link>
+                    </button>
                 </div>
             </div>
 
@@ -643,12 +644,13 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                             </div>
                         </button>
                     </div>
-                    <Link
-                        href="/"
+                    <button
+                        type="button"
+                        onClick={() => router.back()}
                         className="w-full sm:w-auto text-center px-8 py-3 text-slate-500 font-display font-bold uppercase tracking-widest text-xs hover:text-white transition-colors order-2 sm:order-1"
                     >
                         Desistir
-                    </Link>
+                    </button>
                 </div>
             </form>
         </div>

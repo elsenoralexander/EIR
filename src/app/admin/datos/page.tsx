@@ -5,8 +5,10 @@ import { getOrders } from '@/actions/orderActions';
 import { getSuggestions } from '@/actions/suggestionActions';
 import { ChevronLeft, Calendar, Package, TrendingUp, Lock, Search, Filter, Database, FileText, MessageSquare, Sparkles, Clock } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function AdminDatosPage() {
+    const router = useRouter();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [password, setPassword] = useState('');
     const [activeTab, setActiveTab] = useState<'pedidos' | 'sugerencias'>('pedidos');
@@ -94,9 +96,12 @@ export default function AdminDatosPage() {
                 {/* Header */}
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
                     <div className="flex items-center gap-6">
-                        <Link href="/" className="p-4 rounded-2xl bg-white/5 border border-white/10 text-slate-400 hover:text-white transition-all shadow-xl group">
+                        <button
+                            onClick={() => window.history.length > 1 ? router.back() : router.push('/')}
+                            className="p-4 rounded-2xl bg-white/5 border border-white/10 text-slate-400 hover:text-white transition-all shadow-xl group"
+                        >
                             <ChevronLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
-                        </Link>
+                        </button>
                         <div>
                             <h1 className="text-3xl sm:text-4xl font-display font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300">
                                 DASHBOARD DE DATOS

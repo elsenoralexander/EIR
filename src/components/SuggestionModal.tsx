@@ -8,6 +8,7 @@ export default function SuggestionModal() {
     const [isOpen, setIsOpen] = useState(false);
     const [suggestion, setSuggestion] = useState('');
     const [isSent, setIsSent] = useState(false);
+    const [isSending, setIsSending] = useState(false);
 
     useEffect(() => {
         const handleOpen = () => setIsOpen(true);
@@ -15,20 +16,28 @@ export default function SuggestionModal() {
         return () => window.removeEventListener('open-suggestions', handleOpen);
     }, []);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!suggestion.trim()) return;
+        if (!suggestion.trim() || isSending) return;
 
-        // In a real app, save to Firestore. For now, we'll simulate it.
-        console.log('Suggestion submitted:', suggestion);
-        setIsSent(true);
-
-        // Reset after 3 seconds
-        setTimeout(() => {
-            setIsOpen(false);
-            setIsSent(false);
-            setSuggestion('');
-        }, 3000);
+        setIsSending(true);
+        try {
+            const result = await saveSuggestion(suggestion);
+            if (result.success) {
+                setIsSent(true);
+                setTimeout(() => {
+                    setIsOpen(false);
+                    setIsSent(false);
+                    setSuggestion('');
+                }, 3000);
+            } else {
+                alert('Error al enviar: ' + result.error);
+            }
+        } catch (error: any) {
+            alert('Error inesperado: ' + error.message);
+        } finally {
+            setIsSending(false);
+        }
     };
 
     if (!isOpen) return null;
@@ -74,10 +83,15 @@ export default function SuggestionModal() {
                                 </div>
                                 <button
                                     type="submit"
-                                    className="w-full py-4 bg-gradient-to-r from-amber-500 to-emerald-500 hover:shadow-[0_0_20px_rgba(245,158,11,0.3)] text-white font-display font-black rounded-2xl transition-all uppercase tracking-[0.2em] text-[10px] active:scale-95 flex items-center justify-center gap-2"
+                                    disabled={isSending}
+                                    className="w-full py-4 bg-gradient-to-r from-amber-500 to-emerald-500 hover:shadow-[0_0_20px_rgba(245,158,11,0.3)] text-white font-display font-black rounded-2xl transition-all uppercase tracking-[0.2em] text-[10px] active:scale-95 flex items-center justify-center gap-2 disabled:opacity-50"
                                 >
-                                    <Send className="w-4 h-4" />
-                                    Enviar Sugerencia
+                                    {isSending ? (
+                                        <Loader2 className="w-4 h-4 animate-spin" />
+                                    ) : (
+                                        <Send className="w-4 h-4" />
+                                    )}
+                                    {isSending ? 'Enviando...' : 'Enviar Sugerencia'}
                                 </button>
                             </form>
                         </div>
