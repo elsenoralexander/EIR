@@ -37,6 +37,11 @@ export default function AddPartForm({ part }: AddPartFormProps) {
         part?.variants?.map(v => ({ ...v, id: v.id || crypto.randomUUID() })) || []
     );
 
+    // Name syncing states
+    const [officialName, setOfficialName] = useState(part?.name || '');
+    const [commonName, setCommonName] = useState(part?.commonName || '');
+    const [isCommonNameEdited, setIsCommonNameEdited] = useState(!!part?.commonName && part.commonName !== part.name);
+
     useEffect(() => {
         const loadOptions = async () => {
             try {
@@ -177,7 +182,14 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                                         id="name"
                                         name="name"
                                         type="text"
-                                        defaultValue={part?.name}
+                                        value={officialName}
+                                        onChange={(e) => {
+                                            const val = e.target.value;
+                                            setOfficialName(val);
+                                            if (!isCommonNameEdited) {
+                                                setCommonName(val);
+                                            }
+                                        }}
                                         placeholder="Ej: Desfibrilador Zoll R Series..."
                                         className="w-full p-4 rounded-2xl bg-[#020617]/50 border border-white/5 focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 outline-none text-white transition-all placeholder:text-slate-600 font-medium relative z-10"
                                     />
@@ -202,7 +214,11 @@ export default function AddPartForm({ part }: AddPartFormProps) {
                                         id="commonName"
                                         name="commonName"
                                         type="text"
-                                        defaultValue={part?.commonName}
+                                        value={commonName}
+                                        onChange={(e) => {
+                                            setCommonName(e.target.value);
+                                            setIsCommonNameEdited(true);
+                                        }}
                                         placeholder="Ej: Desfibrilador de transporte"
                                         className="w-full p-4 rounded-2xl bg-[#020617]/50 border border-white/5 focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 outline-none text-white transition-all placeholder:text-slate-600 font-medium relative z-10"
                                     />
