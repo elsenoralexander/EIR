@@ -23,3 +23,10 @@ export interface SparePart {
     additionalImages?: string[];
     variants?: ProductVariant[];
 }
+
+export interface Suggestion {
+    id: string;
+    userName: string;
+    content: string;
+    createdAt: Date;
+}

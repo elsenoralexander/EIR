@@ -7,6 +7,7 @@ import { saveSuggestion } from '@/actions/suggestionActions';
 export default function SuggestionModal() {
     const [isOpen, setIsOpen] = useState(false);
     const [suggestion, setSuggestion] = useState('');
+    const [userName, setUserName] = useState('');
     const [isSent, setIsSent] = useState(false);
     const [isSending, setIsSending] = useState(false);
 
@@ -18,17 +19,18 @@ export default function SuggestionModal() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!suggestion.trim() || isSending) return;
+        if (!suggestion.trim() || !userName.trim() || isSending) return;
 
         setIsSending(true);
         try {
-            const result = await saveSuggestion(suggestion);
+            const result = await saveSuggestion(suggestion, userName);
             if (result.success) {
                 setIsSent(true);
                 setTimeout(() => {
                     setIsOpen(false);
                     setIsSent(false);
                     setSuggestion('');
+                    setUserName('');
                 }, 3000);
             } else {
                 alert('Error al enviar: ' + result.error);
@@ -71,19 +73,34 @@ export default function SuggestionModal() {
                                 "¿Qué nuevas funciones o mejoras te gustaría ver en esta plataforma? Tus ideas son la luz que guía mi evolución."
                             </p>
                             <form onSubmit={handleSubmit} className="space-y-4">
-                                <div className="relative">
-                                    <MessageSquare className="absolute left-4 top-4 w-4 h-4 text-emerald-500/30" />
-                                    <textarea
-                                        autoFocus
-                                        value={suggestion}
-                                        onChange={(e) => setSuggestion(e.target.value)}
-                                        placeholder="Escribe tu sugerencia aquí..."
-                                        className="w-full h-32 pl-12 pr-6 py-4 rounded-3xl bg-white/5 border border-white/10 text-sm font-medium focus:border-amber-500/50 outline-none transition-all resize-none text-white placeholder:text-slate-700"
-                                    />
+                                <div className="space-y-4">
+                                    <div className="relative">
+                                        <Sparkles className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-amber-500/30" />
+                                        <input
+                                            type="text"
+                                            required
+                                            value={userName}
+                                            onChange={(e) => setUserName(e.target.value)}
+                                            placeholder="Tu nombre (Obligatorio)..."
+                                            className="w-full pl-12 pr-6 py-4 rounded-2xl bg-white/5 border border-white/10 text-sm font-medium focus:border-amber-500/50 outline-none transition-all text-white placeholder:text-slate-700"
+                                        />
+                                    </div>
+
+                                    <div className="relative">
+                                        <MessageSquare className="absolute left-4 top-4 w-4 h-4 text-emerald-500/30" />
+                                        <textarea
+                                            required
+                                            value={suggestion}
+                                            onChange={(e) => setSuggestion(e.target.value)}
+                                            placeholder="Escribe tu sugerencia aquí..."
+                                            className="w-full h-32 pl-12 pr-6 py-4 rounded-3xl bg-white/5 border border-white/10 text-sm font-medium focus:border-amber-500/50 outline-none transition-all resize-none text-white placeholder:text-slate-700"
+                                        />
+                                    </div>
                                 </div>
+
                                 <button
                                     type="submit"
-                                    disabled={isSending}
+                                    disabled={isSending || !userName.trim() || !suggestion.trim()}
                                     className="w-full py-4 bg-gradient-to-r from-amber-500 to-emerald-500 hover:shadow-[0_0_20px_rgba(245,158,11,0.3)] text-white font-display font-black rounded-2xl transition-all uppercase tracking-[0.2em] text-[10px] active:scale-95 flex items-center justify-center gap-2 disabled:opacity-50"
                                 >
                                     {isSending ? (

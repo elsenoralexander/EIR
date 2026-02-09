@@ -364,11 +364,17 @@ export default function AdminDatosPage() {
                                                 </p>
                                             </td>
                                             <td className="px-8 py-8">
-                                                <div className="relative p-6 rounded-3xl bg-white/5 border border-white/5 group-hover:border-amber-500/20 transition-all">
-                                                    <MessageSquare className="absolute -left-3 -top-3 w-6 h-6 text-amber-500/20" />
-                                                    <p className="text-sm text-slate-200 leading-relaxed italic font-medium">
-                                                        "{suggestion.content}"
-                                                    </p>
+                                                <div className="space-y-3">
+                                                    <div className="flex items-center gap-2">
+                                                        <Sparkles className="w-3.5 h-3.5 text-amber-500/60" />
+                                                        <span className="text-[10px] font-black text-amber-500 uppercase tracking-widest">{suggestion.userName || 'Anónimo'}</span>
+                                                    </div>
+                                                    <div className="relative p-6 rounded-3xl bg-white/5 border border-white/5 group-hover:border-amber-500/20 transition-all">
+                                                        <MessageSquare className="absolute -left-3 -top-3 w-6 h-6 text-amber-500/20" />
+                                                        <p className="text-sm text-slate-200 leading-relaxed italic font-medium">
+                                                            "{suggestion.content}"
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </td>
                                         </tr>

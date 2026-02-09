@@ -3,10 +3,11 @@
 import { db } from '@/lib/firebase';
 import { collection, addDoc, Timestamp, query, orderBy, getDocs } from 'firebase/firestore';
 
-export async function saveSuggestion(content: string) {
+export async function saveSuggestion(content: string, userName: string) {
     try {
         await addDoc(collection(db, 'sugerencias'), {
             content,
+            userName,
             createdAt: Timestamp.now(),
         });
         return { success: true };
