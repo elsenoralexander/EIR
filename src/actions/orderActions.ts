@@ -48,10 +48,10 @@ export async function getOrders() {
 
 export async function getOrdersByPartId(partId: string) {
     try {
+        console.log('Fetching orders for partId:', partId);
         const q = query(
             collection(db, 'pedidos'),
-            where('partId', '==', partId),
-            orderBy('createdAt', 'desc')
+            where('partId', '==', partId)
         );
         const querySnapshot = await getDocs(q);
         const orders = querySnapshot.docs.map(doc => ({
@@ -59,7 +59,14 @@ export async function getOrdersByPartId(partId: string) {
             ...doc.data(),
             createdAt: doc.data().createdAt?.toDate() || new Date(),
         }));
-        return { success: true, orders };
+
+        // Sort in memory to avoid needing a composite index
+        const sortedOrders = orders.sort((a, b) =>
+            b.createdAt.getTime() - a.createdAt.getTime()
+        );
+
+        console.log(`Found ${sortedOrders.length} orders for partId: ${partId}`);
+        return { success: true, orders: sortedOrders };
     } catch (error: any) {
         console.error('Error fetching orders by partId:', error);
         return { success: false, error: error.message, orders: [] };

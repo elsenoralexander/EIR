@@ -123,7 +123,7 @@ Muchas gracias.
 
         const mailtoUrl = `mailto:${recipients}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-        await recordOrder({
+        const orderResult = await recordOrder({
             partId: part.id,
             partName: part.name,
             provider: part.provider,
@@ -131,6 +131,12 @@ Muchas gracias.
             totalItems: cart.reduce((sum, item) => sum + item.quantity, 0),
             category: category
         });
+
+        if (orderResult.success) {
+            fetchLastOrders(part.id);
+        } else {
+            console.error('No se pudo registrar el pedido en la base de datos:', orderResult.error);
+        }
 
         window.location.href = mailtoUrl;
     };
@@ -202,7 +208,10 @@ Muchas gracias.
                         <h2 className="text-xl sm:text-2xl font-display font-black text-white tracking-tight leading-tight break-words mb-1">
                             {part.name}
                         </h2>
-                        <p className="text-[9px] sm:text-[10px] text-emerald-500/60 font-medium uppercase tracking-[0.2em]">Ficha Técnica de Suministro</p>
+                        <div className="flex items-center gap-2">
+                            <p className="text-[9px] sm:text-[10px] text-emerald-500/60 font-medium uppercase tracking-[0.2em]">Ficha Técnica de Suministro</p>
+                            <span className="text-[8px] text-white/20 font-mono">ID: {part.id}</span>
+                        </div>
                     </div>
                     <div className="flex items-start gap-3 shrink-0">
                         <div className="flex flex-col gap-2">
