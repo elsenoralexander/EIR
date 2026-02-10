@@ -1,12 +1,12 @@
 'use client';
 
 import { SparePart } from '@/types';
-import { X, Phone, Mail, FileText, ShoppingCart, Image as ImageIcon, Edit3, Trash2, Tag, Loader2 } from 'lucide-react';
+import { X, Phone, Mail, FileText, ShoppingCart, Image as ImageIcon, Edit3, Trash2, Tag, Loader2, Clock } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { deletePart } from '@/actions/partActions';
-import { recordOrder } from '@/actions/orderActions';
+import { recordOrder, getOrdersByPartId } from '@/actions/orderActions';
 
 interface PartDetailModalProps {
     part: SparePart | null;
@@ -32,6 +32,8 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
         quantity: number;
         internalCode?: string;
     }[]>([]);
+    const [lastOrders, setLastOrders] = useState<any[]>([]);
+    const [isLoadingOrders, setIsLoadingOrders] = useState(false);
 
     const selectedVariant = part?.variants?.find(v => v.id === selectedVariantId) || null;
 
@@ -41,8 +43,18 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
             setIsOrderMode(false);
             setQuantity(1);
             setSelectedVariantId(part.variants && part.variants.length > 0 ? part.variants[0].id : null);
+            fetchLastOrders(part.id);
         }
     }, [part?.id]);
+
+    const fetchLastOrders = async (partId: string) => {
+        setIsLoadingOrders(true);
+        const result = await getOrdersByPartId(partId);
+        if (result.success) {
+            setLastOrders(result.orders || []);
+        }
+        setIsLoadingOrders(false);
+    };
 
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
@@ -329,6 +341,44 @@ Muchas gracias.
                                 )}
                             </div>
                         </div>
+                    </div>
+
+                    {/* Historial de Pedidos */}
+                    <div className="space-y-4 p-6 rounded-[32px] bg-white/5 border border-white/10">
+                        <div className="flex items-center gap-2 mb-1">
+                            <Clock className="w-4 h-4 text-emerald-400" />
+                            <h4 className="text-[10px] font-black text-white uppercase tracking-[0.2em]">Últimos Pedidos Realizados</h4>
+                        </div>
+
+                        {isLoadingOrders ? (
+                            <div className="flex items-center justify-center py-4">
+                                <Loader2 className="w-5 h-5 text-emerald-500/40 animate-spin" />
+                            </div>
+                        ) : lastOrders.length > 0 ? (
+                            <div className="space-y-3">
+                                {lastOrders.slice(0, 3).map((order, idx) => (
+                                    <div key={idx} className="flex items-center justify-between p-3 rounded-2xl bg-[#020617]/50 border border-white/5">
+                                        <div className="flex-1 min-w-0">
+                                            <p className="text-[10px] font-bold text-white">
+                                                {new Date(order.createdAt).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })}
+                                            </p>
+                                            <div className="flex flex-wrap gap-1 mt-1">
+                                                {order.items?.map((item: any, i: number) => (
+                                                    <span key={i} className="text-[8px] text-emerald-500/60 font-medium">
+                                                        {item.quantity}x {item.name.split('(')[1]?.replace(')', '') || 'Base'}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        <div className="text-right">
+                                            <span className="text-[10px] font-black text-amber-500">{order.totalItems} ud.</span>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <p className="text-[10px] text-slate-500 italic text-center py-2">No hay pedidos registrados recientemente.</p>
+                        )}
                     </div>
                 </div>
 

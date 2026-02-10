@@ -38,10 +38,30 @@ export async function getOrders() {
             id: doc.id,
             ...doc.data(),
             createdAt: doc.data().createdAt?.toDate() || new Date(),
-        }));
+        })).filter(order => order.createdAt !== null);
         return { success: true, orders };
     } catch (error: any) {
         console.error('Error fetching orders:', error);
+        return { success: false, error: error.message, orders: [] };
+    }
+}
+
+export async function getOrdersByPartId(partId: string) {
+    try {
+        const q = query(
+            collection(db, 'pedidos'),
+            where('partId', '==', partId),
+            orderBy('createdAt', 'desc')
+        );
+        const querySnapshot = await getDocs(q);
+        const orders = querySnapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data(),
+            createdAt: doc.data().createdAt?.toDate() || new Date(),
+        }));
+        return { success: true, orders };
+    } catch (error: any) {
+        console.error('Error fetching orders by partId:', error);
         return { success: false, error: error.message, orders: [] };
     }
 }
