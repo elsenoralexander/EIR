@@ -80,7 +80,7 @@ export default function PartDetailModal({ part, onClose }: PartDetailModalProps)
             recipients = `${mainMail}, monica.pozuelo@quironsalud.es`;
         }
 
-        const subject = `PEDIDO MULTIPLE: ${part.name} - ${cart.length} artículos`;
+        const subject = `PEDIDO MATERIAL: ${part.name} - ${cart.length} artículos`;
 
         let cartDetails = '';
         cart.forEach((item, index) => {
@@ -95,7 +95,7 @@ ${index + 1}. ARTÍCULO: ${item.name}
 
         const body = `Hola,
 
-Necesitamos pedir el siguiente material multivariante:
+Necesitamos pedir el siguiente material:
 
 --------------------------------------------------
 📦 DETALLES DEL PEDIDO
