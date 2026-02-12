@@ -51,12 +51,16 @@ export class PartService {
         this.fuse = new Fuse(this.parts, {
             keys: [
                 { name: 'name', weight: 0.5 },
-                { name: 'commonName', weight: 0.3 },
+                { name: 'commonName', weight: 0.4 },
+                { name: 'internalCode', weight: 0.7 },
+                { name: 'providerRef', weight: 0.6 },
                 { name: 'provider', weight: 0.1 },
                 { name: 'machine', weight: 0.1 },
-                { name: 'providerRef', weight: 0.2 }
+                { name: 'variants.name', weight: 0.4 },
+                { name: 'variants.internalCode', weight: 0.7 },
+                { name: 'variants.providerRef', weight: 0.6 }
             ],
-            threshold: 0.3,
+            threshold: 0.2, // Lowered threshold for more precise matching
             distance: 100,
             ignoreLocation: true,
             minMatchCharLength: 2,
@@ -64,6 +68,12 @@ export class PartService {
             getFn: (obj: any, path: string | string[]) => {
                 const key = Array.isArray(path) ? path[0] : path;
                 const value = obj[key];
+
+                // If it's an array (like services or variants handled by Fuse)
+                if (Array.isArray(value)) {
+                    return value.map(v => typeof v === 'string' ? this.normalizeText(v) : v);
+                }
+
                 return typeof value === 'string' ? this.normalizeText(value) : value;
             }
         });
